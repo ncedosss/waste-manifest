@@ -1,0 +1,1152 @@
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:48:20 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+error: duplicate key value violates unique constraint "unique_email"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:48:20 {
+  length: 204,
+  severity: 'ERROR',
+  code: '23505',
+  detail: 'Key (email)=(ncedosss@gmail.com) already exists.',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'users',
+  column: undefined,
+  dataType: undefined,
+  constraint: 'unique_email',
+  file: 'nbtinsert.c',
+  line: '673',
+  routine: '_bt_check_unique'
+}
+Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+error: duplicate key value violates unique constraint "unique_email"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:48:20 {
+  length: 204,
+  severity: 'ERROR',
+  code: '23505',
+  detail: 'Key (email)=(ncedosss@gmail.com) already exists.',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'users',
+  column: undefined,
+  dataType: undefined,
+  constraint: 'unique_email',
+  file: 'nbtinsert.c',
+  line: '673',
+  routine: '_bt_check_unique'
+}
+Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+error: duplicate key value violates unique constraint "unique_email"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:47:20 {
+  length: 204,
+  severity: 'ERROR',
+  code: '23505',
+  detail: 'Key (email)=(ncedosss@gmail.com) already exists.',
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'public',
+  table: 'users',
+  column: undefined,
+  dataType: undefined,
+  constraint: 'unique_email',
+  file: 'nbtinsert.c',
+  line: '673',
+  routine: '_bt_check_unique'
+}
+Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+  code: 'ESOCKET',
+  command: 'CONN'
+}
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1046:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1046:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1141:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1046:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1046:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1141:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1046:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1046:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1141:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:211:9
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at param (C:\package\backend\node_modules\router\index.js:600:14)
+    at param (C:\package\backend\node_modules\router\index.js:610:14)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:211:9
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at param (C:\package\backend\node_modules\router\index.js:600:14)
+    at param (C:\package\backend\node_modules\router\index.js:610:14)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:211:9
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at param (C:\package\backend\node_modules\router\index.js:600:14)
+    at param (C:\package\backend\node_modules\router\index.js:610:14)
+TokenExpiredError: jwt expired
+    at C:\package\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\package\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at C:\package\backend\server.js:211:9
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15 {
+  expiredAt: 2025-08-30T21:23:03.000Z
+}
+error: password authentication failed for user "postgres"
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:97:24 {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '324',
+  routine: 'auth_failed'
+}
+Error: ENOENT: no such file or directory, stat 'C:\package\waste-manifest-app\build\index.html'
+Error: ENOENT: no such file or directory, stat 'C:\package\waste-manifest-app\build\index.html'
+Error: ENOENT: no such file or directory, stat 'C:\package\waste-manifest-app\build\index.html'
+TokenExpiredError: jwt expired
+    at C:\package\backend\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\package\backend\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:101:10)
+    at C:\package\backend\server.js:224:9
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15 {
+  expiredAt: 2025-08-30T21:23:03.000Z
+}
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:224:9
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at param (C:\package\backend\node_modules\router\index.js:600:14)
+    at param (C:\package\backend\node_modules\router\index.js:610:14)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1094:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error: read ECONNRESET
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:100:24 {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+error: the database system is in recovery mode
+    at C:\package\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\package\backend\server.js:100:24 {
+  length: 110,
+  severity: 'FATAL',
+  code: '57P03',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'backend_startup.c',
+  line: '299',
+  routine: 'BackendInitialize'
+}
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving entity: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1093:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Error saving manifest: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)

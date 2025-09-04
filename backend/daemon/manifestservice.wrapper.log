@@ -1,0 +1,498 @@
+2025-09-01 12:43:40 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 12:43:40 - Started 19832
+2025-09-01 13:23:05 - Stopping manifestservice.exe
+2025-09-01 13:23:05 - ProcessKill 19832
+2025-09-01 13:23:05 - Found child process: 15728 Name: conhost.exe
+2025-09-01 13:23:05 - Found child process: 11104 Name: node.exe
+2025-09-01 13:23:06 - Stopping process 15728
+2025-09-01 13:23:06 - Send SIGINT 15728
+2025-09-01 13:23:06 - SIGINT to 15728 failed - Killing as fallback
+2025-09-01 13:23:06 - Stopping process 11104
+2025-09-01 13:23:06 - Send SIGINT 11104
+2025-09-01 13:23:06 - SIGINT to 11104 failed - Killing as fallback
+2025-09-01 13:23:06 - Stopping process 19832
+2025-09-01 13:23:06 - Send SIGINT 19832
+2025-09-01 13:23:06 - SIGINT to 19832 failed - Killing as fallback
+2025-09-01 13:23:06 - Finished manifestservice.exe
+2025-09-01 13:23:09 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 13:23:09 - Started 16332
+2025-09-01 13:26:17 - Stopping manifestservice.exe
+2025-09-01 13:26:17 - ProcessKill 16332
+2025-09-01 13:26:18 - Found child process: 18804 Name: conhost.exe
+2025-09-01 13:26:18 - Found child process: 8952 Name: node.exe
+2025-09-01 13:26:18 - Stopping process 18804
+2025-09-01 13:26:18 - Send SIGINT 18804
+2025-09-01 13:26:18 - SIGINT to 18804 failed - Killing as fallback
+2025-09-01 13:26:18 - Stopping process 8952
+2025-09-01 13:26:18 - Send SIGINT 8952
+2025-09-01 13:26:18 - SIGINT to 8952 failed - Killing as fallback
+2025-09-01 13:26:18 - Stopping process 16332
+2025-09-01 13:26:18 - Send SIGINT 16332
+2025-09-01 13:26:18 - SIGINT to 16332 failed - Killing as fallback
+2025-09-01 13:26:18 - Finished manifestservice.exe
+2025-09-01 13:26:29 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 13:26:29 - Started 11796
+2025-09-01 13:29:49 - Stopping manifestservice.exe
+2025-09-01 13:29:49 - ProcessKill 11796
+2025-09-01 13:29:49 - Found child process: 8436 Name: conhost.exe
+2025-09-01 13:29:49 - Found child process: 22096 Name: node.exe
+2025-09-01 13:29:49 - Stopping process 8436
+2025-09-01 13:29:49 - Send SIGINT 8436
+2025-09-01 13:29:49 - SIGINT to 8436 failed - Killing as fallback
+2025-09-01 13:29:49 - Stopping process 22096
+2025-09-01 13:29:49 - Send SIGINT 22096
+2025-09-01 13:29:49 - SIGINT to 22096 failed - Killing as fallback
+2025-09-01 13:29:49 - Stopping process 11796
+2025-09-01 13:29:49 - Send SIGINT 11796
+2025-09-01 13:29:49 - SIGINT to 11796 failed - Killing as fallback
+2025-09-01 13:29:49 - Finished manifestservice.exe
+2025-09-01 13:29:52 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 13:29:52 - Started 18536
+2025-09-01 14:19:13 - Stopping manifestservice.exe
+2025-09-01 14:19:13 - ProcessKill 18536
+2025-09-01 14:19:13 - Found child process: 21968 Name: conhost.exe
+2025-09-01 14:19:13 - Found child process: 24080 Name: node.exe
+2025-09-01 14:19:13 - Stopping process 21968
+2025-09-01 14:19:13 - Send SIGINT 21968
+2025-09-01 14:19:13 - SIGINT to 21968 failed - Killing as fallback
+2025-09-01 14:19:13 - Stopping process 24080
+2025-09-01 14:19:13 - Send SIGINT 24080
+2025-09-01 14:19:13 - SIGINT to 24080 failed - Killing as fallback
+2025-09-01 14:19:13 - Stopping process 18536
+2025-09-01 14:19:13 - Send SIGINT 18536
+2025-09-01 14:19:13 - SIGINT to 18536 failed - Killing as fallback
+2025-09-01 14:19:13 - Finished manifestservice.exe
+2025-09-01 14:19:15 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 14:19:15 - Started 18152
+2025-09-01 14:23:53 - Stopping manifestservice.exe
+2025-09-01 14:23:53 - ProcessKill 18152
+2025-09-01 14:23:53 - Found child process: 15940 Name: conhost.exe
+2025-09-01 14:23:53 - Found child process: 12732 Name: node.exe
+2025-09-01 14:23:53 - Stopping process 15940
+2025-09-01 14:23:53 - Send SIGINT 15940
+2025-09-01 14:23:53 - SIGINT to 15940 failed - Killing as fallback
+2025-09-01 14:23:53 - Stopping process 12732
+2025-09-01 14:23:53 - Send SIGINT 12732
+2025-09-01 14:23:53 - SIGINT to 12732 failed - Killing as fallback
+2025-09-01 14:23:53 - Stopping process 18152
+2025-09-01 14:23:53 - Send SIGINT 18152
+2025-09-01 14:23:53 - SIGINT to 18152 failed - Killing as fallback
+2025-09-01 14:23:53 - Finished manifestservice.exe
+2025-09-01 14:23:55 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 14:23:55 - Started 23036
+2025-09-01 14:57:18 - Stopping manifestservice.exe
+2025-09-01 14:57:18 - ProcessKill 23036
+2025-09-01 14:57:20 - Found child process: 23020 Name: conhost.exe
+2025-09-01 14:57:20 - Found child process: 16040 Name: node.exe
+2025-09-01 14:57:20 - Stopping process 23020
+2025-09-01 14:57:20 - Send SIGINT 23020
+2025-09-01 14:57:21 - SIGINT to 23020 failed - Killing as fallback
+2025-09-01 14:57:21 - Stopping process 16040
+2025-09-01 14:57:21 - Send SIGINT 16040
+2025-09-01 14:57:21 - SIGINT to 16040 failed - Killing as fallback
+2025-09-01 14:57:21 - Stopping process 23036
+2025-09-01 14:57:21 - Send SIGINT 23036
+2025-09-01 14:57:21 - SIGINT to 23036 failed - Killing as fallback
+2025-09-01 14:57:21 - Finished manifestservice.exe
+2025-09-01 14:59:48 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 14:59:48 - Started 612
+2025-09-01 16:05:27 - Stopping manifestservice.exe
+2025-09-01 16:05:27 - ProcessKill 612
+2025-09-01 16:05:28 - Found child process: 14152 Name: conhost.exe
+2025-09-01 16:05:28 - Found child process: 20792 Name: node.exe
+2025-09-01 16:05:28 - Stopping process 14152
+2025-09-01 16:05:28 - Send SIGINT 14152
+2025-09-01 16:05:28 - SIGINT to 14152 failed - Killing as fallback
+2025-09-01 16:05:28 - Stopping process 20792
+2025-09-01 16:05:28 - Send SIGINT 20792
+2025-09-01 16:05:28 - SIGINT to 20792 failed - Killing as fallback
+2025-09-01 16:05:28 - Stopping process 612
+2025-09-01 16:05:28 - Send SIGINT 612
+2025-09-01 16:05:28 - SIGINT to 612 failed - Killing as fallback
+2025-09-01 16:05:28 - Finished manifestservice.exe
+2025-09-01 16:06:28 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 16:06:28 - Started 9952
+2025-09-01 16:11:29 - Stopping manifestservice.exe
+2025-09-01 16:11:29 - ProcessKill 9952
+2025-09-01 16:11:30 - Found child process: 10644 Name: conhost.exe
+2025-09-01 16:11:30 - Found child process: 8980 Name: node.exe
+2025-09-01 16:11:30 - Stopping process 10644
+2025-09-01 16:11:30 - Send SIGINT 10644
+2025-09-01 16:11:30 - SIGINT to 10644 failed - Killing as fallback
+2025-09-01 16:11:30 - Stopping process 8980
+2025-09-01 16:11:30 - Send SIGINT 8980
+2025-09-01 16:11:30 - SIGINT to 8980 failed - Killing as fallback
+2025-09-01 16:11:30 - Stopping process 9952
+2025-09-01 16:11:30 - Send SIGINT 9952
+2025-09-01 16:11:30 - SIGINT to 9952 failed - Killing as fallback
+2025-09-01 16:11:30 - Finished manifestservice.exe
+2025-09-01 16:11:34 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 16:11:34 - Started 24476
+2025-09-01 17:11:43 - Stopping manifestservice.exe
+2025-09-01 17:11:43 - ProcessKill 24476
+2025-09-01 17:11:43 - Found child process: 16192 Name: conhost.exe
+2025-09-01 17:11:43 - Found child process: 20756 Name: node.exe
+2025-09-01 17:11:43 - Stopping process 16192
+2025-09-01 17:11:43 - Send SIGINT 16192
+2025-09-01 17:11:43 - SIGINT to 16192 failed - Killing as fallback
+2025-09-01 17:11:43 - Stopping process 20756
+2025-09-01 17:11:43 - Send SIGINT 20756
+2025-09-01 17:11:43 - SIGINT to 20756 failed - Killing as fallback
+2025-09-01 17:11:43 - Stopping process 24476
+2025-09-01 17:11:43 - Send SIGINT 24476
+2025-09-01 17:11:43 - SIGINT to 24476 failed - Killing as fallback
+2025-09-01 17:11:43 - Finished manifestservice.exe
+2025-09-01 17:12:01 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 17:12:01 - Started 11508
+2025-09-01 17:13:21 - Stopping manifestservice.exe
+2025-09-01 17:13:21 - ProcessKill 11508
+2025-09-01 17:13:21 - Found child process: 14996 Name: conhost.exe
+2025-09-01 17:13:21 - Found child process: 2556 Name: node.exe
+2025-09-01 17:13:21 - Stopping process 14996
+2025-09-01 17:13:21 - Send SIGINT 14996
+2025-09-01 17:13:21 - SIGINT to 14996 failed - Killing as fallback
+2025-09-01 17:13:21 - Stopping process 2556
+2025-09-01 17:13:21 - Send SIGINT 2556
+2025-09-01 17:13:21 - SIGINT to 2556 failed - Killing as fallback
+2025-09-01 17:13:21 - Stopping process 11508
+2025-09-01 17:13:21 - Send SIGINT 11508
+2025-09-01 17:13:21 - SIGINT to 11508 failed - Killing as fallback
+2025-09-01 17:13:21 - Finished manifestservice.exe
+2025-09-01 17:13:24 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 17:13:24 - Started 16016
+2025-09-01 17:36:07 - Stopping manifestservice.exe
+2025-09-01 17:36:07 - ProcessKill 16016
+2025-09-01 17:36:07 - Found child process: 23820 Name: conhost.exe
+2025-09-01 17:36:07 - Found child process: 20044 Name: node.exe
+2025-09-01 17:36:07 - Stopping process 23820
+2025-09-01 17:36:07 - Send SIGINT 23820
+2025-09-01 17:36:08 - SIGINT to 23820 failed - Killing as fallback
+2025-09-01 17:36:08 - Stopping process 20044
+2025-09-01 17:36:08 - Send SIGINT 20044
+2025-09-01 17:36:08 - SIGINT to 20044 failed - Killing as fallback
+2025-09-01 17:36:08 - Stopping process 16016
+2025-09-01 17:36:08 - Send SIGINT 16016
+2025-09-01 17:36:08 - SIGINT to 16016 failed - Killing as fallback
+2025-09-01 17:36:08 - Finished manifestservice.exe
+2025-09-01 17:36:10 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 17:36:10 - Started 20220
+2025-09-01 17:38:50 - Stopping manifestservice.exe
+2025-09-01 17:38:50 - ProcessKill 20220
+2025-09-01 17:38:50 - Found child process: 12592 Name: conhost.exe
+2025-09-01 17:38:50 - Found child process: 22372 Name: node.exe
+2025-09-01 17:38:50 - Stopping process 12592
+2025-09-01 17:38:50 - Send SIGINT 12592
+2025-09-01 17:38:50 - SIGINT to 12592 failed - Killing as fallback
+2025-09-01 17:38:50 - Stopping process 22372
+2025-09-01 17:38:50 - Send SIGINT 22372
+2025-09-01 17:38:50 - SIGINT to 22372 failed - Killing as fallback
+2025-09-01 17:38:50 - Stopping process 20220
+2025-09-01 17:38:50 - Send SIGINT 20220
+2025-09-01 17:38:50 - SIGINT to 20220 failed - Killing as fallback
+2025-09-01 17:38:50 - Finished manifestservice.exe
+2025-09-01 17:38:52 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 17:38:52 - Started 24456
+2025-09-01 17:54:18 - Stopping manifestservice.exe
+2025-09-01 17:54:18 - ProcessKill 24456
+2025-09-01 17:54:18 - Found child process: 21224 Name: conhost.exe
+2025-09-01 17:54:18 - Found child process: 23728 Name: node.exe
+2025-09-01 17:54:18 - Stopping process 21224
+2025-09-01 17:54:18 - Send SIGINT 21224
+2025-09-01 17:54:19 - SIGINT to 21224 failed - Killing as fallback
+2025-09-01 17:54:19 - Stopping process 23728
+2025-09-01 17:54:19 - Send SIGINT 23728
+2025-09-01 17:54:19 - SIGINT to 23728 failed - Killing as fallback
+2025-09-01 17:54:19 - Stopping process 24456
+2025-09-01 17:54:19 - Send SIGINT 24456
+2025-09-01 17:54:19 - SIGINT to 24456 failed - Killing as fallback
+2025-09-01 17:54:19 - Finished manifestservice.exe
+2025-09-01 17:54:19 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 17:54:19 - Started 18456
+2025-09-01 18:14:00 - Stopping manifestservice.exe
+2025-09-01 18:14:00 - ProcessKill 18456
+2025-09-01 18:14:01 - Found child process: 10272 Name: conhost.exe
+2025-09-01 18:14:01 - Found child process: 5168 Name: node.exe
+2025-09-01 18:14:01 - Stopping process 10272
+2025-09-01 18:14:01 - Send SIGINT 10272
+2025-09-01 18:14:01 - SIGINT to 10272 failed - Killing as fallback
+2025-09-01 18:14:01 - Stopping process 5168
+2025-09-01 18:14:01 - Send SIGINT 5168
+2025-09-01 18:14:01 - SIGINT to 5168 failed - Killing as fallback
+2025-09-01 18:14:01 - Stopping process 18456
+2025-09-01 18:14:01 - Send SIGINT 18456
+2025-09-01 18:14:01 - SIGINT to 18456 failed - Killing as fallback
+2025-09-01 18:14:01 - Finished manifestservice.exe
+2025-09-01 18:14:04 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 18:14:04 - Started 10804
+2025-09-01 18:41:30 - Stopping manifestservice.exe
+2025-09-01 18:41:30 - ProcessKill 10804
+2025-09-01 18:41:31 - Found child process: 3752 Name: conhost.exe
+2025-09-01 18:41:31 - Found child process: 8928 Name: node.exe
+2025-09-01 18:41:31 - Stopping process 3752
+2025-09-01 18:41:31 - Send SIGINT 3752
+2025-09-01 18:41:31 - SIGINT to 3752 failed - Killing as fallback
+2025-09-01 18:41:31 - Stopping process 8928
+2025-09-01 18:41:31 - Send SIGINT 8928
+2025-09-01 18:41:31 - SIGINT to 8928 failed - Killing as fallback
+2025-09-01 18:41:31 - Stopping process 10804
+2025-09-01 18:41:31 - Send SIGINT 10804
+2025-09-01 18:41:31 - SIGINT to 10804 failed - Killing as fallback
+2025-09-01 18:41:31 - Finished manifestservice.exe
+2025-09-01 18:41:34 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 18:41:34 - Started 20628
+2025-09-01 18:44:47 - Stopping manifestservice.exe
+2025-09-01 18:44:47 - ProcessKill 20628
+2025-09-01 18:44:47 - Found child process: 2392 Name: conhost.exe
+2025-09-01 18:44:47 - Found child process: 19464 Name: node.exe
+2025-09-01 18:44:48 - Stopping process 2392
+2025-09-01 18:44:48 - Send SIGINT 2392
+2025-09-01 18:44:48 - SIGINT to 2392 failed - Killing as fallback
+2025-09-01 18:44:48 - Stopping process 19464
+2025-09-01 18:44:48 - Send SIGINT 19464
+2025-09-01 18:44:48 - SIGINT to 19464 failed - Killing as fallback
+2025-09-01 18:44:48 - Stopping process 20628
+2025-09-01 18:44:48 - Send SIGINT 20628
+2025-09-01 18:44:48 - SIGINT to 20628 failed - Killing as fallback
+2025-09-01 18:44:48 - Finished manifestservice.exe
+2025-09-01 18:44:52 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 18:44:52 - Started 2356
+2025-09-01 18:48:29 - Stopping manifestservice.exe
+2025-09-01 18:48:29 - ProcessKill 2356
+2025-09-01 18:48:30 - Found child process: 13976 Name: conhost.exe
+2025-09-01 18:48:30 - Found child process: 22372 Name: node.exe
+2025-09-01 18:48:30 - Stopping process 13976
+2025-09-01 18:48:30 - Send SIGINT 13976
+2025-09-01 18:48:30 - SIGINT to 13976 failed - Killing as fallback
+2025-09-01 18:48:30 - Stopping process 22372
+2025-09-01 18:48:30 - Send SIGINT 22372
+2025-09-01 18:48:30 - SIGINT to 22372 failed - Killing as fallback
+2025-09-01 18:48:30 - Stopping process 2356
+2025-09-01 18:48:30 - Send SIGINT 2356
+2025-09-01 18:48:30 - SIGINT to 2356 failed - Killing as fallback
+2025-09-01 18:48:30 - Finished manifestservice.exe
+2025-09-01 18:48:32 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 18:48:32 - Started 20180
+2025-09-01 18:50:42 - Stopping manifestservice.exe
+2025-09-01 18:50:42 - ProcessKill 20180
+2025-09-01 18:50:42 - Found child process: 18468 Name: conhost.exe
+2025-09-01 18:50:42 - Found child process: 16092 Name: node.exe
+2025-09-01 18:50:42 - Stopping process 18468
+2025-09-01 18:50:42 - Send SIGINT 18468
+2025-09-01 18:50:43 - SIGINT to 18468 failed - Killing as fallback
+2025-09-01 18:50:43 - Stopping process 16092
+2025-09-01 18:50:43 - Send SIGINT 16092
+2025-09-01 18:50:43 - SIGINT to 16092 failed - Killing as fallback
+2025-09-01 18:50:43 - Stopping process 20180
+2025-09-01 18:50:43 - Send SIGINT 20180
+2025-09-01 18:50:43 - SIGINT to 20180 failed - Killing as fallback
+2025-09-01 18:50:43 - Finished manifestservice.exe
+2025-09-01 18:50:44 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 18:50:44 - Started 14352
+2025-09-01 18:55:37 - Stopping manifestservice.exe
+2025-09-01 18:55:37 - ProcessKill 14352
+2025-09-01 18:55:38 - Found child process: 13744 Name: conhost.exe
+2025-09-01 18:55:38 - Found child process: 20128 Name: node.exe
+2025-09-01 18:55:38 - Stopping process 13744
+2025-09-01 18:55:38 - Send SIGINT 13744
+2025-09-01 18:55:38 - SIGINT to 13744 failed - Killing as fallback
+2025-09-01 18:55:38 - Stopping process 20128
+2025-09-01 18:55:38 - Send SIGINT 20128
+2025-09-01 18:55:38 - SIGINT to 20128 failed - Killing as fallback
+2025-09-01 18:55:38 - Stopping process 14352
+2025-09-01 18:55:38 - Send SIGINT 14352
+2025-09-01 18:55:38 - SIGINT to 14352 failed - Killing as fallback
+2025-09-01 18:55:38 - Finished manifestservice.exe
+2025-09-01 18:55:40 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 18:55:40 - Started 19972
+2025-09-01 18:59:04 - Stopping manifestservice.exe
+2025-09-01 18:59:04 - ProcessKill 19972
+2025-09-01 18:59:04 - Found child process: 23996 Name: conhost.exe
+2025-09-01 18:59:04 - Found child process: 11968 Name: node.exe
+2025-09-01 18:59:04 - Stopping process 23996
+2025-09-01 18:59:04 - Send SIGINT 23996
+2025-09-01 18:59:04 - SIGINT to 23996 failed - Killing as fallback
+2025-09-01 18:59:04 - Stopping process 11968
+2025-09-01 18:59:04 - Send SIGINT 11968
+2025-09-01 18:59:04 - SIGINT to 11968 failed - Killing as fallback
+2025-09-01 18:59:04 - Stopping process 19972
+2025-09-01 18:59:04 - Send SIGINT 19972
+2025-09-01 18:59:04 - SIGINT to 19972 failed - Killing as fallback
+2025-09-01 18:59:04 - Finished manifestservice.exe
+2025-09-01 18:59:06 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 18:59:06 - Started 24416
+2025-09-01 19:00:19 - Stopping manifestservice.exe
+2025-09-01 19:00:19 - ProcessKill 24416
+2025-09-01 19:00:20 - Found child process: 1160 Name: conhost.exe
+2025-09-01 19:00:20 - Found child process: 16704 Name: node.exe
+2025-09-01 19:00:20 - Stopping process 1160
+2025-09-01 19:00:20 - Send SIGINT 1160
+2025-09-01 19:00:20 - SIGINT to 1160 failed - Killing as fallback
+2025-09-01 19:00:20 - Stopping process 16704
+2025-09-01 19:00:20 - Send SIGINT 16704
+2025-09-01 19:00:20 - SIGINT to 16704 failed - Killing as fallback
+2025-09-01 19:00:20 - Stopping process 24416
+2025-09-01 19:00:20 - Send SIGINT 24416
+2025-09-01 19:00:20 - SIGINT to 24416 failed - Killing as fallback
+2025-09-01 19:00:20 - Finished manifestservice.exe
+2025-09-01 19:00:21 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 19:00:21 - Started 23316
+2025-09-02 09:52:58 - Stopping manifestservice.exe
+2025-09-02 09:52:58 - ProcessKill 23316
+2025-09-02 09:52:58 - Found child process: 20192 Name: conhost.exe
+2025-09-02 09:52:58 - Found child process: 24420 Name: node.exe
+2025-09-02 09:52:58 - Stopping process 20192
+2025-09-02 09:52:58 - Send SIGINT 20192
+2025-09-02 09:52:58 - SIGINT to 20192 failed - Killing as fallback
+2025-09-02 09:52:59 - Stopping process 24420
+2025-09-02 09:52:59 - Send SIGINT 24420
+2025-09-02 09:52:59 - SIGINT to 24420 failed - Killing as fallback
+2025-09-02 09:52:59 - Stopping process 23316
+2025-09-02 09:52:59 - Send SIGINT 23316
+2025-09-02 09:52:59 - SIGINT to 23316 failed - Killing as fallback
+2025-09-02 09:52:59 - Finished manifestservice.exe
+2025-09-02 09:53:00 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 09:53:00 - Started 14316
+2025-09-02 09:55:31 - Stopping manifestservice.exe
+2025-09-02 09:55:31 - ProcessKill 14316
+2025-09-02 09:55:31 - Found child process: 1040 Name: conhost.exe
+2025-09-02 09:55:31 - Found child process: 25180 Name: node.exe
+2025-09-02 09:55:31 - Stopping process 1040
+2025-09-02 09:55:31 - Send SIGINT 1040
+2025-09-02 09:55:31 - SIGINT to 1040 failed - Killing as fallback
+2025-09-02 09:55:31 - Stopping process 25180
+2025-09-02 09:55:31 - Send SIGINT 25180
+2025-09-02 09:55:31 - SIGINT to 25180 failed - Killing as fallback
+2025-09-02 09:55:31 - Stopping process 14316
+2025-09-02 09:55:31 - Send SIGINT 14316
+2025-09-02 09:55:31 - SIGINT to 14316 failed - Killing as fallback
+2025-09-02 09:55:31 - Finished manifestservice.exe
+2025-09-02 09:55:33 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 09:55:33 - Started 10336
+2025-09-02 10:34:10 - Stopping manifestservice.exe
+2025-09-02 10:34:10 - ProcessKill 10336
+2025-09-02 10:34:10 - Found child process: 17332 Name: conhost.exe
+2025-09-02 10:34:10 - Found child process: 12388 Name: node.exe
+2025-09-02 10:34:11 - Stopping process 17332
+2025-09-02 10:34:11 - Send SIGINT 17332
+2025-09-02 10:34:11 - SIGINT to 17332 failed - Killing as fallback
+2025-09-02 10:34:11 - Stopping process 12388
+2025-09-02 10:34:11 - Send SIGINT 12388
+2025-09-02 10:34:11 - SIGINT to 12388 failed - Killing as fallback
+2025-09-02 10:34:11 - Stopping process 10336
+2025-09-02 10:34:11 - Send SIGINT 10336
+2025-09-02 10:34:11 - SIGINT to 10336 failed - Killing as fallback
+2025-09-02 10:34:11 - Finished manifestservice.exe
+2025-09-02 10:34:13 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 10:34:13 - Started 9800
+2025-09-02 11:21:58 - Stopping manifestservice.exe
+2025-09-02 11:21:58 - ProcessKill 9800
+2025-09-02 11:21:59 - Found child process: 8688 Name: conhost.exe
+2025-09-02 11:21:59 - Found child process: 15528 Name: node.exe
+2025-09-02 11:21:59 - Stopping process 8688
+2025-09-02 11:21:59 - Send SIGINT 8688
+2025-09-02 11:21:59 - SIGINT to 8688 failed - Killing as fallback
+2025-09-02 11:21:59 - Stopping process 15528
+2025-09-02 11:21:59 - Send SIGINT 15528
+2025-09-02 11:21:59 - SIGINT to 15528 failed - Killing as fallback
+2025-09-02 11:21:59 - Stopping process 9800
+2025-09-02 11:21:59 - Send SIGINT 9800
+2025-09-02 11:21:59 - SIGINT to 9800 failed - Killing as fallback
+2025-09-02 11:21:59 - Finished manifestservice.exe
+2025-09-02 11:22:01 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 11:22:01 - Started 23716
+2025-09-02 11:51:44 - Stopping manifestservice.exe
+2025-09-02 11:51:44 - ProcessKill 23716
+2025-09-02 11:51:44 - Found child process: 25044 Name: conhost.exe
+2025-09-02 11:51:44 - Found child process: 25596 Name: node.exe
+2025-09-02 11:51:44 - Stopping process 25044
+2025-09-02 11:51:44 - Send SIGINT 25044
+2025-09-02 11:51:44 - SIGINT to 25044 failed - Killing as fallback
+2025-09-02 11:51:45 - Stopping process 25596
+2025-09-02 11:51:45 - Send SIGINT 25596
+2025-09-02 11:51:45 - SIGINT to 25596 failed - Killing as fallback
+2025-09-02 11:51:45 - Stopping process 23716
+2025-09-02 11:51:45 - Send SIGINT 23716
+2025-09-02 11:51:45 - SIGINT to 23716 failed - Killing as fallback
+2025-09-02 11:51:45 - Finished manifestservice.exe
+2025-09-02 11:51:46 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 11:51:46 - Started 13568
+2025-09-02 12:15:46 - Stopping manifestservice.exe
+2025-09-02 12:15:46 - ProcessKill 13568
+2025-09-02 12:15:47 - Found child process: 19400 Name: conhost.exe
+2025-09-02 12:15:47 - Found child process: 25748 Name: node.exe
+2025-09-02 12:15:47 - Stopping process 19400
+2025-09-02 12:15:47 - Send SIGINT 19400
+2025-09-02 12:15:47 - SIGINT to 19400 failed - Killing as fallback
+2025-09-02 12:15:47 - Stopping process 25748
+2025-09-02 12:15:47 - Send SIGINT 25748
+2025-09-02 12:15:47 - SIGINT to 25748 failed - Killing as fallback
+2025-09-02 12:15:47 - Stopping process 13568
+2025-09-02 12:15:47 - Send SIGINT 13568
+2025-09-02 12:15:47 - SIGINT to 13568 failed - Killing as fallback
+2025-09-02 12:15:47 - Finished manifestservice.exe
+2025-09-02 12:15:54 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 12:15:55 - Started 1840
+2025-09-02 12:35:18 - Stopping manifestservice.exe
+2025-09-02 12:35:18 - ProcessKill 1840
+2025-09-02 12:35:19 - Found child process: 17420 Name: conhost.exe
+2025-09-02 12:35:19 - Found child process: 25060 Name: node.exe
+2025-09-02 12:35:19 - Stopping process 17420
+2025-09-02 12:35:19 - Send SIGINT 17420
+2025-09-02 12:35:19 - SIGINT to 17420 failed - Killing as fallback
+2025-09-02 12:35:20 - Stopping process 25060
+2025-09-02 12:35:20 - Send SIGINT 25060
+2025-09-02 12:35:20 - SIGINT to 25060 failed - Killing as fallback
+2025-09-02 12:35:20 - Stopping process 1840
+2025-09-02 12:35:20 - Send SIGINT 1840
+2025-09-02 12:35:20 - SIGINT to 1840 failed - Killing as fallback
+2025-09-02 12:35:20 - Finished manifestservice.exe
+2025-09-02 12:36:37 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 12:36:37 - Started 496
+2025-09-02 12:39:00 - Stopping manifestservice.exe
+2025-09-02 12:39:00 - ProcessKill 496
+2025-09-02 12:39:00 - Found child process: 24952 Name: conhost.exe
+2025-09-02 12:39:00 - Found child process: 19584 Name: node.exe
+2025-09-02 12:39:00 - Stopping process 24952
+2025-09-02 12:39:00 - Send SIGINT 24952
+2025-09-02 12:39:00 - SIGINT to 24952 failed - Killing as fallback
+2025-09-02 12:39:00 - Stopping process 19584
+2025-09-02 12:39:00 - Send SIGINT 19584
+2025-09-02 12:39:00 - SIGINT to 19584 failed - Killing as fallback
+2025-09-02 12:39:00 - Stopping process 496
+2025-09-02 12:39:00 - Send SIGINT 496
+2025-09-02 12:39:00 - SIGINT to 496 failed - Killing as fallback
+2025-09-02 12:39:00 - Finished manifestservice.exe
+2025-09-02 12:39:02 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 12:39:02 - Started 14856
+2025-09-02 12:44:03 - Stopping manifestservice.exe
+2025-09-02 12:44:03 - ProcessKill 14856
+2025-09-02 12:44:04 - Found child process: 1832 Name: conhost.exe
+2025-09-02 12:44:04 - Found child process: 2372 Name: node.exe
+2025-09-02 12:44:04 - Stopping process 1832
+2025-09-02 12:44:04 - Send SIGINT 1832
+2025-09-02 12:44:04 - SIGINT to 1832 failed - Killing as fallback
+2025-09-02 12:44:04 - Stopping process 2372
+2025-09-02 12:44:04 - Send SIGINT 2372
+2025-09-02 12:44:04 - SIGINT to 2372 failed - Killing as fallback
+2025-09-02 12:44:04 - Stopping process 14856
+2025-09-02 12:44:04 - Send SIGINT 14856
+2025-09-02 12:44:04 - SIGINT to 14856 failed - Killing as fallback
+2025-09-02 12:44:04 - Finished manifestservice.exe
+2025-09-02 12:44:06 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-02 12:44:06 - Started 23044
+2025-09-04 12:13:53 - Stopping manifestservice.exe
+2025-09-04 12:13:53 - ProcessKill 23044
+2025-09-04 12:13:53 - Found child process: 12328 Name: conhost.exe
+2025-09-04 12:13:53 - Found child process: 4224 Name: node.exe
+2025-09-04 12:13:54 - Stopping process 12328
+2025-09-04 12:13:54 - Send SIGINT 12328
+2025-09-04 12:13:54 - SIGINT to 12328 failed - Killing as fallback
+2025-09-04 12:13:54 - Stopping process 4224
+2025-09-04 12:13:54 - Send SIGINT 4224
+2025-09-04 12:13:54 - SIGINT to 4224 failed - Killing as fallback
+2025-09-04 12:13:54 - Stopping process 23044
+2025-09-04 12:13:54 - Send SIGINT 23044
+2025-09-04 12:13:54 - SIGINT to 23044 failed - Killing as fallback
+2025-09-04 12:13:54 - Finished manifestservice.exe
+2025-09-04 12:13:56 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\backend\node_modules\node-windows\lib\wrapper.js --file C:\package\backend\server.js --scriptoptions= --log "ManifestService wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-04 12:13:56 - Started 11388

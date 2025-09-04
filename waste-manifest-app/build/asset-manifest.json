@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c0cf60b0.css",
+    "main.js": "/static/js/main.af4b77b6.js",
+    "static/js/453.528f608e.chunk.js": "/static/js/453.528f608e.chunk.js",
+    "static/media/signature-sdk.wasm": "/static/media/signature-sdk.813b5c555ad448e7513a.wasm",
+    "static/media/ABCGravity-Compressed.woff": "/static/media/ABCGravity-Compressed.ca1c6b79d5207cdc04bc.woff",
+    "static/media/ABCGravity-Compressed.woff2": "/static/media/ABCGravity-Compressed.930aa7fdd4dc4fcafdc2.woff2",
+    "static/media/AcidGrotesk-Bold.woff": "/static/media/AcidGrotesk-Bold.2cefb086b46e680f319c.woff",
+    "static/media/AcidGrotesk-Normal.woff": "/static/media/AcidGrotesk-Normal.60f754dc98df36d42b15.woff",
+    "static/media/AcidGrotesk-Medium.woff": "/static/media/AcidGrotesk-Medium.4c569640e27614b2d8b5.woff",
+    "static/media/P22Mackinac.woff": "/static/media/P22Mackinac.a6d34687a28ee7ec9eb8.woff",
+    "static/media/P22Mackinac-Medium.woff": "/static/media/P22Mackinac-Medium.c1530addfda2ad7ee2e5.woff",
+    "static/media/AcidGrotesk-Bold.woff2": "/static/media/AcidGrotesk-Bold.e861a4b28072a7543250.woff2",
+    "static/media/AcidGrotesk-Normal.woff2": "/static/media/AcidGrotesk-Normal.1e6b37f27206a928a8d2.woff2",
+    "static/media/AcidGrotesk-Medium.woff2": "/static/media/AcidGrotesk-Medium.afef5c56776532b51181.woff2",
+    "static/media/P22Mackinac.woff2": "/static/media/P22Mackinac.75074b2cc39dc5353d06.woff2",
+    "static/media/P22Mackinac-Medium.woff2": "/static/media/P22Mackinac-Medium.f2d01e571c719e55f630.woff2",
+    "index.html": "/index.html",
+    "static/media/icon_error.svg": "/static/media/icon_error.69733452196b12329320684d06920a26.svg",
+    "static/media/info_solid.svg": "/static/media/info_solid.cd15329e5b0d7aa7dde4fd3153c15fae.svg",
+    "static/media/icon_correct.svg": "/static/media/icon_correct.90c1060fc1a5ef2890ea306e4b77d460.svg",
+    "static/media/checked_icon.svg": "/static/media/checked_icon.68b2c789ef1c0961d50af22dfc4d0217.svg",
+    "static/media/radio_unchecked.svg": "/static/media/radio_unchecked.65cdbf042f06001200125d4aa5d869b9.svg",
+    "static/media/unchecked_icon.svg": "/static/media/unchecked_icon.e0bec19c82c1f39dbdb159c752f5ea3d.svg",
+    "main.c0cf60b0.css.map": "/static/css/main.c0cf60b0.css.map",
+    "main.af4b77b6.js.map": "/static/js/main.af4b77b6.js.map",
+    "453.528f608e.chunk.js.map": "/static/js/453.528f608e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0cf60b0.css",
+    "static/js/main.af4b77b6.js"
+  ]
+}

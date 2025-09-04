@@ -1,0 +1,344 @@
+Server running on http://localhost:4000
+Testing
+Server running on http://localhost:4000
+Test
+Test
+Testing
+Server running on http://localhost:4000
+Test
+Testing
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Test
+Test
+Test
+Test
+Server running on http://localhost:4000
+Test
+Test
+Test
+Test
+Test
+Test
+Test
+Test
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+test:  {
+  id: 1,
+  manifest_no: 1,
+  date: 2025-08-31T22:00:00.000Z,
+  time: '18:39:23',
+  transporter: 'Tests',
+  generator: 'Test',
+  reference_no: '100',
+  waste_type: 'Hazardous',
+  waste_form: 'Liquid',
+  process: 'Reuse',
+  final_disposal: 'sadsad',
+  planned_disposal_date: null,
+  actual_disposal_date: 2025-08-31T22:00:00.000Z,
+  disposal_ref_no: null,
+  quote_no: null,
+  po_no: null,
+  comments: '',
+  username: 'Unathi',
+  created_at: 2025-09-01T13:39:50.315Z,
+  disposal_contact_no: '2115151051',
+  is_stamped: false,
+  declaration_name: 'Test',
+  declaration_date: 2025-08-31T22:00:00.000Z,
+  signature: null,
+  disposal_email: '',
+  is_saved_for_later: false,
+  type: 'generator',
+  name: 'Test',
+  address: 'fsdfds',
+  contact_no: '0252255252',
+  ipwis_no: null,
+  contact_person: 'Marilu',
+  email: 'grootboomunathi@gmail.com'
+}
+test:  {
+  id: 1,
+  manifest_no: 1,
+  date: 2025-08-31T22:00:00.000Z,
+  time: '18:39:23',
+  transporter: 'Tests',
+  generator: 'Test',
+  reference_no: '100',
+  waste_type: 'Hazardous',
+  waste_form: 'Liquid',
+  process: 'Reuse',
+  final_disposal: 'sadsad',
+  planned_disposal_date: null,
+  actual_disposal_date: 2025-08-31T22:00:00.000Z,
+  disposal_ref_no: null,
+  quote_no: null,
+  po_no: null,
+  comments: '',
+  username: 'Unathi',
+  created_at: 2025-09-01T13:39:50.315Z,
+  disposal_contact_no: '2115151051',
+  is_stamped: false,
+  declaration_name: 'Test',
+  declaration_date: 2025-08-31T22:00:00.000Z,
+  signature: null,
+  disposal_email: '',
+  is_saved_for_later: false,
+  type: 'generator',
+  name: 'Test',
+  address: 'fsdfds',
+  contact_no: '0252255252',
+  ipwis_no: null,
+  contact_person: 'Marilu',
+  email: 'grootboomunathi@gmail.com'
+}
+test:  {
+  id: 1,
+  manifest_no: 9,
+  date: 2025-08-31T22:00:00.000Z,
+  time: '18:39:23',
+  transporter: 'Tests',
+  generator: 'Test',
+  reference_no: '100',
+  waste_type: 'Hazardous',
+  waste_form: 'Liquid',
+  process: 'Reuse',
+  final_disposal: 'sadsad',
+  planned_disposal_date: null,
+  actual_disposal_date: 2025-08-31T22:00:00.000Z,
+  disposal_ref_no: null,
+  quote_no: null,
+  po_no: null,
+  comments: '',
+  username: 'Unathi',
+  created_at: 2025-09-01T13:39:50.315Z,
+  disposal_contact_no: '2115151051',
+  is_stamped: false,
+  declaration_name: 'Test',
+  declaration_date: 2025-08-31T22:00:00.000Z,
+  signature: null,
+  disposal_email: '',
+  is_saved_for_later: false,
+  type: 'generator',
+  name: 'Test',
+  address: 'fsdfds',
+  contact_no: '0252255252',
+  ipwis_no: null,
+  contact_person: 'Marilu',
+  email: 'grootboomunathi@gmail.com'
+}
+test:  {
+  id: 1,
+  manifest_no: 9,
+  date: 2025-08-31T22:00:00.000Z,
+  time: '18:39:23',
+  transporter: 'Tests',
+  generator: 'Test',
+  reference_no: '100',
+  waste_type: 'Hazardous',
+  waste_form: 'Liquid',
+  process: 'Reuse',
+  final_disposal: 'sadsad',
+  planned_disposal_date: null,
+  actual_disposal_date: 2025-08-31T22:00:00.000Z,
+  disposal_ref_no: null,
+  quote_no: null,
+  po_no: null,
+  comments: '',
+  username: 'Unathi',
+  created_at: 2025-09-01T13:39:50.315Z,
+  disposal_contact_no: '2115151051',
+  is_stamped: false,
+  declaration_name: 'Test',
+  declaration_date: 2025-08-31T22:00:00.000Z,
+  signature: null,
+  disposal_email: '',
+  is_saved_for_later: false,
+  type: 'generator',
+  name: 'Test',
+  address: 'fsdfds',
+  contact_no: '0252255252',
+  ipwis_no: null,
+  contact_person: 'Marilu',
+  email: 'grootboomunathi@gmail.com'
+}
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+Server running on http://localhost:4000
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1189:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+Server running on http://localhost:4000
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)
+JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\package\backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at C:\package\backend\server.js:1188:25
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\package\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\package\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\package\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\package\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\package\backend\node_modules\router\index.js:295:15
+    at processParams (C:\package\backend\node_modules\router\index.js:582:12)
+    at next (C:\package\backend\node_modules\router\index.js:291:5)

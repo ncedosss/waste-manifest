@@ -1,0 +1,22 @@
+2025-09-01 14:28:18 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\WacomAgent\node_modules\node-windows\lib\wrapper.js --file C:\package\WacomAgent\local-agent.js --scriptoptions= --log "WacomAgent wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 14:28:18 - Started 6292
+2025-09-01 14:34:09 - Stopping wacomagent.exe
+2025-09-01 14:34:09 - ProcessKill 6292
+2025-09-01 14:34:09 - Found child process: 17208 Name: conhost.exe
+2025-09-01 14:34:09 - Found child process: 7376 Name: node.exe
+2025-09-01 14:34:10 - Stopping process 17208
+2025-09-01 14:34:10 - Send SIGINT 17208
+2025-09-01 14:34:10 - SIGINT to 17208 failed - Killing as fallback
+2025-09-01 14:34:10 - Stopping process 7376
+2025-09-01 14:34:10 - Send SIGINT 7376
+2025-09-01 14:34:10 - SIGINT to 7376 failed - Killing as fallback
+2025-09-01 14:34:10 - Stopping process 6292
+2025-09-01 14:34:10 - Send SIGINT 6292
+2025-09-01 14:34:10 - SIGINT to 6292 failed - Killing as fallback
+2025-09-01 14:34:10 - Finished wacomagent.exe
+2025-09-01 14:34:12 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\WacomAgent\node_modules\node-windows\lib\wrapper.js --file C:\package\WacomAgent\local-agent.js --scriptoptions= --log "WacomAgent wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 14:34:12 - Started 22284
+2025-09-01 14:34:42 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\WacomAgent\node_modules\node-windows\lib\wrapper.js --file C:\package\WacomAgent\local-agent.js --scriptoptions= --log "WacomAgent wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 14:34:42 - Started 13712
+2025-09-01 14:36:14 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\package\WacomAgent\node_modules\node-windows\lib\wrapper.js --file C:\package\WacomAgent\local-agent.js --scriptoptions= --log "WacomAgent wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-09-01 14:36:14 - Started 21100

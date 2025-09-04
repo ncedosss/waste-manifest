@@ -1,0 +1,16 @@
+2025-08-28 16:09:13 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\project\wastemanifest\backend\node_modules\node-windows\lib\wrapper.js --file C:\project\wastemanifest\backend\server.js --scriptoptions= --log "Manifest wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-08-28 16:09:13 - Started 40756
+2025-08-28 16:23:21 - Stopping manifest.exe
+2025-08-28 16:23:21 - ProcessKill 40756
+2025-08-28 16:23:22 - Found child process: 10500 Name: conhost.exe
+2025-08-28 16:23:22 - Found child process: 12384 Name: node.exe
+2025-08-28 16:23:22 - Stopping process 10500
+2025-08-28 16:23:22 - Send SIGINT 10500
+2025-08-28 16:23:22 - SIGINT to 10500 failed - Killing as fallback
+2025-08-28 16:23:22 - Stopping process 12384
+2025-08-28 16:23:22 - Send SIGINT 12384
+2025-08-28 16:23:22 - SIGINT to 12384 failed - Killing as fallback
+2025-08-28 16:23:22 - Stopping process 40756
+2025-08-28 16:23:22 - Send SIGINT 40756
+2025-08-28 16:23:22 - SIGINT to 40756 failed - Killing as fallback
+2025-08-28 16:23:22 - Finished manifest.exe
