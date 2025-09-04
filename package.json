@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "backend/server.js",
   "dependencies": {
+    "express": "^4.18.2",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.1.1",
@@ -28,10 +29,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "react-scripts": "5.0.1"
   },
   "engines": {
     "node": ">=18"
