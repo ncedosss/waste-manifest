@@ -12,7 +12,7 @@ const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 const JWT_SECRET = 'u8S9z7mL4pR2dXyqJvWfHt6eNk0CbZGa';
 const { exec } = require('child_process');
 
