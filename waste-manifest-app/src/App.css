@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* Local Font Imports */
+
+@font-face {
+    font-family: 'ABCGravity-Compressed';
+    src: url('./assets/fonts/ABCGravity-Compressed.woff2') format('woff2'),
+         url('./assets/fonts/ABCGravity-Compressed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'AcidGrotesk-Bold';
+    src: url('./assets/fonts/AcidGrotesk-Bold.woff2') format('woff2'),
+         url('./assets/fonts/AcidGrotesk-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'AcidGrotesk-Medium';
+    src: url('./assets/fonts/AcidGrotesk-Medium.woff2') format('woff2'),
+         url('./assets/fonts/AcidGrotesk-Medium.woff') format('woff');
+    font-weight: 500; /* Or adjust based on your font's actual weight */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'AcidGrotesk-Normal';
+    src: url('./assets/fonts/AcidGrotesk-Normal.woff2') format('woff2'),
+         url('./assets/fonts/AcidGrotesk-Normal.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'P22Mackinac-Medium';
+    src: url('./assets/fonts/P22Mackinac-Medium.woff2') format('woff2'),
+         url('./assets/fonts/P22Mackinac-Medium.woff') format('woff');
+    font-weight: 500; /* Or adjust based on your font's actual weight */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'P22Mackinac';
+    src: url('./assets/fonts/P22Mackinac.woff2') format('woff2'),
+         url('./assets/fonts/P22Mackinac.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
