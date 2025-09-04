@@ -19,6 +19,8 @@ const { exec } = require('child_process');
 app.use(cors());
 app.use(express.json());
 
+const backendUrl = process.env.BACKEND_URL || "http://localhost:4000";
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false } 
@@ -31,7 +33,7 @@ const emailTransporter = nodemailer.createTransport({
     pass: 'sddw osay mvde dxyc', 
   },
   tls: {
-    rejectUnauthorized: false // ⚠️ Not safe for production
+    rejectUnauthorized: false 
   }
 });
 const recipients = [
@@ -53,7 +55,7 @@ app.post("/api/register", async (req, res) => {
     );
 
     // send email
-    const verifyUrl = `http://material-cycle-app:4000/api/verify-email?token=${token}`; // adjust for your frontend/server URL
+    const verifyUrl = `${backendUrl}/api/verify-email?token=${token}`; // adjust for your frontend/server URL
     await emailTransporter.sendMail({
       to: email,
       subject: "Verify your email",
@@ -240,7 +242,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     doc.pipe(res);
 
     // --- Header ---
-    doc.image(path.join(__dirname, 'logo.JPG'), 40, 40, { width: 150 });
+    doc.image(path.join(__dirname, 'logo.jpg'), 40, 40, { width: 150 });
     doc
       .fontSize(10)
       .text('Material Cycle (Pty) Ltd\n14 Protea Road\nPhilippi East Industrial\nCape Town\n7925',{
@@ -1283,7 +1285,7 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
     doc.pipe(pdfStream);
 
     // --- Header ---
-    doc.image(path.join(__dirname, 'logo.JPG'), 40, 40, { width: 150 });
+    doc.image(path.join(__dirname, 'logo.jpg'), 40, 40, { width: 150 });
     doc
       .fontSize(10)
       .text('Material Cycle (Pty) Ltd\n14 Protea Road\nPhilippi East Industrial\nCape Town\n7925',{
