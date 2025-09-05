@@ -99,7 +99,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   };
 
   const filteredManifests = manifests.filter((m) => 
-    m.generator.toLowerCase().includes(searchQuery.toLowerCase())
+    m.id.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const paginatedManifests = filteredManifests.slice(
@@ -115,7 +115,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
       Transporter: m.transporter,
       Generator: m.generator,
       "Reference No.": m.reference_no,
-      "Manifest No.": m.manifest_no,
+      "Manifest No.": m.id,
       Description: m.description,
       Packaging: m.packaging,
       "Waste Type": m.waste_type,
@@ -203,7 +203,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
       {/* 🔍 Search Bar */}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 4, gap: 2 }}>
         <TextField
-          label="Search by Generator"
+          label="Search by Manifest No"
           variant="outlined"
           size="small"
           value={searchQuery}

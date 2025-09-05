@@ -70,7 +70,7 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
   };
 
   const filteredManifests = manifests.filter((m) => 
-    m.generator.toLowerCase().includes(searchQuery.toLowerCase())
+    m.id.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const paginatedManifests = filteredManifests.slice(
@@ -169,7 +169,7 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
       {/* 🔍 Search Bar */}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <TextField
-          label="Search by Generator"
+          label="Search by Manifest No"
           variant="outlined"
           size="small"
           value={searchQuery}
@@ -232,7 +232,7 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
                 <TableCell align="center">{m.transporter}</TableCell>
                 <TableCell align="center">{m.generator}</TableCell>
                 <TableCell align="center">{m.reference_no}</TableCell>
-                <TableCell align="center">{m.manifest_no}</TableCell>
+                <TableCell align="center">{m.id}</TableCell>
                 <TableCell align="center">{m.description}</TableCell>
                 <TableCell align="center">
                     <Button
