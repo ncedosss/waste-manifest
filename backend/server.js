@@ -942,9 +942,10 @@ if(manifestType !== 'Receipt No'){
       }
     });
       // --- Render stamp image in right column ---
-      console.log(manifestTransporter);
       if (manifestTransporter.is_stamped) {
-        const stampPath = path.resolve('./stamp.png'); 
+        const stampPath = path.resolve('./stamp.png');
+        
+      console.log(stampPath); 
         if (fs.existsSync(stampPath)) {
           const stampImage = fs.readFileSync(stampPath);
           doc.image(stampImage,
