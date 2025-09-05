@@ -471,7 +471,8 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
 
     // Move cursor below that section
     console.log('IPWIS: ',manifestGenerator.ipwis_no);
-    if(manifestGenerator.ipwis_no && manifestGenerator.ipwis_no.trim() !== ''){
+    console.log('IPWIS T: ',manifestTransporter.ipwis_no);
+    if((manifestGenerator.ipwis_no && manifestGenerator.ipwis_no.trim() !== '') || (manifestTransporter.ipwis_no && manifestTransporter.ipwis_no.trim() !== '')){
       console.log('IN');
       doc.moveDown(3);
     }else{
@@ -1529,7 +1530,7 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
 
     // Move cursor below that section
     // Move cursor below that section
-    if(manifestGenerator.ipwis_no && manifestGenerator.ipwis_no.trim() !== ''){
+    if((manifestGenerator.ipwis_no && manifestGenerator.ipwis_no.trim() !== '') || (manifestTransporter.ipwis_no && manifestTransporter.ipwis_no.trim() !== '')){
       doc.moveDown(3);
     }else{
       doc.moveDown(2);
