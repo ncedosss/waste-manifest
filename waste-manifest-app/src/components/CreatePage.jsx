@@ -36,6 +36,7 @@ import { useParams } from 'react-router-dom';
 import FinFieldAddress from './input_types/FinFieldAddress';
 import FinField from './input_types/FinField';
 import { styled } from '@mui/material/styles';
+import { SearchDropDown } from './input_types/SearchDropDown.jsx';
 
 const API_URL = `${process.env.REACT_APP_API_URL}/api`;
 //const API_URL = 'http://localhost:4000/api';//laptop
@@ -157,6 +158,10 @@ export default function CreatePage({ user, onLogout, onHome }) {
       generator: false,
       disposal: false
     });
+    const types = [
+      { 'id': 1, 'name': 'Transporter' },
+      { 'id': 2, 'name': 'Generator' }
+    ];
 
     useEffect(() => {
         setLoading(true);
@@ -303,6 +308,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
         if(manifestInfo.disposal_email){setDisposalEmailError(false)}
         // Set declaration optionally
         setDeclaration({
+          type: manifestInfo.type || '',
           name: manifestInfo.declaration_name || '',
           date: formatDateToDDMMYYYY(manifestInfo.declaration_date) || ''
         });
@@ -481,6 +487,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
       process: Object.entries(activities)
         .filter(([key, value]) => value === true && key !== 'additionalComment')
         .map(([key]) => key.charAt(0).toUpperCase() + key.slice(1)),
+      type: declaration.type,
       declaration_name: declaration.name,
       declaration_date: declaration.date,
       final_disposal: disposal.facility,
@@ -559,7 +566,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
     Object.values(wasteForms).some(Boolean) && wasteItems.length > 0;
 
   const isDeclarationValid = () =>
-    Boolean(declaration.name && declaration.date);
+    Boolean(declaration.type && declaration.name && declaration.date);
 
   const isActivityValid = () =>
     Object.values(activities).some(Boolean);
@@ -870,12 +877,24 @@ export default function CreatePage({ user, onLogout, onHome }) {
       <Typography sx={{ mb: 1 }}>
         I hereby declare that all the waste is fully and accurately described, packed, marked, and labelled according to all applicable legislation.
       </Typography>
+      <SearchDropDown
+        id="type"
+        name="typeId"
+        validationMethod="basic"
+        label="Transporter/Generator"
+        helperText="Please select an option"
+        freeSolo={false}
+        required
+        options={types}
+        value={types.find(t => t.name === declaration.type) || null}
+        onChange={(e, value) => setDeclaration({ ...declaration, type: value?.name })}
+      />
       <TextField
         label="Name"
         fullWidth
         value={declaration.name}
         onChange={(e) => setDeclaration({ ...declaration, name: e.target.value })}
-        sx={{ mb: 2 }}
+        sx={{ mb: 2, mt: 2 }}
       />
       <TextField
         label="Date"

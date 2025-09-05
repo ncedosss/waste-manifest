@@ -329,10 +329,10 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
       doc.font('Helvetica').text(value, currentX + labelWidth, y);
       currentX += gap;
     });
-    const headingType = manifestTransporter.is_saved_for_later ? 'Waste Receipt' : 'Waste Manifest Document';
+    const headingType = manifestTransporter.is_saved_for_later ? 'WASTE RECEIPT' : 'WASTE MANIFEST';
     // Section Title
     doc.moveDown()
-  .fontSize(12)
+  .fontSize(14)
   .fillColor('#000000')
   .font('Helvetica-Bold')
   .text(headingType, 0, undefined, {
@@ -684,11 +684,19 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
       .rect(margin+0.65, startY+1, col1Width, rowHeight-12)
       .fill();
 
+    if(manifestTransporter.type === 'Genaretor'){
+      headingType = 'Generato Declaration:'
+    }else if(manifestTransporter.type === 'Transporter'){
+      headingType = 'Transporter Declaration:'
+    }else{
+      headingType = manifestTransporter.type
+    }
+
     doc
       .fillColor('#000')
       .font('Helvetica-Bold')
       .fontSize(10)
-      .text('Transporter/Generator Declaration:', margin + 50, startY + 5, {
+      .text(headingType, margin + 50, startY + 5, {
         width: col1Width - 10,
       });
 
@@ -1190,7 +1198,7 @@ app.post('/api/manifest', async (req, res) => {
       waste_form, process, final_disposal,
       declaration_name, declaration_date,
       contact_no, date, comments, wasteItems,
-      isStamped, signature, reference_no, disposal_email, saveForLater
+      isStamped, signature, reference_no, disposal_email, saveForLater, type
     } = req.body;
 
     const username = decoded.username;
@@ -1201,7 +1209,7 @@ app.post('/api/manifest', async (req, res) => {
     // Check required fields
     if (!generator || !transporter || !Array.isArray(process) || process.length === 0 ||
         !final_disposal || !contact_no || !date || !declaration_name ||
-        !declaration_date || !reference_no) {
+        !declaration_date || !reference_no || !type) {
       return res.status(400).json({ error: 'Missing required fields.' });
     }
 
@@ -1231,14 +1239,14 @@ app.post('/api/manifest', async (req, res) => {
         generator, transporter, waste_type, waste_form, process,
         declaration_name, declaration_date, final_disposal,
         disposal_contact_no, actual_disposal_date, comments,
-        is_stamped, signature, disposal_email, is_saved_for_later
-      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)
+        is_stamped, signature, disposal_email, is_saved_for_later,type
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$20)
       RETURNING *`,
       [
         reference_no, nextManifestNo, insertDate, insertTime, username,
         generator, transporter, wasteTypeString, wasteFormString, processString,
         declaration_name, declaration_date, final_disposal, contact_no,
-        date, comments, isStamped, signature, disposal_email, saveForLater
+        date, comments, isStamped, signature, disposal_email, saveForLater,type
       ]
     );
 
@@ -1372,10 +1380,10 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
       currentX += gap;
     });
 
-    const headingType = manifestTransporter.is_saved_for_later ? 'Waste Receipt' : 'Waste Manifest Document';
+    const headingType = manifestTransporter.is_saved_for_later ? 'WASTE RECEIPT' : 'WASTE MANIFEST';
     // Section Title
     doc.moveDown()
-  .fontSize(12)
+  .fontSize(14)
   .fillColor('#000000')
   .font('Helvetica-Bold')
   .text(headingType, 0, undefined, {
@@ -1726,12 +1734,18 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
       .fillColor('#d4f1f9')
       .rect(margin+0.65, startY+1, col1Width, rowHeight-12)
       .fill();
-
+    if(manifestTransporter.type === 'Genaretor'){
+      headingType = 'Generato Declaration:'
+    }else if(manifestTransporter.type === 'Transporter'){
+      headingType = 'Transporter Declaration:'
+    }else{
+      headingType = manifestTransporter.type
+    }
     doc
       .fillColor('#000')
       .font('Helvetica-Bold')
       .fontSize(10)
-      .text('Transporter/Generator Declaration:', margin + 50, startY + 5, {
+      .text(headingType, margin + 50, startY + 5, {
         width: col1Width - 10,
       });
 
@@ -2157,10 +2171,11 @@ app.put('/api/manifests/:id', async (req, res) => {
       declaration_date,
       reference_no,
       disposal_email,
-      saveForLater
+      saveForLater, 
+      type
     } = req.body;
 
-    if (!generator || !transporter || !Array.isArray(process) || process.length === 0 || !contact_no || !date || !declaration_name || !declaration_date || !reference_no) {
+    if (!generator || !transporter || !Array.isArray(process) || process.length === 0 || !contact_no || !date || !declaration_name || !declaration_date || !reference_no || !type) {
       return res.status(400).json({ error: 'Missing required fields.' });
     }
     //Check if the manifest exists
@@ -2190,8 +2205,9 @@ app.put('/api/manifests/:id', async (req, res) => {
         signature = $14,
         reference_no = $15,
         disposal_email = $16,
-        is_saved_for_later = $17 
-      WHERE id = $18
+        is_saved_for_later = $17,
+        type = $18 
+      WHERE id = $19
       RETURNING *`,
       [
         generator,
@@ -2211,6 +2227,7 @@ app.put('/api/manifests/:id', async (req, res) => {
         reference_no,
         disposal_email,
         saveForLater,
+        type,
         manifestId,
       ]
     );
@@ -2301,6 +2318,7 @@ app.get('/api/manifests/:id', async (req, res) => {
                                             m.declaration_date,
                                             m.signature,
                                             m.disposal_email,
+                                            m.type,
                                             wi.manifest_id,
                                             wi.id,
                                             wi.description,
