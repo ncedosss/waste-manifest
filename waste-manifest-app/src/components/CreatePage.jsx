@@ -141,8 +141,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
       declaration: false,
       activity: false,
       disposal: false,
-      referenceNo: false,
-      disposalEmail: false
+      referenceNo: false
     });
     const [validSectionsExceptDescription, setValidSectionsExceptDescription] = useState({
       transporter: false,
@@ -151,8 +150,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
       activity: false,
       disposal: false,
       signed: false,
-      referenceNo: false,
-      disposalEmail: false
+      referenceNo: false
     });
     const [sendEmail, setSendEmail] = useState({
       generator: false,

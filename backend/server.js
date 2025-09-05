@@ -470,7 +470,11 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     drawSection('Waste Generator', 310, topY, generatorFields, syncedRowHeights);
 
     // Move cursor below that section
-    doc.moveDown(2);
+    if(manifestGenerator.ipwis_no !== '' || manifestGenerator.ipwis_no !== undefined){
+      doc.moveDown(3);
+    }else{
+      doc.moveDown(2);
+    }
 
     // --- Waste Type Section ---
     // Setup
@@ -696,7 +700,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
       .fillColor('#000')
       .font('Helvetica-Bold')
       .fontSize(10)
-      .text(headingType, margin + 90, startY + 5, {
+      .text(headingType, margin + 50, startY + 5, {
         width: col1Width - 10,
       });
 
@@ -1745,7 +1749,7 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
       .fillColor('#000')
       .font('Helvetica-Bold')
       .fontSize(10)
-      .text(headingType, margin + 90, startY + 5, {
+      .text(headingType, margin + 50, startY + 5, {
         width: col1Width - 10,
       });
 
