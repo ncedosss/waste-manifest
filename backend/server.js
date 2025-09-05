@@ -684,19 +684,19 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
       .rect(margin+0.65, startY+1, col1Width, rowHeight-12)
       .fill();
 
-    if(manifestTransporter.type === 'Genaretor'){
-      headingType = 'Generato Declaration:'
+    if(manifestTransporter.type === 'Generator'){
+      headingType = 'Generator Declaration'
     }else if(manifestTransporter.type === 'Transporter'){
-      headingType = 'Transporter Declaration:'
+      headingType = 'Transporter Declaration'
     }else{
-      headingType = manifestTransporter.type
+      headingType = 'Transporter/Generator Declaration'
     }
 
     doc
       .fillColor('#000')
       .font('Helvetica-Bold')
       .fontSize(10)
-      .text(headingType, margin + 50, startY + 5, {
+      .text(headingType, margin + 90, startY + 5, {
         width: col1Width - 10,
       });
 
@@ -1734,18 +1734,18 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
       .fillColor('#d4f1f9')
       .rect(margin+0.65, startY+1, col1Width, rowHeight-12)
       .fill();
-    if(manifestTransporter.type === 'Genaretor'){
-      headingType = 'Generato Declaration:'
+    if(manifestTransporter.type === 'Generator'){
+      headingType = 'Generator Declaration'
     }else if(manifestTransporter.type === 'Transporter'){
-      headingType = 'Transporter Declaration:'
+      headingType = 'Transporter Declaration'
     }else{
-      headingType = manifestTransporter.type
+      headingType = 'Transporter/Generator Declaration'
     }
     doc
       .fillColor('#000')
       .font('Helvetica-Bold')
       .fontSize(10)
-      .text(headingType, margin + 50, startY + 5, {
+      .text(headingType, margin + 90, startY + 5, {
         width: col1Width - 10,
       });
 
