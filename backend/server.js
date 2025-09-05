@@ -1244,7 +1244,7 @@ app.post('/api/manifest', async (req, res) => {
         declaration_name, declaration_date, final_disposal,
         disposal_contact_no, actual_disposal_date, comments,
         is_stamped, signature, disposal_email, is_saved_for_later,type
-      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$20)
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21)
       RETURNING *`,
       [
         reference_no, nextManifestNo, insertDate, insertTime, username,
