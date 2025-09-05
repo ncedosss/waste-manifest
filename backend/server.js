@@ -329,7 +329,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
       doc.font('Helvetica').text(value, currentX + labelWidth, y);
       currentX += gap;
     });
-    const headingType = manifestTransporter.is_saved_for_later ? 'WASTE RECEIPT' : 'WASTE MANIFEST';
+    let headingType = manifestTransporter.is_saved_for_later ? 'WASTE RECEIPT' : 'WASTE MANIFEST';
     // Section Title
     doc.moveDown()
   .fontSize(14)
@@ -1380,7 +1380,7 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
       currentX += gap;
     });
 
-    const headingType = manifestTransporter.is_saved_for_later ? 'WASTE RECEIPT' : 'WASTE MANIFEST';
+    let headingType = manifestTransporter.is_saved_for_later ? 'WASTE RECEIPT' : 'WASTE MANIFEST';
     // Section Title
     doc.moveDown()
   .fontSize(14)
