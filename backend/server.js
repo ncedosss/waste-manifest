@@ -470,9 +470,12 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     drawSection('Waste Generator', 310, topY, generatorFields, syncedRowHeights);
 
     // Move cursor below that section
+    console.log('IPWIS: ',manifestGenerator.ipwis_no);
     if(manifestGenerator.ipwis_no && manifestGenerator.ipwis_no.trim() !== ''){
+      console.log('IN');
       doc.moveDown(3);
     }else{
+      console.log('OUT');
       doc.moveDown(2);
     }
 
