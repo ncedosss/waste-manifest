@@ -60,11 +60,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
     const [referenceNo, setReferenceNo] = useState({
       reference_no: ''
     });
-    const [disposalEmail, setDisposalEmail] = useState({
-      disposal_email: ''
-    });
     const [referenceNoError, setReferenceNoError] = useState(true);
-    const [disposalEmailError, setDisposalEmailError] = useState(true);
     const [generator, setGenerator] = useState({
       name: '',
       address: '',
@@ -224,10 +220,9 @@ export default function CreatePage({ user, onLogout, onHome }) {
       declaration: isDeclarationValid(),
       activity: isActivityValid(),
       disposal: isDisposalValid(),
-      referenceNo: isRefenceNoValid(),
-      disposalEmail: isDisposalEmailErrorValid()
+      referenceNo: isRefenceNoValid()
     });
-  }, [transporter, generator, wasteTypes, wasteForms, wasteItems, declaration, activities, disposal, signed, referenceNo, disposalEmail]);
+  }, [transporter, generator, wasteTypes, wasteForms, wasteItems, declaration, activities, disposal, signed, referenceNo]);
 
   useEffect(() => {
     setValidSectionsExceptDescription({
@@ -236,10 +231,9 @@ export default function CreatePage({ user, onLogout, onHome }) {
       declaration: isDeclarationValid(),
       activity: isActivityValid(),
       disposal: isDisposalValid(),
-      referenceNo: isRefenceNoValid(),
-      disposalEmail: isDisposalEmailErrorValid()
+      referenceNo: isRefenceNoValid()
     });
-  }, [transporter, generator, wasteTypes, wasteForms, wasteItems, declaration, activities, disposal, signed, referenceNo, disposalEmail]);
+  }, [transporter, generator, wasteTypes, wasteForms, wasteItems, declaration, activities, disposal, signed, referenceNo]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -303,7 +297,6 @@ export default function CreatePage({ user, onLogout, onHome }) {
           email: manifestInfo.disposal_email || '',
           date: manifestInfo.actual_disposal_date || '',
         });
-        if(manifestInfo.disposal_email){setDisposalEmailError(false)}
         // Set declaration optionally
         setDeclaration({
           type: manifestInfo.type || '',
@@ -539,7 +532,6 @@ export default function CreatePage({ user, onLogout, onHome }) {
   const handleDisposalFieldChange = (field) => (e) => {
     if(field !== 'email'){
     setDisposal((prev) => ({ ...prev, [field]: e.value }));
-    setDisposalEmailError(e.error);
     }
   };  
   const handleReferenceNoFieldChange = (field) => (e) => {
@@ -555,8 +547,6 @@ export default function CreatePage({ user, onLogout, onHome }) {
 
   const isRefenceNoValid = () =>
      Boolean(!referenceNoError);
-  const isDisposalEmailErrorValid = () =>
-     Boolean(!disposalEmailError);
   const isWasteValid = () =>
     Object.values(wasteTypes).some(Boolean) && wasteItems.length > 0;
 
