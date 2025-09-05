@@ -4,8 +4,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
 import { Paper, Box  } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { ReactComponent as CustomArrowDown } from '../../../assets/img/drop_down_arrow_down.svg';
-import { ReactComponent as CustomArrowUp } from '../../../assets/img/drop_down_arrow_up.svg';
+import { ReactComponent as CustomArrowDown } from '../../assets/img/drop_down_arrow_down.svg';
+import { ReactComponent as CustomArrowUp } from '../../assets/img/drop_down_arrow_up.svg';
 
 
 
