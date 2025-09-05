@@ -632,21 +632,21 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
         });
 
       doc
-        .text(wasteItems[i].packaging || '', tableX + colWidths[0] + 5, rowY + 4, {
+        .text(wasteItems[i].packaging || '', tableX + colWidths[0] + 28, rowY + 4, {
           width: colWidths[1] - 10,
           height: rowHeight,
           ellipsis: true,
         });
 
       doc
-        .text(wasteItems[i].volume_l || '', tableX + colWidths[0] + colWidths[1] + 5, rowY + 4, {
+        .text(wasteItems[i].volume_l || '', tableX + colWidths[0] + colWidths[1] + 35, rowY + 4, {
           width: colWidths[2] - 10,
           height: rowHeight,
           ellipsis: true,
         });
 
       doc
-        .text(wasteItems[i].weight_kg || '', tableX + colWidths[0] + colWidths[1] + colWidths[2] + 5, rowY + 4, {
+        .text(wasteItems[i].weight_kg || '', tableX + colWidths[0] + colWidths[1] + colWidths[2] + 37, rowY + 4, {
           width: colWidths[3] - 10,
           height: rowHeight,
           ellipsis: true,
@@ -705,8 +705,8 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
       .fontSize(9)
       .text(
         'I hereby declare that the waste is fully and accurately described in the above sections and that it has been packaged, labelled, and transported in accordance with the applicable regulations.',
-        margin + 5,
-        startY + rowHeight + 5,
+        margin + 2,
+        startY + rowHeight,
         {
           width: col1Width - 10,
           lineGap: 2,
@@ -1321,7 +1321,7 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
 
       // Add header text (centered)
       doc.fillColor('#000').font('Helvetica-Bold').fontSize(10)
-        .text('Reference/Delivery Note', cellX, cellY + 3.5, {
+        .text('Reference No', cellX, cellY + 3.5, {
           width: cellWidth,
           align: 'center'
         });
@@ -1675,21 +1675,21 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
         });
 
       doc
-        .text(wasteItems[i].packaging || '', tableX + colWidths[0] + 5, rowY + 4, {
+        .text(wasteItems[i].packaging || '', tableX + colWidths[0] + 28, rowY + 4, {
           width: colWidths[1] - 10,
           height: rowHeight,
           ellipsis: true,
         });
 
       doc
-        .text(wasteItems[i].volume_l || '', tableX + colWidths[0] + colWidths[1] + 5, rowY + 4, {
+        .text(wasteItems[i].volume_l || '', tableX + colWidths[0] + colWidths[1] + 35, rowY + 4, {
           width: colWidths[2] - 10,
           height: rowHeight,
           ellipsis: true,
         });
 
       doc
-        .text(wasteItems[i].weight_kg || '', tableX + colWidths[0] + colWidths[1] + colWidths[2] + 5, rowY + 4, {
+        .text(wasteItems[i].weight_kg || '', tableX + colWidths[0] + colWidths[1] + colWidths[2] + 37, rowY + 4, {
           width: colWidths[3] - 10,
           height: rowHeight,
           ellipsis: true,
@@ -1748,8 +1748,8 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
       .fontSize(9)
       .text(
         'I hereby declare that the waste is fully and accurately described in the above sections and that it has been packaged, labelled, and transported in accordance with the applicable regulations.',
-        margin + 5,
-        startY + rowHeight + 5,
+        margin + 2,
+        startY + rowHeight,
         {
           width: col1Width - 10,
           lineGap: 2,
