@@ -99,7 +99,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   };
 
   const filteredManifests = manifests.filter((m) => 
-    m.id.toLowerCase().includes(searchQuery.toLowerCase())
+    m.id.includes(searchQuery.toLowerCase())
     );
 
     const paginatedManifests = filteredManifests.slice(
