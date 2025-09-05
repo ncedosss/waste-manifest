@@ -275,7 +275,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
                 <TableCell align="center">{m.transporter}</TableCell>
                 <TableCell align="center">{m.generator}</TableCell>
                 <TableCell align="center">{m.reference_no}</TableCell>
-                <TableCell align="center">{m.manifest_no}</TableCell>
+                <TableCell align="center">{m.id}</TableCell>
                 <TableCell align="center">{m.description}</TableCell>
                 <TableCell align="center">
                   <Button
