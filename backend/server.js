@@ -470,7 +470,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     drawSection('Waste Generator', 310, topY, generatorFields, syncedRowHeights);
 
     // Move cursor below that section
-    if(manifestGenerator.ipwis_no !== '' && manifestGenerator.ipwis_no !== undefined){
+    if(manifestGenerator.ipwis_no && manifestGenerator.ipwis_no.trim() !== ''){
       doc.moveDown(3);
     }else{
       doc.moveDown(2);
@@ -1526,7 +1526,7 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
 
     // Move cursor below that section
     // Move cursor below that section
-    if(manifestGenerator.ipwis_no !== '' && manifestGenerator.ipwis_no !== undefined){
+    if(manifestGenerator.ipwis_no && manifestGenerator.ipwis_no.trim() !== ''){
       doc.moveDown(3);
     }else{
       doc.moveDown(2);
