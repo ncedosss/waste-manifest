@@ -70,7 +70,7 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
   };
 
   const filteredManifests = manifests.filter((m) => 
-    m.id.includes(searchQuery.toLowerCase())
+    String(m.id ?? '').toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const paginatedManifests = filteredManifests.slice(
