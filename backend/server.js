@@ -367,25 +367,27 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
 
     // --- Step 1: compute max row heights across BOTH tables ---
     function computeRowHeights(fields1, fields2) {
-      return fields1.map((f1, i) => {
-        const f2 = fields2[i];
+  const maxRowHeight = 40; // limit rows to 40px max
+  return fields1.map((f1, i) => {
+    const f2 = fields2[i];
 
-        // measure transporter row value
-        const valueHeight1 = doc.heightOfString(f1.value || '', {
-          width: valueWidth - 2 * rowPadding,
-          align: 'left',
-        });
+    const valueHeight1 = doc.heightOfString(f1.value || '', {
+      width: valueWidth - 2 * rowPadding,
+      align: 'left',
+    });
 
-        // measure generator row value
-        const valueHeight2 = doc.heightOfString(f2.value || '', {
-          width: valueWidth - 2 * rowPadding,
-          align: 'left',
-        });
+    const valueHeight2 = doc.heightOfString(f2.value || '', {
+      width: valueWidth - 2 * rowPadding,
+      align: 'left',
+    });
 
-        // pick max height among both + padding
-        return Math.max(rowHeight, valueHeight1 + 2 * rowPadding, valueHeight2 + 2 * rowPadding);
-      });
-    }
+    return Math.min(
+      Math.max(rowHeight, valueHeight1 + 2 * rowPadding, valueHeight2 + 2 * rowPadding),
+      maxRowHeight
+    );
+  });
+}
+
 
     const syncedRowHeights = computeRowHeights(transporterFields, generatorFields);
 
@@ -1396,8 +1398,6 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
     align: 'center',
     width: doc.page.width,
   });
-
-    doc.moveDown();
 
     let topY = doc.y;
     let sectionWidth = 250;
