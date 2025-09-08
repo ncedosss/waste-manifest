@@ -34,7 +34,9 @@ const emailTransporter = nodemailer.createTransport({
   },
   tls: {
     rejectUnauthorized: false 
-  }
+  },
+  logger: true,
+  debug: true,
 });
 const recipients = [
   'ncedosss@gmail.com'
