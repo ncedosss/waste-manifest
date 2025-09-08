@@ -149,7 +149,7 @@ app.post('/api/forgot-password', async (req, res) => {
       [token, expiry, email]
     );
 
-    const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+    const resetLink = `${backendUrl}/api/reset-password?token=${token}`;
     await emailTransporter.sendMail({
       to: email,
       subject: 'Password Reset Request',
@@ -2139,12 +2139,11 @@ if(manifestType !== 'Receipt No'){
       manifestTransporter.email
     ];
     await emailTransporter.sendMail({
-      from: 'nmatseke@finchoice.co.za',
       to: recipients.join(','),
-      subject: `Manifest #${manifestTransporter.manifest_no}`,
+      subject: `Manifest #${manifestTransporter.id}`,
       text: 'Attached is the generated manifest document.',
       attachments: [{
-        filename: `manifest-${manifestTransporter.manifest_no}.pdf`,
+        filename: `manifest-${manifestTransporter.id}.pdf`,
         content: pdfBuffer
       }]
     });
