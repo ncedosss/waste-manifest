@@ -2139,6 +2139,7 @@ if(manifestType !== 'Receipt No'){
       manifestTransporter.email
     ];
     await emailTransporter.sendMail({
+      from: '"Mandate System" <grootboomunathi@gmail.com>',
       to: recipients.join(','),
       subject: `Manifest #${manifestTransporter.id}`,
       text: 'Attached is the generated manifest document.',
