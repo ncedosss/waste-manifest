@@ -34,9 +34,7 @@ const emailTransporter = nodemailer.createTransport({
   },
   tls: {
     rejectUnauthorized: false 
-  },
-  logger: true,
-  debug: true,
+  }
 });
 const recipients = [
   'ncedosss@gmail.com'
@@ -2140,19 +2138,15 @@ if(manifestType !== 'Receipt No'){
       ...(sendEmail.generator ? [manifestGenerator.email] : []),
       manifestTransporter.email
     ];
-    console.log(recipients);
     await emailTransporter.sendMail({
-      from: '"Mandate System" <grootboomunathi@gmail.com>',   
+      from: 'grootboomunathi@gmail.com',
       to: recipients.join(','),
       subject: `Manifest #${manifestTransporter.id}`,
-      text: 'Attached is the generated manifest document.',
-      attachments: [
-        {
-          filename: `manifest-${manifestTransporter.id}.pdf`,
-          content: pdfBuffer,
-          contentType: 'application/pdf'   
-        }
-      ]
+      text: 'Attached is the generated waste manifest.',
+      attachments: [{
+        filename: `manifest-${manifestTransporter.id}.pdf`,
+        content: pdfBuffer
+      }]
     });
   } catch (error) {
     console.error('Error saving manifest:', error);
