@@ -1058,7 +1058,10 @@ if(manifestType !== 'Receipt No'){
         .fillColor('#000')
         .font('Helvetica-Bold')
         .fontSize(9)
-        .text(label + ':', margin + 5, y + 4,{continued: true});
+        .text(label + ':', margin + 5, y + 4,{
+          width: leftWidth - 75,
+          lineBreak: false
+        });
 
       doc
         .fillColor('#000')
@@ -1067,11 +1070,11 @@ if(manifestType !== 'Receipt No'){
         .text(fieldValues[i], margin + 70, y + 4, {
           width: leftWidth - 75,
           ellipsis: true,
-          continued: true,
+          lineBreak: false
         });
     });
-  }
     doc.y = startY + totalHeight + 10;
+  }
 
     doc.end();
 
