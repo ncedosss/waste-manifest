@@ -1069,8 +1069,8 @@ if(manifestType !== 'Receipt No'){
           ellipsis: true,
         });
     });
+  }
     doc.y = startY + totalHeight + 10;
-}
 
     doc.end();
 
