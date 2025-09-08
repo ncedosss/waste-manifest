@@ -1136,6 +1136,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
 
               {/* Action Buttons */}
             <Grid
+            item xs={12}
               container
               spacing={2}
               sx={{ mt: 3 }}
@@ -1143,20 +1144,20 @@ export default function CreatePage({ user, onLogout, onHome }) {
               width="100%"
               justifyContent={{ xs: 'stretch', md: 'space-between' }}
             >
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={4}>
                 <Button variant="outlined" type="button" onClick={() => navigate(-1)} fullWidth>
                   Cancel
                 </Button>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={4}>
                 <Button variant="outlined" type="button" disabled={!Object.values(validSectionsExceptDescription).every(Boolean)} onClick={() => {
                   saveForLater();
                 }} fullWidth>
                   Save for later
                 </Button>
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Button variant="contained" type="submit" fullWidth disabled={!Object.values(validSections).every(Boolean)}>
+              <Grid item xs={12} md={4}>
+                <Button variant="contained" type="submit" onClick={(e) => {handleSubmit(e);}} fullWidth disabled={!Object.values(validSections).every(Boolean)}>
                   {manifestId ? 'Update' : 'Submit'}
                 </Button>
               </Grid>

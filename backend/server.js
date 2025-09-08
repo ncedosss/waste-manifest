@@ -739,7 +739,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     if (values[1]) {
       const base64Data = values[1].replace(/^data:image\/\w+;base64,/, '');
       const imgBuffer = Buffer.from(base64Data, 'base64');
-      const sigY = startY + rowHeight; // Signature row index = 1
+      const sigY = startY + rowHeight; 
       doc.image(imgBuffer, rightColX + sideLabelWidth + 60, sigY - 30, {
         fit: [sideValueWidth + 100, rowHeight + 50],
         align: 'left',
