@@ -339,8 +339,6 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     width: doc.page.width,
   });
 
-    doc.moveDown();
-
     let topY = doc.y;
     let sectionWidth = 250;
     let labelWidth = 80;
