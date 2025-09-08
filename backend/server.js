@@ -223,7 +223,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     jwt.verify(token, JWT_SECRET);
     const manifestId = req.params.id;
 
-    const result = await pool.query('SELECT m.id as manifestNo,* FROM manifests m inner join entities e on e.name = m.transporter OR e.name = m.generator WHERE m.id = $1 order by e.type DESC', [manifestId]);
+    const result = await pool.query(`SELECT m.id AS manifestNo, m.transporter AS transporter_name, m.is_saved_for_later, m.reference_no, m.waste_type, m.waste_form, mt.address AS transporter_address, mt.contact_person AS transporter_contact, mt.contact_no AS transporter_contact_no, mt.ipwis_no AS transporter_ipwis_no, m.generator AS generator_name, mg.address AS generator_address, mg.contact_person AS generator_contact, mg.contact_no AS generator_contact_no, mg.ipwis_no AS generator_ipwis_no FROM manifests m LEFT JOIN entities mt ON mt.name = m.transporter AND mt.type = 'transporter' LEFT JOIN entities mg ON mg.name = m.generator AND mg.type = 'generator' WHERE m.id = $1`, [manifestId]);
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Manifest not found' });
     }
@@ -351,19 +351,19 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
 
     // Define Transporter and Generator fields
     const transporterFields = [
-      { label: 'Name:', value: manifestTransporter.transporter },
-      { label: 'Address:', value: manifestTransporter.address },
-      { label: 'Contact:', value: manifestTransporter.contact_person },
-      { label: 'Contact No:', value: manifestTransporter.contact_no },
-      { label: 'IPWIS No:', value: manifestTransporter.ipwis_no },
+      { label: 'Name:', value: manifestTransporter.transporter_name },
+      { label: 'Address:', value: manifestTransporter.transporter_address },
+      { label: 'Contact:', value: manifestTransporter.transporter_contact },
+      { label: 'Contact No:', value: manifestTransporter.transporter_contact_no },
+      { label: 'IPWIS No:', value: manifestTransporter.transporter_ipwis_no },
     ];
 
     const generatorFields = [
-      { label: 'Name:', value: manifestGenerator.generator },
-      { label: 'Address:', value: manifestGenerator.address },
-      { label: 'Contact:', value: manifestGenerator.contact_person },
-      { label: 'Contact No:', value: manifestGenerator.contact_no },
-      { label: 'IPWIS No:', value: manifestGenerator.ipwis_no },
+      { label: 'Name:', value: manifestTransporter.generator_name },
+      { label: 'Address:', value: manifestTransporter.generator_address },
+      { label: 'Contact:', value: manifestTransporter.generator_contact },
+      { label: 'Contact No:', value: manifestTransporter.generator_contact_no },
+      { label: 'IPWIS No:', value: manifestTransporter.generator_ipwis_no },
     ];
 
     // --- Step 1: compute max row heights across BOTH tables ---
@@ -470,7 +470,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     drawSection('Waste Generator', 310, topY, generatorFields, syncedRowHeights);
 
     // Move cursor below that section
-    if((manifestGenerator.ipwis_no && manifestGenerator.ipwis_no.trim() !== '') || (manifestTransporter.ipwis_no && manifestTransporter.ipwis_no.trim() !== '')){
+    if((manifestTransporter.generator_ipwis_no && manifestTransporter.generator_ipwis_no.trim() !== '') || (manifestTransporter.transporter_ipwis_no && manifestTransporter.transporter_ipwis_no.trim() !== '')){
       doc.moveDown(3);
     }else{
       doc.moveDown(2);
