@@ -2141,10 +2141,10 @@ if(manifestType !== 'Receipt No'){
     await emailTransporter.sendMail({
       from: 'grootboomunathi@gmail.com',
       to: recipients.join(','),
-      subject: `Manifest #${manifestTransporter.id}`,
+      subject: `Manifest #${manifestId}`,
       text: 'Attached is the generated waste manifest.',
       attachments: [{
-        filename: `manifest-${manifestTransporter.id}.pdf`,
+        filename: `manifest-${manifestId}.pdf`,
         content: pdfBuffer
       }]
     });
