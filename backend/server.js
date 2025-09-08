@@ -2140,15 +2140,19 @@ if(manifestType !== 'Receipt No'){
       ...(sendEmail.generator ? [manifestGenerator.email] : []),
       manifestTransporter.email
     ];
+    console.log(recipients);
     await emailTransporter.sendMail({
-      from: '"Mandate System" <grootboomunathi@gmail.com>',
+      from: '"Mandate System" <grootboomunathi@gmail.com>',   
       to: recipients.join(','),
       subject: `Manifest #${manifestTransporter.id}`,
       text: 'Attached is the generated manifest document.',
-      attachments: [{
-        filename: `manifest-${manifestTransporter.id}.pdf`,
-        content: pdfBuffer
-      }]
+      attachments: [
+        {
+          filename: `manifest-${manifestTransporter.id}.pdf`,
+          content: pdfBuffer,
+          contentType: 'application/pdf'   
+        }
+      ]
     });
   } catch (error) {
     console.error('Error saving manifest:', error);
