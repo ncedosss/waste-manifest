@@ -729,7 +729,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     const rightColX = margin + col1Width;
     const sideLabelWidth = 70;
     const sideValueWidth = col2Width - sideLabelWidth;
-    const declarationDate = new Date(manifestTransporter.declaration_date)
+    const declarationDate = new Date(`${manifestTransporter.declaration_date}T00:00:00Z`)
     .toISOString()
     .split('T')[0];
     const values = [manifestTransporter.declaration_name, manifestTransporter.signature, declarationDate];
@@ -1782,7 +1782,7 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
     const rightColX = margin + col1Width;
     const sideLabelWidth = 70;
     const sideValueWidth = col2Width - sideLabelWidth;
-    const declarationDate = new Date(manifestTransporter.declaration_date)
+    const declarationDate = new Date(`${manifestTransporter.declaration_date}T00:00:00Z`)
     .toISOString()
     .split('T')[0];
     const values = [manifestTransporter.declaration_name, manifestTransporter.signature, declarationDate];
