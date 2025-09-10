@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IconButton, InputAdornment } from '@mui/material';
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 
 const API_URL = `${process.env.REACT_APP_API_URL}/api`;
 //const API_URL = 'http://localhost:4000/api';

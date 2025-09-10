@@ -10,7 +10,7 @@ import EntitiesPage from './components/EntitiesPage';
 import ManifestPDFViewer from './components/ManifestPDFViewer';
 import ManifestsEditPage from './components/ManifestsEditPage';
 import VerifyEmail from './components/authentication/VerifyEmail';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const API_URL = `${process.env.REACT_APP_API_URL}/api`;
 
