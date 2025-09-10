@@ -113,7 +113,7 @@ app.post('/api/login', async (req, res) => {
       return res.status(400).json({ error: 'Invalid email or password' });
     }
     // Generate JWT token
-    const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: '10m' });
     res.json({ token, user: { id: user.id, username: user.username, email: user.email } });
   } catch (error) {
     console.error(error);
@@ -185,6 +185,22 @@ app.post('/api/reset-password', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Reset failed' });
+  }
+});
+app.post('/api/refresh', (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "No token" });
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET); // will throw if expired
+    const newToken = jwt.sign(
+      { id: decoded.id, username: decoded.username },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+    res.json({ token: newToken });
+  } catch (err) {
+    return res.status(401).json({ error: "Invalid token" });
   }
 });
 app.get('/api/manifests', async (req, res) => {
