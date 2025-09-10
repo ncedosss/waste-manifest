@@ -38,6 +38,10 @@ export default function EntitiesPage({ user, onLogout, onHome }) {
       const res = await fetch(`${API_URL}/entities`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      if (res.status === 401) {
+        onLogout(); // Force logout if token expired
+        return;
+      }
       if (!res.ok) throw new Error('Failed to fetch entities');
       const data = await res.json();
       setEntities(data);
@@ -78,6 +82,10 @@ export default function EntitiesPage({ user, onLogout, onHome }) {
         },
         body: JSON.stringify(state)
       });
+      if (res.status === 401) {
+        onLogout(); // Force logout if token expired
+        return;
+      }
       if (!res.ok) throw new Error('Update failed');
       await fetchEntities();
       setSuccessMessage(`Entity ${state.name} updated successfully.`);
@@ -103,6 +111,10 @@ export default function EntitiesPage({ user, onLogout, onHome }) {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
+      if (res.status === 401) {
+        onLogout(); // Force logout if token expired
+        return;
+      }
       if (!res.ok) throw new Error('Delete failed');
       await fetchEntities();
       setSuccessMessage(`Entity ${selectedEntity.name} deleted successfully.`);

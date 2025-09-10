@@ -20,7 +20,10 @@ export default function ManifestPDFViewer() {
             Authorization: `Bearer ${token}`,
           },
         });
-
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
         if (!res.ok) throw new Error('Failed to fetch PDF');
 
         const blob = await res.blob();

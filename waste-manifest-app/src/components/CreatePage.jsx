@@ -165,6 +165,10 @@ export default function CreatePage({ user, onLogout, onHome }) {
             const res = await fetch(`${API_URL}/entities`, {
             headers: { Authorization: `Bearer ${token}` },
         });
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
         if (!res.ok) throw new Error('Failed to fetch manifests');
             const data = await res.json();
             setEntities(data);
@@ -248,6 +252,10 @@ export default function CreatePage({ user, onLogout, onHome }) {
             Authorization: `Bearer ${token}`,
           },
         });
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
 
         if (!res.ok) throw new Error('Failed to fetch manifest');
         const data = await res.json();
@@ -395,7 +403,10 @@ export default function CreatePage({ user, onLogout, onHome }) {
           },
           body: JSON.stringify({ ...entityState, type }),
         });
-
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
         if (!res.ok) throw new Error('Failed to save entity');
         const newEntity = await res.json();
 
@@ -456,6 +467,10 @@ export default function CreatePage({ user, onLogout, onHome }) {
         },
         body: JSON.stringify({ showStamp, signature, sendEmail })
       });
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
       if (!res.ok) throw new Error('Failed to send manifest email');
     } catch (error) {
       console.error('Error sending manifest email:', error);
@@ -504,7 +519,10 @@ export default function CreatePage({ user, onLogout, onHome }) {
         },
         body: JSON.stringify(manifestPayload),
       });
-
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
 
       const savedManifest = await res.json();
       if (!res.ok){

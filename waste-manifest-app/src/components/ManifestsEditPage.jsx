@@ -51,6 +51,10 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
         const res = await fetch(`${API_URL}/manifests`, {
             headers: { Authorization: `Bearer ${token}` },
         });
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
         if (!res.ok) throw new Error('Failed to fetch manifests');
         const data = await res.json();
         setManifests(data);
@@ -94,7 +98,10 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
             Authorization: `Bearer ${token}`,
         },
         });
-
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
         if (!res.ok) throw new Error('Failed to delete manifest');
 
         // Remove deleted manifest from state
