@@ -1140,6 +1140,7 @@ app.post('/api/entities', async (req, res) => {
     res.status(201).json(result.rows[0]);
   } catch (error) {
     console.error('Error saving entity:', error);
+    console.error('Payload:', req.body);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -1178,6 +1179,7 @@ app.put('/api/entities/:id', async (req, res) => {
     res.status(200).json(result.rows[0]);
   } catch (error) {
     console.error('Error updating entity:', error);
+    console.error('Payload:', req.body);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -1289,6 +1291,7 @@ app.post('/api/manifest', async (req, res) => {
   } catch (error) {
     console.log(error);
     console.error('Error saving manifest:', error);
+    console.error('Payload:', req.body);
     res.status(500).json({ error: 'Failed to save manifest' });
   }
 });
@@ -2275,6 +2278,7 @@ app.put('/api/manifests/:id', async (req, res) => {
 
   } catch (error) {
     console.error('Error updating manifest:', error);
+    console.error('Payload:', req.body);
     res.status(500).json({ error: 'Failed to update manifest' });
   }
 });
