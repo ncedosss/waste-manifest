@@ -36,12 +36,19 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
   const [page, setPage] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [manifests, setManifests] = useState([]);
+  const [searchBy, setSearchBy] = useState('Manifest No');
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
-  const rowsPerPage = 10;
+  const rowsPerPage = 3;
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
   const [manifestToDelete, setManifestToDelete] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
+
+    // On mount: Make sure the same page displays after viewing the pdf
+    useEffect(() => {
+      const savedPage = sessionStorage.getItem('manifestsEditPage');
+      if (savedPage !== null) setPage(Number(savedPage));
+    }, []);
 
     useEffect(() => {
         setLoading(true);
@@ -71,11 +78,24 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
 
   const handleChangePage = (_, newPage) => {
     setPage(newPage);
+    sessionStorage.setItem('manifestsEditPage', newPage);
   };
 
-  const filteredManifests = manifests.filter((m) => 
-    String(m.id ?? '').toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const filteredManifests = manifests.filter((m) => {
+    const query = searchQuery.toLowerCase();
+    if (!query) return true;
+
+    switch (searchBy) {
+      case 'Manifest No':
+        return String(m.id ?? '').toLowerCase().includes(query);
+      case 'Transporter':
+        return (m.transporter ?? '').toLowerCase().includes(query);
+      case 'Generator':
+        return (m.generator ?? '').toLowerCase().includes(query);
+      default:
+        return true;
+    }
+  });
 
     const paginatedManifests = filteredManifests.slice(
     page * rowsPerPage,
@@ -174,9 +194,40 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
       </Box>
 
       {/* 🔍 Search Bar */}
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+      <Box sx={{ pt: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: 6,
+          gap: 1,
+          maxWidth: 550,
+          margin: "0 auto",
+        }}
+      >
+        {/* Dropdown to choose search column */}
         <TextField
-          label="Search by Manifest No"
+          select
+          label="Search by"
+          value={searchBy}
+          onChange={(e) => {
+            setSearchBy(e.target.value);
+            setPage(0);
+          }}
+          SelectProps={{ native: true }}
+          size="small"
+          sx={{ width: 150 }} // fixed width
+        >
+          {['Manifest No', 'Transporter', 'Generator'].map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </TextField>
+
+        {/* Search input */}
+        <TextField
+          label={`Search ${searchBy}`}
           variant="outlined"
           size="small"
           value={searchQuery}
@@ -184,17 +235,17 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
             setSearchQuery(e.target.value);
             setPage(0);
           }}
-          sx={{ width: '100%', maxWidth: 400 }}
-            InputProps={{
-                startAdornment: (
-                <InputAdornment position="start">
-                    <SearchIcon color="action" />
-                </InputAdornment>
-                ),
-            }}
+          sx={{ flex: 1 }} // takes remaining space
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="action" />
+              </InputAdornment>
+            ),
+          }}
         />
       </Box>
-
+      </Box>
     <Box
     sx={{
         display: 'flex',
@@ -291,7 +342,10 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
       }}
     >
       <Box sx={{ width: "100%", maxWidth: 1100, textAlign: "center" }}>
-        <Button variant="contained" onClick={() => navigate(-1)}>
+        <Button variant="contained" onClick={() => {
+          sessionStorage.removeItem('manifestsEditPage');
+          navigate(-1);
+        }}>
           Back
         </Button>
       </Box>

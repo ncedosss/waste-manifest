@@ -50,6 +50,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
     
     const [warningMessage, setWarningMessage] = useState('');
     const [entities, setEntities] = useState([]);
+    const [facilities, setFacilities] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isSaveForLater, setIsSaveForLater] = useState(false);
     const [editingIndex, setEditingIndex] = useState(null);
@@ -110,6 +111,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
       recycling: false,
       treatment: false,
       storage: false,
+      landfill: false,
       additionalComment: ''
     });
     const [wasteItems, setWasteItems] = useState([]);
@@ -176,6 +178,33 @@ export default function CreatePage({ user, onLogout, onHome }) {
             console.error('Error occured: ', error);
             localStorage.removeItem('token');
             setEntities([]);
+        } finally{
+            setLoading(false);
+        }
+    };
+
+    fetchData();
+    },[]);
+
+    useEffect(() => {
+        setLoading(true);
+        const fetchData = async () => {
+        const token = localStorage.getItem('token');
+        try {
+            const res = await fetch(`${API_URL}/facilities`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        if (res.status === 401) {
+          onLogout(); // Force logout if token expired
+          return;
+        }
+        if (!res.ok) throw new Error('Failed to fetch manifests');
+            const data = await res.json();
+            setFacilities(data);
+        } catch(error) {
+            console.error('Error occured: ', error);
+            localStorage.removeItem('token');
+            setFacilities([]);
         } finally{
             setLoading(false);
         }
@@ -297,6 +326,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
           recycling: manifestInfo.process?.toLowerCase().includes('recycling'),
           treatment: manifestInfo.process?.toLowerCase().includes('treatment'),
           storage: manifestInfo.process?.toLowerCase().includes('storage'),
+          landfill: manifestInfo.process?.toLowerCase().includes('landfill'),
           additionalComment: manifestInfo.comments || '',
         });
         setDisposal({
@@ -548,7 +578,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
     }
   };
   const handleDisposalFieldChange = (field) => (e) => {
-    if(field !== 'email'){
+    if(field !== 'date'){
     setDisposal((prev) => ({ ...prev, [field]: e.value }));
     }
   };  
@@ -963,80 +993,108 @@ export default function CreatePage({ user, onLogout, onHome }) {
       </Accordion>
     );
   };
-  const renderFinalDisposal  = () => {
-    return (
-  <Accordion sx={{ width: '100%'}}>
-    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 1 }}>
-        <Typography variant="h4" sx={{ fontWeight: 600 }}>
-          Final Disposal
-        </Typography>
+  const renderFinalDisposal = () => {
+  // Extract facility names for autocomplete
+  const facilityOptions = facilities.map(f => f.name); // assume you have a `facilities` array
+
+  return (
+    <Accordion sx={{ width: '100%' }}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 1 }}>
+          <Typography variant="h4" sx={{ fontWeight: 600 }}>
+            Final Disposal
+          </Typography>
           {validSections.disposal ? (
             <CheckCircleIcon color="success" />
           ) : (
             <CancelIcon color="error" />
           )}
-      </Box>
-    </AccordionSummary>
-    <AccordionDetails>
-      <TextField
-        label="Facility"
-        fullWidth
-        value={disposal.facility}
-        onChange={(e) => setDisposal({ ...disposal, facility: e.target.value })}
-      />
-      <FinField
-        id='ContactNo'
-        fullWidth
-        required
-        placeholder='eg. 073256222'
-        helperText='Please enter a valid contact number'
-        label='Contact No'
-        validationMethod='phone'
-        autoComplete='mobile-number'
-        value={disposal.contact_no}
-        callback={handleDisposalFieldChange("contact_no")}
-        sx={{ mt: 2 }}
-      />
-      <FinField
-        id='Email'
-        fullWidth
-        placeholder='eg. test@email.com'
-        label='Email'
-        value={disposal.email}
-        callback={handleDisposalFieldChange("email")}
-        sx={{ mt: 2 }}
-      />
-      <TextField
-        label="Date"
-        type="date"
-        fullWidth
-        InputLabelProps={{ shrink: true }}
-        value={disposal.date ? disposal.date.split("T")[0] : ""}
-        onChange={(e) => setDisposal({ ...disposal, date: e.target.value })}
-        onClick={(e) => e.target.showPicker?.()}
-        sx={{ mb: 2, mt: 2 }}
-      />
-      <FormControlLabel
-        control={
-          <GreenSwitch
-            checked={sendEmail.disposal}
-            onChange={(e) =>
-              setSendEmail(prev => ({ ...prev, disposal: e.target.checked }))
-            }
-          />
-        }
-        label="Send Email?"
-        labelPlacement="start"
-        sx={{ mb: 2, ml: 0, '& .MuiFormControlLabel-label': {
-                mr: 2,
-              }, 
-            }}
-      />
-    </AccordionDetails>
-  </Accordion>
-    );
-  };
+        </Box>
+      </AccordionSummary>
+      <AccordionDetails>
+        {/* Autocomplete for Facility */}
+        <Autocomplete
+          freeSolo
+          options={facilityOptions}
+          value={disposal.facility}
+          onInputChange={(_, value) => handleFacilitySelect(value)}
+          renderInput={(params) => (
+            <TextField {...params} label="Facility" variant="outlined" fullWidth />
+          )}
+        />
+
+        {/* Contact Number */}
+        <FinField
+          id='ContactNo'
+          fullWidth
+          required
+          placeholder='eg. 073256222'
+          helperText='Please enter a valid contact number'
+          label='Contact No'
+          validationMethod='phone'
+          autoComplete='mobile-number'
+          value={disposal.contact_no}
+          callback={handleDisposalFieldChange("contact_no")}
+          sx={{ mt: 2 }}
+        />
+
+        {/* Email */}
+        <FinField
+          id='Email'
+          fullWidth
+          placeholder='eg. test@email.com'
+          label='Email'
+          value={disposal.email}
+          callback={handleDisposalFieldChange("email")}
+          sx={{ mt: 2 }}
+        />
+
+        {/* Date */}
+        <TextField
+          label="Date"
+          type="date"
+          fullWidth
+          InputLabelProps={{ shrink: true }}
+          value={disposal.date ? disposal.date.split("T")[0] : ""}
+          onChange={(e) => setDisposal({ ...disposal, date: e.target.value })}
+          onClick={(e) => e.target.showPicker?.()}
+          sx={{ mb: 2, mt: 2 }}
+        />
+
+        {/* Send Email */}
+        <FormControlLabel
+          control={
+            <GreenSwitch
+              checked={sendEmail.disposal}
+              onChange={(e) =>
+                setSendEmail(prev => ({ ...prev, disposal: e.target.checked }))
+              }
+            />
+          }
+          label="Send Email?"
+          labelPlacement="start"
+          sx={{ mb: 2, ml: 0, '& .MuiFormControlLabel-label': { mr: 2 } }}
+        />
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+// Example of handleFacilitySelect function
+const handleFacilitySelect = (value) => {
+  const selectedFacility = facilities.find(f => f.name === value);
+  if (selectedFacility) {
+    setDisposal({
+      facility: selectedFacility.name,
+      contact_no: selectedFacility.contact_no,
+      email: selectedFacility.email,
+      date: disposal.date || ''
+    });
+  } else {
+    // if user types a new facility
+    setDisposal(prev => ({ ...prev, facility: value, contact_no: '', email: '', date: '' }));
+  }
+};
   return (
     <>
     <Snackbar
@@ -1290,70 +1348,75 @@ function ManagementActivityCheckGroup({ values, onChange }) {
     onChange({ ...values, [name]: checked });
   };
 
+  const checkboxSx = {
+    '& .MuiFormControlLabel-label': {
+      fontSize: '0.8rem', // smaller label text
+    },
+    mr: 1, // margin between checkboxes
+  };
+
   return (
     <FormGroup
-      row={isMdOrLarger}
-      sx={{ justifyContent: isMdOrLarger ? 'center' : 'flex-start' }}
+      row
+      sx={{
+        justifyContent: 'flex-start',
+        flexWrap: 'nowrap', // prevent wrapping
+        overflowX: 'auto', // allow horizontal scroll if too small
+      }}
     >
       <FormControlLabel
+        sx={checkboxSx}
         control={
           <Checkbox
             checked={values.donation}
             onChange={handleChange}
             name="donation"
+            size="small" // smaller checkbox
           />
         }
         label="Donation"
       />
       <FormControlLabel
+        sx={checkboxSx}
         control={
-          <Checkbox
-            checked={values.reuse}
-            onChange={handleChange}
-            name="reuse"
-          />
+          <Checkbox checked={values.reuse} onChange={handleChange} name="reuse" size="small" />
         }
         label="Reuse"
       />
       <FormControlLabel
+        sx={checkboxSx}
         control={
-          <Checkbox
-            checked={values.sorting}
-            onChange={handleChange}
-            name="sorting"
-          />
+          <Checkbox checked={values.sorting} onChange={handleChange} name="sorting" size="small" />
         }
         label="Sorting"
       />
       <FormControlLabel
+        sx={checkboxSx}
         control={
-          <Checkbox
-            checked={values.recycling}
-            onChange={handleChange}
-            name="recycling"
-          />
+          <Checkbox checked={values.recycling} onChange={handleChange} name="recycling" size="small" />
         }
         label="Recycling"
       />
       <FormControlLabel
+        sx={checkboxSx}
         control={
-          <Checkbox
-            checked={values.treatment}
-            onChange={handleChange}
-            name="treatment"
-          />
+          <Checkbox checked={values.treatment} onChange={handleChange} name="treatment" size="small" />
         }
         label="Treatment"
       />
       <FormControlLabel
+        sx={checkboxSx}
         control={
-          <Checkbox
-            checked={values.storage}
-            onChange={handleChange}
-            name="storage"
-          />
+          <Checkbox checked={values.storage} onChange={handleChange} name="storage" size="small" />
         }
         label="Storage"
+      />
+      <FormControlLabel
+        sx={checkboxSx}
+        control={
+          <Checkbox checked={values.landfill} onChange={handleChange} name="landfill" size="small" />
+        }
+        label="Landfill"
       />
     </FormGroup>
   );

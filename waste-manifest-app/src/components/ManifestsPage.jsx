@@ -34,17 +34,24 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [manifests, setManifests] = useState([]);
   const [manifestsExports, setManifestsExports] = useState([]);
+  const [searchBy, setSearchBy] = useState('Manifest No');
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const rowsPerPage = 10;
+  const rowsPerPage = 3;
 
-  useEffect(() => {
-    if (location.state?.successMessage) {
-      setSuccessMessage(location.state.successMessage);
-      window.history.replaceState({}, document.title);
-    }
-  }, [location.state]);
+    // On mount: Make sure the same page displays after viewing the pdf
+    useEffect(() => {
+      const savedPage = sessionStorage.getItem('manifestsPage');
+      if (savedPage !== null) setPage(Number(savedPage));
+    }, []);
+
+    useEffect(() => {
+      if (location.state?.successMessage) {
+        setSuccessMessage(location.state.successMessage);
+        window.history.replaceState({}, document.title);
+      }
+    }, [location.state]);
 
     useEffect(() => {
         setLoading(true);
@@ -100,15 +107,28 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
 
   const handleChangePage = (_, newPage) => {
     setPage(newPage);
+    sessionStorage.setItem('manifestsPage', newPage);
   };
 
   const handleViewPDF = (manifest) => {
     navigate(`/manifest/${manifest.id}/view`);
   };
 
-  const filteredManifests = manifests.filter((m) => 
-    String(m.id ?? '').toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const filteredManifests = manifests.filter((m) => {
+    const query = searchQuery.toLowerCase();
+    if (!query) return true;
+
+    switch (searchBy) {
+      case 'Manifest No':
+        return String(m.id ?? '').toLowerCase().includes(query);
+      case 'Transporter':
+        return (m.transporter ?? '').toLowerCase().includes(query);
+      case 'Generator':
+        return (m.generator ?? '').toLowerCase().includes(query);
+      default:
+        return true;
+    }
+  });
 
     const paginatedManifests = filteredManifests.slice(
     page * rowsPerPage,
@@ -210,8 +230,31 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
 
       {/* 🔍 Search Bar */}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 4, gap: 2 }}>
+        {/* Dropdown to choose search column */}
         <TextField
-          label="Search by Manifest No"
+          select
+          label="Search by"
+          value={searchBy}
+          onChange={(e) => {
+            setSearchBy(e.target.value);
+            setPage(0);
+          }}
+          SelectProps={{
+            native: true,
+          }}
+          size="small"
+          sx={{ width: 280 }}
+        >
+          {['Manifest No', 'Transporter', 'Generator'].map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </TextField>
+
+        {/* Search input */}
+        <TextField
+          label={`Search ${searchBy}`}
           variant="outlined"
           size="small"
           value={searchQuery}
@@ -228,12 +271,13 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
             ),
           }}
         />
+
         <Button
           variant="contained"
           color="success"
           size="small"
           onClick={handleExport}
-          sx={{ whiteSpace: "nowrap",height: "40px" }}
+          sx={{ whiteSpace: "nowrap", height: "40px" }}
         >
           Export
         </Button>
@@ -331,7 +375,10 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
       }}
     >
       <Box sx={{ width: "100%", maxWidth: 1100, textAlign: "center" }}>
-        <Button variant="contained" onClick={() => navigate(-1)}>
+        <Button variant="contained" onClick={() => {
+          sessionStorage.removeItem('manifestsPage');
+          navigate(-1);
+        }}>
           Back
         </Button>
       </Box>

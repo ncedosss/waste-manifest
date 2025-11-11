@@ -21,6 +21,15 @@ app.use(express.json());
 
 const backendUrl = process.env.BACKEND_URL || "http://localhost:4000";
 
+//Local
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'waste_manifest',
+//   password: '12345',
+//   port: 5432,
+// });
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false } 
@@ -1111,6 +1120,20 @@ app.get('/api/entities', async (req, res) => {
     res.status(401).json({ error: 'Invalid token' });
   }
 });
+app.get('/api/facilities', async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) return res.status(401).json({ error: 'No token provided' });
+
+  const token = authHeader.split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const result = await pool.query('SELECT * FROM facility ORDER BY id ASC');
+
+    res.json(result.rows);
+  } catch (error) {
+    res.status(401).json({ error: 'Invalid token' });
+  }
+});
 app.post('/api/entities', async (req, res) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ error: 'No token provided' });
@@ -1286,6 +1309,17 @@ app.post('/api/manifest', async (req, res) => {
         );
       }
     }
+
+    const facilityResults = await pool.query(
+    `INSERT INTO facility (name, contact_no, email)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (LOWER(name))
+      DO UPDATE SET
+        contact_no = EXCLUDED.contact_no,
+        email = EXCLUDED.email
+      RETURNING *`,
+      [final_disposal, contact_no, disposal_email]
+    );
 
     res.status(201).json({ success: true, manifest: result.rows[0] });
   } catch (error) {
@@ -2258,6 +2292,7 @@ app.put('/api/manifests/:id', async (req, res) => {
         manifestId,
       ]
     );
+    console.log(disposal_email);
     await pool.query('DELETE FROM waste_streams WHERE manifest_id = $1', [manifestId]);
     if (Array.isArray(wasteItems) && wasteItems.length > 0) {
       for (const item of wasteItems) {
@@ -2274,6 +2309,18 @@ app.put('/api/manifests/:id', async (req, res) => {
         );
       }
     }
+
+    const facilityResults = await pool.query(
+    `INSERT INTO facility (name, contact_no, email)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (LOWER(name))
+      DO UPDATE SET
+        contact_no = EXCLUDED.contact_no,
+        email = EXCLUDED.email
+      RETURNING *`,
+      [final_disposal, contact_no, disposal_email]
+    );
+
     res.json({ success: true, manifest: result.rows[0] });
 
   } catch (error) {
