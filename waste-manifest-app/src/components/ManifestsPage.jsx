@@ -38,7 +38,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const rowsPerPage = 3;
+  const rowsPerPage = 10;
 
     // On mount: Make sure the same page displays after viewing the pdf
     useEffect(() => {

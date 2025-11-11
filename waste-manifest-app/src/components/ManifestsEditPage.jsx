@@ -39,7 +39,7 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
   const [searchBy, setSearchBy] = useState('Manifest No');
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
-  const rowsPerPage = 3;
+  const rowsPerPage = 10;
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
   const [manifestToDelete, setManifestToDelete] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
