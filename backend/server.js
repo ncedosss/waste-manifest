@@ -429,17 +429,19 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
           width: sectionWidth,
           align: 'center'
         });
-
       // Header border
       doc
         .strokeColor('#000')
         .rect(x, y, sectionWidth, rowHeight)
         .stroke();
-
       let currentY = y + rowHeight;
 
       fields.forEach(({ label, value }, idx) => {
-        const rowH = rowHeights[idx]; // use synced row height
+        let rowH = 0;
+        if(label === 'Address:')
+          rowH = rowHeights[idx] - 4;
+        else
+          rowH = rowHeight;
         const labelX = x + rowPadding;
         const valueX = x + labelWidth + rowPadding;
         const maxValueWidth = sectionWidth - labelWidth - 2 * rowPadding;
@@ -493,7 +495,7 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
 
     // Move cursor below that section
     if((manifestTransporter.generator_ipwis_no && manifestTransporter.generator_ipwis_no.trim() !== '') || (manifestTransporter.transporter_ipwis_no && manifestTransporter.transporter_ipwis_no.trim() !== '')){
-      doc.moveDown(3);
+      doc.moveDown(1);
     }else{
       doc.moveDown(2);
     }
@@ -689,7 +691,10 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
         .stroke();
     }
 
-    doc.moveDown(1);
+    if(headingType === 'WASTE RECEIPT')
+      doc.moveDown(2);
+    else
+      doc.moveDown(1);
     // --- Transporter/Generator Declaration Section ---
     let margin = 49.5;
     let usableWidth = doc.page.width - 50 * 2;
@@ -1524,7 +1529,11 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
       let currentY = y + rowHeight;
 
       fields.forEach(({ label, value }, idx) => {
-        const rowH = rowHeights[idx]; // use synced row height
+        let rowH = 0;
+        if(label === 'Address:')
+          rowH = rowHeights[idx];
+        else
+          rowH = rowHeight
         const labelX = x + rowPadding;
         const valueX = x + labelWidth + rowPadding;
         const maxValueWidth = sectionWidth - labelWidth - 2 * rowPadding;
@@ -1579,7 +1588,7 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
     // Move cursor below that section
     // Move cursor below that section
     if((manifestTransporter.generator_ipwis_no && manifestTransporter.generator_ipwis_no.trim() !== '') || (manifestTransporter.transporter_ipwis_no && manifestTransporter.transporter_ipwis_no.trim() !== '')){
-      doc.moveDown(3);
+      doc.moveDown(1);
     }else{
       doc.moveDown(2);
     }
@@ -1775,7 +1784,10 @@ app.post('/api/manifest/:manifestId/send-email', async (req, res) => {
         .stroke();
     }
 
-    doc.moveDown(1);
+    if(headingType === 'WASTE RECEIPT')
+      doc.moveDown(2);
+    else
+      doc.moveDown(1);
     // --- Transporter/Generator Declaration Section ---
     let margin = 49.5;
     let usableWidth = doc.page.width - 50 * 2;
