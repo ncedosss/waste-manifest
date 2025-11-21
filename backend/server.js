@@ -494,8 +494,12 @@ app.get('/api/manifests/:id/pdf', async (req, res) => {
     drawSection('Waste Generator', 310, topY, generatorFields, syncedRowHeights);
 
     // Move cursor below that section
+    let isSet = false;
     if((manifestTransporter.generator_ipwis_no && manifestTransporter.generator_ipwis_no.trim() !== '') || (manifestTransporter.transporter_ipwis_no && manifestTransporter.transporter_ipwis_no.trim() !== '')){
-      doc.moveDown(1);
+      if(!isSet){
+        isSet = true;
+        doc.moveDown(1);
+      }
     }else{
       doc.moveDown(2);
     }
@@ -1318,7 +1322,7 @@ app.post('/api/manifest', async (req, res) => {
     const facilityResults = await pool.query(
     `INSERT INTO facility (name, contact_no, email)
       VALUES ($1, $2, $3)
-      ON CONFLICT (LOWER(name))
+      ON CONFLICT (LOWER(name), contact_no)
       DO UPDATE SET
         contact_no = EXCLUDED.contact_no,
         email = EXCLUDED.email
