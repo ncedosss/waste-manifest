@@ -43,32 +43,15 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   const [exportStartDate, setExportStartDate] = useState('');
   const [exportEndDate, setExportEndDate] = useState('');
   const rowsPerPage = 10;
-  const [invoices, setInvoices] = useState(null);
 
-  useEffect(() => {
-    setLoading(true);
+  const handleConnect = () => {
+    const authUrl = `https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(
+      process.env.REDIRECT_URI
+    )}&scope=${encodeURIComponent(process.env.SCOPES)}&state=123`;
 
-    async function fetchInv() {
-      try {
-        const res = await fetch(
-          'https://waste-manifest-app-6a2146567071.herokuapp.com/api/invoices'
-        );
-
-        if (!res.ok) {
-          console.error(`Failed to load invoices: ${res} ${res.statusText}`);
-        }
-
-        const data = await res.json();
-        setInvoices(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchInv();
-  }, []);
+    // Redirect user to Xero login/consent
+    window.location.href = authUrl;
+  };
 
     // On mount: Make sure the same page displays after viewing the pdf
     useEffect(() => {
@@ -224,6 +207,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
 
   return (
     <>
+      <button onClick={handleConnect}>Connect to Xero</button>;
     <Snackbar
         open={!!successMessage}
         autoHideDuration={5000}
