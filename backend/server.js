@@ -39,9 +39,9 @@ function buildConsentUrl() {
   const params = new URLSearchParams({
     response_type: 'code',
     client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
     redirect_uri: process.env.REDIRECT_URI,
-    scope: SCOPES,
-    state: STATE
+    scope: SCOPES
   });
   console.log(params);
   return `https://login.xero.com/identity/connect/authorize?${params.toString()}`;
