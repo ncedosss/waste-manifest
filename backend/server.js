@@ -1,5 +1,8 @@
 // server.js
 const express = require('express');
+const session = require("express-session");
+const dotenv = require("dotenv");
+const { XeroClient } = require("xero-node");
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -15,7 +18,33 @@ const app = express();
 const port = process.env.PORT || 4000;
 const JWT_SECRET = 'u8S9z7mL4pR2dXyqJvWfHt6eNk0CbZGa';
 const { exec } = require('child_process');
+const axios = require('axios');
 
+
+dotenv.config();
+
+const {
+  CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SCOPES, STATE, PORT = 4000
+} = process.env;
+
+let tokenStore = {
+  // for demo only — replace with DB/persistent store
+  access_token: process.env.ACCESS_TOKEN || null,
+  refresh_token: process.env.REFRESH_TOKEN || null,
+  expires_at: null, // epoch ms when current access_token expires
+  tenantId: process.env.XERO_TENANT_ID || null
+};
+
+function buildConsentUrl() {
+  const params = new URLSearchParams({
+    response_type: 'code',
+    client_id: CLIENT_ID,
+    redirect_uri: REDIRECT_URI,
+    scope: SCOPES,
+    state: STATE
+  });
+  return `https://login.xero.com/identity/connect/authorize?${params.toString()}`;
+}
 app.use(cors());
 app.use(express.json());
 
@@ -2463,6 +2492,102 @@ app.get("/api/signature", async (req, res) => {
       res.status(500).json({ error: e });
     }
   });
+});
+// 1) Redirect user to Xero consent page
+app.get('/auth/connect', (req, res) => {
+  res.redirect(buildConsentUrl());
+});
+
+// 2) Callback - exchange code for tokens
+app.get('/auth/callback', async (req, res) => {
+  const { code, state } = req.query;
+  if (!code) return res.status(400).send('Missing code');
+
+  try {
+    const tokenResp = await axios.post(
+      'https://identity.xero.com/connect/token',
+      qs.stringify({
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: REDIRECT_URI,
+        client_id: CLIENT_ID,
+        client_secret: CLIENT_SECRET
+      }),
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    );
+
+    const { access_token, refresh_token, expires_in } = tokenResp.data;
+    tokenStore.access_token = access_token;
+    tokenStore.refresh_token = refresh_token;
+    tokenStore.expires_at = Date.now() + (expires_in * 1000) - (60 * 1000); // refresh 1min early
+
+    // 3) Call connections endpoint to retrieve tenant(s)
+    const conns = await axios.get('https://api.xero.com/connections', {
+      headers: { Authorization: `Bearer ${access_token}` }
+    });
+
+    // pick first tenant (or let user choose if multi-tenant)
+    const tenant = conns.data[0];
+    tokenStore.tenantId = tenant.tenantId;
+
+    // In production: persist tokenStore (db) and tenant mapping to your user.
+    res.send('Xero connected — you can now call /api/invoices');
+  } catch (err) {
+    console.error(err.response?.data || err.message);
+    res.status(500).send('Token exchange or connections fetch failed');
+  }
+});
+
+// helper to refresh tokens when expired
+async function refreshAccessTokenIfNeeded() {
+  if (!tokenStore.access_token) throw new Error('No access token stored');
+
+  if (Date.now() < tokenStore.expires_at) return; // still valid
+
+  // refresh
+  const resp = await axios.post(
+    'https://identity.xero.com/connect/token',
+    qs.stringify({
+      grant_type: 'refresh_token',
+      refresh_token: tokenStore.refresh_token,
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET
+    }),
+    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+  );
+
+  const { access_token, refresh_token, expires_in } = resp.data;
+  tokenStore.access_token = access_token;
+  tokenStore.refresh_token = refresh_token; // rotate: new refresh token must replace old one
+  tokenStore.expires_at = Date.now() + (expires_in * 1000) - (60 * 1000);
+}
+
+// 4) API route to get invoices (React UI will call this)
+app.get('/api/invoices', async (req, res) => {
+  try {
+    await refreshAccessTokenIfNeeded();
+
+    if (!tokenStore.tenantId) {
+      // If you haven't got tenant id yet, call connections again
+      const conns = await axios.get('https://api.xero.com/connections', {
+        headers: { Authorization: `Bearer ${tokenStore.access_token}` }
+      });
+      tokenStore.tenantId = conns.data[0].tenantId;
+    }
+
+    const invResp = await axios.get('https://api.xero.com/api.xro/2.0/Invoices', {
+      headers: {
+        Authorization: `Bearer ${tokenStore.access_token}`,
+        'Xero-tenant-id': tokenStore.tenantId,
+        'Accept': 'application/json'
+      }
+    });
+
+    res.json(invResp.data);
+  } catch (err) {
+    console.error('invoices error', err.response?.data || err.message);
+    res.status(500).send('Failed to fetch invoices');
+  }
 });
 
 // Serve React frontend
