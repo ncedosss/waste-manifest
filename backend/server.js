@@ -2565,7 +2565,10 @@ async function refreshAccessTokenIfNeeded() {
 // 4) API route to get invoices (React UI will call this)
 app.get('/api/invoices', async (req, res) => {
   try {
-    await refreshAccessTokenIfNeeded();
+    if (!tokenStore.access_token) {
+      res.redirect(buildConsentUrl());
+    }
+    // await refreshAccessTokenIfNeeded();
 
     if (!tokenStore.tenantId) {
       // If you haven't got tenant id yet, call connections again
