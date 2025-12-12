@@ -31,6 +31,7 @@ const API_URL = `${process.env.REACT_APP_API_URL}/api`;
 const CLIENT_ID = `${process.env.CLIENT_ID}/api`;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const SCOPES = process.env.SCOPES;
 
 export default function ManifestsPage({ user, onLogout, onHome }) {
   const location = useLocation();
@@ -46,6 +47,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   const [exportStartDate, setExportStartDate] = useState('');
   const [exportEndDate, setExportEndDate] = useState('');
   const rowsPerPage = 10;
+  const [invoices, setInvoices] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -231,7 +233,6 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
 
   return (
     <>
-      <button onClick={handleConnect}>Connect to Xero</button>;
     <Snackbar
         open={!!successMessage}
         autoHideDuration={5000}
