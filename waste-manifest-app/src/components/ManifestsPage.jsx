@@ -47,14 +47,35 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   const [exportEndDate, setExportEndDate] = useState('');
   const rowsPerPage = 10;
 
-  const handleConnect = () => {
-    const authUrl = `https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&redirect_uri=${encodeURIComponent(
-      REDIRECT_URI
-    )}&scope=${encodeURIComponent(process.env.SCOPES)}&state=123`;
+  useEffect(() => {
+    setLoading(true);
 
-    // Redirect user to Xero login/consent
-    window.location.href = authUrl;
-  };
+    async function fetchInv() {
+      try {
+        const res = await fetch(
+          'https://waste-manifest-app-6a2146567071.herokuapp.com/api/invoices'
+        );
+
+        if (!res.status === 401) {
+          const authUrl = `https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&redirect_uri=${encodeURIComponent(
+            REDIRECT_URI
+          )}&scope=${encodeURIComponent(SCOPES)}&state=123`;
+
+          // Redirect user to Xero login/consent
+          window.location.href = authUrl;
+        }
+
+        const data = await res.json();
+        setInvoices(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchInv();
+  }, []);
 
     // On mount: Make sure the same page displays after viewing the pdf
     useEffect(() => {
