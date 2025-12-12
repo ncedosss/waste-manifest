@@ -2564,6 +2564,7 @@ async function refreshAccessTokenIfNeeded() {
 
 // 4) API route to get invoices (React UI will call this)
 app.get('/api/invoices', async (req, res) => {
+  console.log('In');
   try {
     await refreshAccessTokenIfNeeded();
 
