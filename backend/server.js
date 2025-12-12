@@ -2500,7 +2500,7 @@ app.get('/auth/connect', (req, res) => {
 });
 
 // 2) Callback - exchange code for tokens
-app.get('/auth/callback', async (req, res) => {
+app.get('/api/xero/callback', async (req, res) => {
   const { code, state } = req.query;
   if (!code) return res.status(400).send('Missing code');
 
