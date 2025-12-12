@@ -55,7 +55,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
         );
 
         if (!res.ok) {
-          throw new Error(`Failed to load invoices: ${res.status} ${res.statusText}`);
+          console.error(`Failed to load invoices: ${res} ${res.statusText}`);
         }
 
         const data = await res.json();
