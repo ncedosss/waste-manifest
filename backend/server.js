@@ -43,6 +43,7 @@ function buildConsentUrl() {
     scope: SCOPES,
     state: STATE
   });
+  console.log(params);
   return `https://login.xero.com/identity/connect/authorize?${params.toString()}`;
 }
 app.use(cors());
