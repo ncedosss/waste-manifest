@@ -35,29 +35,48 @@ export default function InvoicesPage({ user, onLogout, onHome }) {
   const [searchQuery, setSearchQuery] = useState('');
   const rowsPerPage = 10;
 
-    useEffect(() => {
+  useEffect(() => {
     setLoading(true);
 
     async function fetchInvoices() {
-        try {
+      try {
         const res = await fetch(`${API_URL}/invoices`);
+        if (!res.ok) throw new Error("Failed to fetch invoices");
+
         const data = await res.json();
 
+        // Check if backend says we need to authenticate
         if (data.needsAuth) {
-            window.location.replace(data.authUrl);
-            return;
+          const authWindow = window.open(
+            data.authUrl,
+            "XeroLogin",
+            `width=600,height=700,top=${window.screen.height/2-350},left=${window.screen.width/2-300}`
+          );
+
+          // Listen for message from popup
+          const handleMessage = (event) => {
+            if (event.origin !== window.location.origin) return;
+            if (event.data === "xero-auth-success") {
+              fetchInvoices(); // retry fetching invoices after auth
+              window.removeEventListener("message", handleMessage);
+            }
+          };
+
+          window.addEventListener("message", handleMessage);
+
+          return; // stop further execution until auth
         }
 
         setInvoices(data.Invoices || []);
-        } catch (err) {
-        console.error(err);
-        } finally {
+      } catch (err) {
+        console.error("Invoice fetch error:", err);
+      } finally {
         setLoading(false);
-        }
+      }
     }
 
     fetchInvoices();
-    }, []);
+  }, []);
 
   /* 🔍 Search */
   const filteredInvoices = invoices.filter(inv => {
