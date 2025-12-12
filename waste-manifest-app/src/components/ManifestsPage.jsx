@@ -28,6 +28,9 @@ import { saveAs } from "file-saver";
 //const API_URL = 'http://localhost:4000/api';//laptop
 //const API_URL = 'http://192.168.18.232:4000/api';//phone
 const API_URL = `${process.env.REACT_APP_API_URL}/api`;
+const CLIENT_ID = `${process.env.CLIENT_ID}/api`;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 export default function ManifestsPage({ user, onLogout, onHome }) {
   const location = useLocation();
@@ -45,8 +48,8 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   const rowsPerPage = 10;
 
   const handleConnect = () => {
-    const authUrl = `https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(
-      process.env.REDIRECT_URI
+    const authUrl = `https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&redirect_uri=${encodeURIComponent(
+      REDIRECT_URI
     )}&scope=${encodeURIComponent(process.env.SCOPES)}&state=123`;
 
     // Redirect user to Xero login/consent
