@@ -47,17 +47,26 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
 
   useEffect(() => {
     setLoading(true);
+
     async function fetchInv() {
-      const res = await fetch(`https://waste-manifest-app-6a2146567071.herokuapp.com/api/invoices`);
-      if (!res.ok) {
-        console.error('Failed to load invoices');
+      try {
+        const res = await fetch(
+          'https://waste-manifest-app-6a2146567071.herokuapp.com/api/invoices'
+        );
+
+        if (!res.ok) {
+          throw new Error(`Failed to load invoices: ${res.status} ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        setInvoices(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
         setLoading(false);
-        return;
       }
-      const data = await res.json();
-      setInvoices(data);
-      setLoading(false);
     }
+
     fetchInv();
   }, []);
 
