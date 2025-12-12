@@ -2586,7 +2586,7 @@ app.get('/api/invoices', async (req, res) => {
     res.json(invResp.data);
   } catch (err) {
     console.error('invoices error', err.response?.data || err.message);
-    res.status(500).send('Failed to fetch invoices');
+    res.status(500).send('Failed to fetch invoices', err.message);
   }
 });
 
