@@ -17,6 +17,7 @@ import {
   CircularProgress,
   Snackbar,
   Alert,
+  Dialog, DialogTitle, DialogContent, DialogActions
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Header from './Header';
@@ -38,7 +39,27 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [exportDialogOpen, setExportDialogOpen] = useState(false);
+  const [exportStartDate, setExportStartDate] = useState('');
+  const [exportEndDate, setExportEndDate] = useState('');
   const rowsPerPage = 10;
+  const [invoices, setInvoices] = useState(null);
+
+  useEffect(() => {
+    setLoading(true);
+    async function fetchInv() {
+      const res = await fetch(`https://waste-manifest-app-6a2146567071.herokuapp.com/api/invoices`);
+      if (!res.ok) {
+        console.error('Failed to load invoices');
+        setLoading(false);
+        return;
+      }
+      const data = await res.json();
+      setInvoices(data);
+      setLoading(false);
+    }
+    fetchInv();
+  }, []);
 
     // On mount: Make sure the same page displays after viewing the pdf
     useEffect(() => {
@@ -137,7 +158,22 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
 
   const handleExport = () => {
     // Only export what is currently filtered (search applied)
-    const exportData = manifestsExports.map((m) => ({
+    setExportDialogOpen(false);
+
+    let filtered = manifestsExports;
+
+    if (exportStartDate && exportEndDate) {
+      const start = new Date(exportStartDate);
+      const end = new Date(exportEndDate);
+
+      filtered = manifestsExports.filter((m) => {
+        const d = new Date(m.date);
+        return d >= start && d <= end;
+      });
+    }
+
+    // Prepare export rows
+    const exportData = filtered.map((m) => ({
       Date: new Date(m.date).toISOString().split("T")[0],
       Time: m.time,
       Transporter: m.transporter,
@@ -164,16 +200,17 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Manifests");
 
-    // Generate buffer
     const excelBuffer = XLSX.write(workbook, {
       bookType: "xlsx",
       type: "array",
     });
 
-    const data = new Blob([excelBuffer], {
-      type: "application/octet-stream",
-    });
+    const data = new Blob([excelBuffer], { type: "application/octet-stream" });
     saveAs(data, "manifests.xlsx");
+
+    // Reset after export (optional)
+    setExportStartDate('');
+    setExportEndDate('');
   };
 
   return (
@@ -272,15 +309,15 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
           }}
         />
 
-        <Button
-          variant="contained"
-          color="success"
-          size="small"
-          onClick={handleExport}
-          sx={{ whiteSpace: "nowrap", height: "40px" }}
-        >
-          Export
-        </Button>
+      <Button
+        variant="contained"
+        color="success"
+        size="small"
+        //onClick={() => setExportDialogOpen(true)}
+        sx={{ whiteSpace: "nowrap", height: "40px" }}
+      >
+        Export
+      </Button>
       </Box>
 
     <Box
@@ -383,6 +420,41 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
         </Button>
       </Box>
     </Box>
+      <Dialog
+        open={exportDialogOpen}
+        onClose={() => setExportDialogOpen(false)}
+      >
+        <DialogTitle>Select Date Range</DialogTitle>
+        <DialogContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 1}}>
+
+          <TextField
+            label="Start Date"
+            type="date"
+            value={exportStartDate}
+            onChange={(e) => setExportStartDate(e.target.value)}
+            InputLabelProps={{ shrink: true }}
+            fullWidth
+            sx={{ mt: 1 }}
+          />
+
+          <TextField
+            label="End Date"
+            type="date"
+            value={exportEndDate}
+            onChange={(e) => setExportEndDate(e.target.value)}
+            InputLabelProps={{ shrink: true }}
+            fullWidth
+          />
+
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={() => setExportDialogOpen(false)}>Cancel</Button>
+          <Button variant="contained" onClick={() => handleExport()}>
+            Export
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
     </>
   );
