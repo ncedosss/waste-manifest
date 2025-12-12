@@ -19,6 +19,7 @@ const port = process.env.PORT || 4000;
 const JWT_SECRET = 'u8S9z7mL4pR2dXyqJvWfHt6eNk0CbZGa';
 const { exec } = require('child_process');
 const axios = require('axios');
+const qs = require('qs');
 
 
 dotenv.config();
