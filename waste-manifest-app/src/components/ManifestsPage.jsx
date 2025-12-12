@@ -28,10 +28,6 @@ import { saveAs } from "file-saver";
 //const API_URL = 'http://localhost:4000/api';//laptop
 //const API_URL = 'http://192.168.18.232:4000/api';//phone
 const API_URL = `${process.env.REACT_APP_API_URL}/api`;
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
-const SCOPES = process.env.REACT_APP_SCOPES;
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
 export default function ManifestsPage({ user, onLogout, onHome }) {
   const location = useLocation();
@@ -47,37 +43,6 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
   const [exportStartDate, setExportStartDate] = useState('');
   const [exportEndDate, setExportEndDate] = useState('');
   const rowsPerPage = 10;
-  const [invoices, setInvoices] = useState(null);
-
-  useEffect(() => {
-    setLoading(true);
-
-    async function fetchInv() {
-      try {
-        const res = await fetch(
-          'https://waste-manifest-app-6a2146567071.herokuapp.com/api/invoices'
-        );
-
-        if (res.status === 401) {
-          const authUrl = `https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&redirect_uri=${encodeURIComponent(
-            REDIRECT_URI
-          )}&scope=${encodeURIComponent(SCOPES)}&state=123`;
-
-          // Redirect user to Xero login/consent
-          window.location.href = authUrl;
-        }
-
-        const data = await res.json();
-        setInvoices(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchInv();
-  }, []);
 
     // On mount: Make sure the same page displays after viewing the pdf
     useEffect(() => {

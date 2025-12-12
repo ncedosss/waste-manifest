@@ -2533,17 +2533,7 @@ app.get('/api/xero/callback', async (req, res) => {
     const tenant = conns.data[0];
     tokenStore.tenantId = tenant.tenantId;
 
-    // 3) Call Invoices API immediately
-    const invResp = await axios.get('https://api.xero.com/api.xro/2.0/Invoices', {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-        'Xero-tenant-id': tokenStore.tenantId,
-        Accept: 'application/json'
-      }
-    });
-
-    // 4) Return invoices JSON directly
-    res.json(invResp.data);
+    res.redirect('/api/invoices');
   } catch (err) {
     console.error(err.response?.data || err.message);
     res.status(500).send('Token exchange or connections fetch failed');
@@ -2578,7 +2568,19 @@ async function refreshAccessTokenIfNeeded() {
 app.get('/api/invoices', async (req, res) => {
   try {
     if (!tokenStore.access_token) {
-      return res.status(401).json({ error: 'No access token stored' });
+      const authUrl =
+        `https://login.xero.com/identity/connect/authorize` +
+        `?response_type=code` +
+        `&client_id=${CLIENT_ID}` +
+        `&client_secret=${CLIENT_SECRET}` +
+        `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+        `&scope=${encodeURIComponent(SCOPES)}` +
+        `&state=invoices`;
+
+      return res.status(200).json({
+        needsAuth: true,
+        authUrl
+      });
     }
     await refreshAccessTokenIfNeeded();
 
