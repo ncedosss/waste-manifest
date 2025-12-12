@@ -28,10 +28,10 @@ import { saveAs } from "file-saver";
 //const API_URL = 'http://localhost:4000/api';//laptop
 //const API_URL = 'http://192.168.18.232:4000/api';//phone
 const API_URL = `${process.env.REACT_APP_API_URL}/api`;
-const CLIENT_ID = `${process.env.CLIENT_ID}/api`;
-const REDIRECT_URI = process.env.REDIRECT_URI;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const SCOPES = process.env.SCOPES;
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+const SCOPES = process.env.REACT_APP_SCOPES;
+const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
 export default function ManifestsPage({ user, onLogout, onHome }) {
   const location = useLocation();
