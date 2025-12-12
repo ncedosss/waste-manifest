@@ -58,7 +58,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
           'https://waste-manifest-app-6a2146567071.herokuapp.com/api/invoices'
         );
 
-        if (!res.status === 401) {
+        if (res.status === 401) {
           const authUrl = `https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&redirect_uri=${encodeURIComponent(
             REDIRECT_URI
           )}&scope=${encodeURIComponent(SCOPES)}&state=123`;
