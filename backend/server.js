@@ -38,8 +38,8 @@ let tokenStore = {
 function buildConsentUrl() {
   const params = new URLSearchParams({
     response_type: 'code',
-    client_id: CLIENT_ID,
-    redirect_uri: REDIRECT_URI,
+    client_id: process.env.CLIENT_ID,
+    redirect_uri: process.env.REDIRECT_URI,
     scope: SCOPES,
     state: STATE
   });
