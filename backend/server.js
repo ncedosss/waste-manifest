@@ -2533,8 +2533,17 @@ app.get('/api/xero/callback', async (req, res) => {
     const tenant = conns.data[0];
     tokenStore.tenantId = tenant.tenantId;
 
-    // In production: persist tokenStore (db) and tenant mapping to your user.
-    res.send('Xero connected — you can now call /api/invoices');
+    // 3) Call Invoices API immediately
+    const invResp = await axios.get('https://api.xero.com/api.xro/2.0/Invoices', {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        'Xero-tenant-id': tokenStore.tenantId,
+        Accept: 'application/json'
+      }
+    });
+
+    // 4) Return invoices JSON directly
+    res.json(invResp.data);
   } catch (err) {
     console.error(err.response?.data || err.message);
     res.status(500).send('Token exchange or connections fetch failed');
@@ -2592,7 +2601,7 @@ app.get('/api/invoices', async (req, res) => {
     res.json(invResp.data);
   } catch (err) {
     console.error('invoices error', err.response?.data || err.message);
-    res.status(500).send('Failed to fetch invoices', err.message);
+    res.status(500).json({ error: 'Failed to fetch invoices', details: err.response?.data || err.message });
   }
 });
 
