@@ -12,6 +12,7 @@ import VerifyEmail from './components/authentication/VerifyEmail';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import InvoicesPage from './components/InvoicesPage';
 
 function App() {
   const navigate = useNavigate();
@@ -124,6 +125,7 @@ function App() {
           )}
         />
         <Route path="/manifests" element={<ManifestsPage user={user} onLogout={logout} onHome={home} />} />
+        <Route path="/billing" element={<InvoicesPage user={user} onLogout={logout} onHome={home} />} />
         <Route path="/entities" element={<EntitiesPage user={user} onLogout={logout} onHome={home} />} />
         <Route path="/manifestsedit" element={<ManifestsEditPage user={user} onLogout={logout} onHome={home} />} />
         <Route path="/manifest/:id/edit" element={<CreatePage user={user} onLogout={logout} onHome={home} />} />

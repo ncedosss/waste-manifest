@@ -4,9 +4,11 @@ import {
   AppBar, Toolbar, Typography, IconButton, Avatar,
   Menu, MenuItem, Divider, Box
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header({ user, onLogout }) {
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate()
 
   if (!user) return null;
   const handleMenu = (event) => setAnchorEl(event.currentTarget);
@@ -49,6 +51,7 @@ export default function Header({ user, onLogout }) {
             </Box>
           </Box>
           <Divider />
+          <MenuItem onClick={() => navigate(`/billing`)}>Billing</MenuItem>
           <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
         </Menu>
       </Toolbar>
