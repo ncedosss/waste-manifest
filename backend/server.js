@@ -2505,6 +2505,7 @@ app.get('/api/xero/callback', async (req, res) => {
   if (!code) return res.status(400).send('Missing code');
 
   try {
+    console.log('In',CLIENT_ID,REDIRECT_URI);
     const tokenResp = await axios.post(
       'https://identity.xero.com/connect/token',
       qs.stringify({
@@ -2516,7 +2517,7 @@ app.get('/api/xero/callback', async (req, res) => {
       }),
       { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     );
-
+    console.log('After',tokenResp);
     const { access_token, refresh_token, expires_in } = tokenResp.data;
     tokenStore.access_token = access_token;
     tokenStore.refresh_token = refresh_token;
