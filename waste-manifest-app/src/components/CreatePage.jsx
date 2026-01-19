@@ -1229,12 +1229,12 @@ const handleFacilitySelect = (value) => {
                 <Button variant="outlined" type="button" disabled={!Object.values(validSectionsExceptDescription).every(Boolean)} onClick={() => {
                   saveForLater();
                 }} fullWidth>
-                  Save for later
+                  Receipt
                 </Button>
               </Grid>
               <Grid item xs={12} md={4}>
                 <Button variant="contained" type="submit" onClick={(e) => {handleSubmit(e);}} fullWidth disabled={!Object.values(validSections).every(Boolean)}>
-                  {manifestId ? 'Update' : 'Submit'}
+                  {manifestId ? 'Update' : 'Manifest'}
                 </Button>
               </Grid>
               </Grid>

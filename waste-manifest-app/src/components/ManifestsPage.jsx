@@ -25,7 +25,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
-//const API_URL = 'http://localhost:4000/api';//laptop
+// const API_URL = 'http://localhost:4000/api';//laptop
 //const API_URL = 'http://192.168.18.232:4000/api';//phone
 const API_URL = `${process.env.REACT_APP_API_URL}/api`;
 
@@ -296,7 +296,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
         variant="contained"
         color="success"
         size="small"
-        //onClick={() => setExportDialogOpen(true)}
+        onClick={() => setExportDialogOpen(true)}
         sx={{ whiteSpace: "nowrap", height: "40px" }}
       >
         Export
