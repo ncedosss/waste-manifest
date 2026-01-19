@@ -250,7 +250,7 @@ app.get('/api/manifests', async (req, res) => {
   const token = authHeader.split(' ')[1];
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    const result = await pool.query('SELECT * FROM manifests ORDER BY id ASC');
+    const result = await pool.query('SELECT * FROM manifests ORDER BY id DESC');
     res.json(result.rows);
   } catch (error) {
     res.status(401).json({ error: 'Invalid token' });
