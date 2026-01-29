@@ -42,11 +42,26 @@ const API_URL = `${process.env.REACT_APP_API_URL}/api`;
 //const API_URL = 'http://localhost:4000/api';//laptop
 //const API_URL = 'http://192.168.18.232:4000/api';//phone
 
+const isTouchDevice = () => {
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0
+  );
+};
+
+const isMobileOrTablet = () => {
+  return /android|ipad|iphone|tablet/i.test(navigator.userAgent);
+};
+
+
 export default function CreatePage({ user, onLogout, onHome }) {
     const [successMessage, setSuccessMessage] = useState('');
     const [sigObj, setSigObj] = useState();
     const [sigSDK, setSigSDK] = useState();
     const [signature, setSignature] = useState();
+
+    const [useCanvasSignature, setUseCanvasSignature] = useState(false);
+    const [openCanvas, setOpenCanvas] = useState(false);
     
     const [warningMessage, setWarningMessage] = useState('');
     const [entities, setEntities] = useState([]);
@@ -160,6 +175,12 @@ export default function CreatePage({ user, onLogout, onHome }) {
     ];
 
     useEffect(() => {
+      if (isTouchDevice() && isMobileOrTablet()) {
+        setUseCanvasSignature(true);
+      }
+    }, []);
+
+    useEffect(() => {
         setLoading(true);
         const fetchData = async () => {
         const token = localStorage.getItem('token');
@@ -213,31 +234,60 @@ export default function CreatePage({ user, onLogout, onHome }) {
     fetchData();
     },[]);
 
+  // const getSignature = async () => {
+  //   setLoading(true);
+  //   try {
+
+  //   const res = await fetch("http://localhost:5000/signature", { method: "POST" });
+  //   // const data = await response.json();
+
+  //     // const res = await fetch(`${API_URL}/signature`, {});
+
+  //     if (!res.ok) {
+  //       throw new Error(`Failed to fetch signature: ${res.status} ${res.statusText}`);
+  //     }
+  //     try {
+  //       const image = await res.json();
+  //       setSignature(image.image.data || "");
+  //       setSigned(true);
+  //     } catch (jsonErr) {
+  //       console.log(jsonErr);
+  //       setSignature('');
+  //       setSigned(true);
+  //       throw new Error("Invalid JSON response from server");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error occurred:", error);
+  //     setSignature("");
+  //     setSigned(false);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const getSignature = async () => {
+    // 👉 Tablet: open canvas
+    if (useCanvasSignature) {
+      setOpenCanvas(true);
+      return;
+    }
+
+    // 👉 Desktop: Wacom service
     setLoading(true);
     try {
-
-    const res = await fetch("http://localhost:5000/signature", { method: "POST" });
-    // const data = await response.json();
-
-      // const res = await fetch(`${API_URL}/signature`, {});
+      const res = await fetch("http://localhost:5000/signature", { method: "POST" });
 
       if (!res.ok) {
-        throw new Error(`Failed to fetch signature: ${res.status} ${res.statusText}`);
+        throw new Error(`Failed to fetch signature: ${res.status}`);
       }
-      try {
-        const image = await res.json();
-        setSignature(image.image.data || "");
-        setSigned(true);
-      } catch (jsonErr) {
-        console.log(jsonErr);
-        setSignature('');
-        setSigned(true);
-        throw new Error("Invalid JSON response from server");
-      }
+
+      const image = await res.json();
+      setSignature(image.image.data || '');
+      setSigned(true);
+
     } catch (error) {
-      console.error("Error occurred:", error);
-      setSignature("");
+      console.error("Signature error:", error);
+      setSignature('');
       setSigned(false);
     } finally {
       setLoading(false);
@@ -1419,5 +1469,96 @@ function ManagementActivityCheckGroup({ values, onChange }) {
         label="Landfill"
       />
     </FormGroup>
+  );
+}
+function CanvasSignature({ onSave, onCancel }) {
+  const canvasRef = React.useRef(null);
+  const ctxRef = React.useRef(null);
+  const drawing = React.useRef(false);
+
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 200;
+
+    const ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctxRef.current = ctx;
+  }, []);
+
+  const getPos = (e) => {
+    const rect = canvasRef.current.getBoundingClientRect();
+    const touch = e.touches?.[0];
+    return {
+      x: (touch ? touch.clientX : e.clientX) - rect.left,
+      y: (touch ? touch.clientY : e.clientY) - rect.top,
+    };
+  };
+
+  const start = (e) => {
+    drawing.current = true;
+    const { x, y } = getPos(e);
+    ctxRef.current.beginPath();
+    ctxRef.current.moveTo(x, y);
+  };
+
+  const draw = (e) => {
+    if (!drawing.current) return;
+    e.preventDefault();
+    const { x, y } = getPos(e);
+    ctxRef.current.lineTo(x, y);
+    ctxRef.current.stroke();
+  };
+
+  const end = () => {
+    drawing.current = false;
+  };
+
+  const clear = () => {
+    ctxRef.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+  };
+
+  const save = () => {
+    const img = canvasRef.current.toDataURL('image/png');
+    onSave(img);
+  };
+
+  return (
+    <>
+      <canvas
+        ref={canvasRef}
+        style={{ width: '100%', border: '1px solid #ccc', touchAction: 'none' }}
+        onMouseDown={start}
+        onMouseMove={draw}
+        onMouseUp={end}
+        onMouseLeave={end}
+        onTouchStart={start}
+        onTouchMove={draw}
+        onTouchEnd={end}
+      />
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
+        <Button onClick={clear}>Clear</Button>
+        <Box>
+          <Button onClick={onCancel} sx={{ mr: 1 }}>Cancel</Button>
+          <Button variant="contained" onClick={save}>Save</Button>
+        </Box>
+      </Box>
+
+      <Dialog open={openCanvas} fullWidth maxWidth="sm">
+        <DialogTitle>Sign with your finger</DialogTitle>
+        <DialogContent>
+          <CanvasSignature
+            onSave={(img) => {
+              setSignature(img);
+              setSigned(true);
+              setOpenCanvas(false);
+            }}
+            onCancel={() => setOpenCanvas(false)}
+          />
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
