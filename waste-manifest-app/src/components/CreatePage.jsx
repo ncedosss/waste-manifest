@@ -1295,6 +1295,20 @@ const handleFacilitySelect = (value) => {
           </form>
         </Box>
       </Box>
+
+      <Dialog open={openCanvas} fullWidth maxWidth="sm">
+        <DialogTitle>Sign with your finger</DialogTitle>
+        <DialogContent>
+          <CanvasSignature
+            onSave={(img) => {
+              setSignature(img);
+              setSigned(true);
+              setOpenCanvas(false);
+            }}
+            onCancel={() => setOpenCanvas(false)}
+          />
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
@@ -1548,20 +1562,6 @@ function CanvasSignature({ onSave, onCancel }) {
           <Button variant="contained" onClick={save}>Save</Button>
         </Box>
       </Box>
-
-      <Dialog open={openCanvas} fullWidth maxWidth="sm">
-        <DialogTitle>Sign with your finger</DialogTitle>
-        <DialogContent>
-          <CanvasSignature
-            onSave={(img) => {
-              setSignature(img);
-              setSigned(true);
-              setOpenCanvas(false);
-            }}
-            onCancel={() => setOpenCanvas(false)}
-          />
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
