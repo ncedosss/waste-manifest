@@ -162,7 +162,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
       Transporter: m.transporter,
       Generator: m.generator,
       "Reference No.": m.reference_no,
-      "Manifest No.": m.id,
+      "Manifest No.": m.manifest_id,
       Description: m.description,
       Packaging: m.packaging,
       "Waste Type": m.waste_type,
