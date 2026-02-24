@@ -150,14 +150,14 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
       const end = new Date(exportEndDate);
 
       filtered = manifestsExports.filter((m) => {
-        const d = new Date(m.date);
+        const d = new Date(m.declaration_date);
         return d >= start && d <= end;
       });
     }
 
     // Prepare export rows
     const exportData = filtered.map((m) => ({
-      Date: new Date(m.date).toISOString().split("T")[0],
+      Date: new Date(m.declaration_date).toISOString().split("T")[0],
       Time: m.time,
       Transporter: m.transporter,
       Generator: m.generator,
