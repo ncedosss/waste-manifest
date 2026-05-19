@@ -1068,7 +1068,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
         {/* Autocomplete for Facility */}
         <Autocomplete
           freeSolo
-          options={facilityOptions}
+          options={[...new Set(facilityOptions)]}
           value={disposal.facility}
           onInputChange={(_, value) => handleFacilitySelect(value)}
           renderInput={(params) => (
