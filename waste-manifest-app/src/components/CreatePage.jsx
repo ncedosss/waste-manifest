@@ -701,7 +701,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
         <AccordionDetails>
           <Autocomplete
             freeSolo
-            options={options}
+            options={[...new Set(options)]}
             value={state.name}
             callback={(_, value) => handleSelect(value ?? '', type)}
             onInputChange={(_, value) => handleSelect(value, type)}
