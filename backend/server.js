@@ -1288,9 +1288,16 @@ app.post('/api/manifest', async (req, res) => {
     } = req.body;
 
     const username = decoded.username;
-    const insertDate = new Date().toISOString().split('T')[0];
     const now = new Date();
-    const insertTime = now.toTimeString().split(' ')[0];
+
+    const insertDate = now.toLocaleDateString('en-CA', {
+      timeZone: 'Africa/Johannesburg'
+    });
+
+    const insertTime = now.toLocaleTimeString('en-GB', {
+      timeZone: 'Africa/Johannesburg',
+      hour12: false
+    });
 
     // Check required fields
     if (!generator || !transporter || !Array.isArray(process) || process.length === 0 ||
