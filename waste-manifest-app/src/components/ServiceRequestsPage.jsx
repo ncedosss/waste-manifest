@@ -815,7 +815,6 @@ export default function ServiceRequestPage() {
   const [status, setStatus]                 = useState("");
   const [saving, setSaving]                 = useState(false);
   const dateRef = useRef(null);
-  const API_URL = `${process.env.REACT_APP_API_URL}/api`;
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -846,7 +845,7 @@ export default function ServiceRequestPage() {
     } catch (error) { console.error(error); }
   };
 
-  
+
   const saveVerification = async () => {
     setSaving(true);
     const token = localStorage.getItem("token");
