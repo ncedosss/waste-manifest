@@ -14,8 +14,8 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IconButton, InputAdornment } from '@mui/material';
 import { jwtDecode } from 'jwt-decode';
 
-const API_URL = `${process.env.REACT_APP_API_URL}/api`;
-//const API_URL = 'http://localhost:4000/api';
+// const API_URL = `${process.env.REACT_APP_API_URL}/api`;
+const API_URL = 'http://localhost:4000/api';
 //const API_URL = 'http://192.168.18.232:4000/api';//phone
 
 export default function Authentication({ setUser }) {

@@ -226,12 +226,10 @@ export default function CreatePage({ user, onLogout, onHome }) {
     const partErr = { name: false, address: true, contact_person: true, contact_no: true, email: true, ipwis_no: false };
     if (match) {
       const d = { name: match.name, address: match.address, contact_person: match.contact_person, contact_no: match.contact_no, email: match.email, ipwis_no: match.ipwis_no };
-      if (type === 'generator') { setGenerator(d); setGeneratorErrors(noErr); }
-      else { setTransporter(d); setTransporterErrors(noErr); }
+      type === 'generator' ? (setGenerator(d), setGeneratorErrors(noErr)) : (setTransporter(d), setTransporterErrors(noErr));
     } else {
       const d = { name: value, address: '', contact_no: '', ipwis_no: '' };
-      if (type === 'generator') { setGenerator(d); setGeneratorErrors(noErr); }
-      else { setTransporter(d); setTransporterErrors(noErr); }
+      type === 'generator' ? (setGenerator(d), setGeneratorErrors(partErr)) : (setTransporter(d), setTransporterErrors(partErr));
     }
   };
 

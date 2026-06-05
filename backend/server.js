@@ -2612,6 +2612,152 @@ app.get('/api/invoices', async (req, res) => {
   }
 });
 
+app.put('/api/service-requests/:id/verify', async (req, res) => {
+
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+
+  const token = authHeader.split(' ')[1];
+
+  try {
+
+    const decoded   = jwt.verify(token, JWT_SECRET);
+    const username  = decoded.username;
+    const requestId = req.params.id;
+
+    const {
+      vehicleReported,
+      wasteDescription,
+      packagingSafety,
+      visualInspection,
+      photosTaken,
+      wasteAcceptedCheck,
+      decision,
+      reason,
+      completedBy,
+      designation,
+      signature,
+      verificationDate,
+      checklistComments  // { vehicleReported: "", wasteDescription: "", ... }
+    } = req.body;
+
+    // ── 1. Confirm request exists ─────────────────────────────────────────
+    const check = await pool.query(
+      `SELECT id FROM service_requests WHERE id = $1`,
+      [requestId]
+    );
+
+    if (check.rows.length === 0) {
+      return res.status(404).json({ error: 'Service Request not found' });
+    }
+
+    // ── 2. Update service_requests (unchanged columns) ────────────────────
+    const result = await pool.query(
+      `
+      UPDATE service_requests
+      SET
+        vehicle_reported_status  = $1,
+        waste_description_status = $2,
+        packaging_status         = $3,
+        visual_inspection_status = $4,
+        photos_taken_status      = $5,
+        acceptance_check_status  = $6,
+        decision                 = $7,
+        decision_reason          = $8,
+        completed_by             = $9,
+        designation              = $10,
+        verifier_signature       = $11,
+        verification_date        = $12,
+        verified_by              = $13,
+        verified_date            = NOW(),
+        status                   = $14
+      WHERE id = $15
+      RETURNING *
+      `,
+      [
+        vehicleReported,
+        wasteDescription,
+        packagingSafety,
+        visualInspection,
+        photosTaken,
+        wasteAcceptedCheck,
+        decision,
+        reason,
+        completedBy,
+        designation,
+        signature,
+        verificationDate,
+        username,
+        decision,
+        requestId,
+      ]
+    );
+
+    // ── 3. Upsert checklist items into separate table ─────────────────────
+    // Maps frontend key → { db_key, label }
+    const CHECKLIST_META = {
+      vehicleReported:    { dbKey: 'vehicle_reported',    label: 'Vehicle reported to receiving point' },
+      wasteDescription:   { dbKey: 'waste_description',   label: 'Waste description matches approval'  },
+      packagingSafety:    { dbKey: 'packaging_safety',    label: 'Packaging and safety compliant'      },
+      visualInspection:   { dbKey: 'visual_inspection',   label: 'Visual inspection completed'         },
+      photosTaken:        { dbKey: 'photos_taken',        label: 'Photos taken'                        },
+      wasteAcceptedCheck: { dbKey: 'waste_accepted_check',label: 'Waste accepted or rejected'          },
+    };
+
+    const checklistValues = {
+      vehicleReported,
+      wasteDescription,
+      packagingSafety,
+      visualInspection,
+      photosTaken,
+      wasteAcceptedCheck,
+    };
+
+    const comments = checklistComments || {};
+
+    // Build upsert rows for all 6 items
+    const checklistPromises = Object.entries(CHECKLIST_META).map(
+      ([frontendKey, { dbKey, label }]) =>
+        pool.query(
+          `
+          INSERT INTO service_request_checklist_items
+            (service_request_id, item_key, item_label, result, comment, updated_at)
+          VALUES ($1, $2, $3, $4, $5, NOW())
+          ON CONFLICT (service_request_id, item_key)
+          DO UPDATE SET
+            result     = EXCLUDED.result,
+            comment    = EXCLUDED.comment,
+            updated_at = NOW()
+          `,
+          [
+            requestId,
+            dbKey,
+            label,
+            checklistValues[frontendKey] || null,
+            checklistValues[frontendKey] === 'No' ? (comments[frontendKey] || null) : null,
+          ]
+        )
+    );
+
+    await Promise.all(checklistPromises);
+
+    res.json({
+      success:  true,
+      request:  result.rows[0],
+    });
+
+  } catch (error) {
+
+    console.error('Error verifying request:', error);
+    console.error('Payload:', req.body);
+
+    res.status(500).json({ error: 'Failed to verify request' });
+  }
+});
+
 // Serve React frontend
 const buildPath = path.join(__dirname, '..', 'waste-manifest-app', 'build');
 app.use(express.static(buildPath));
