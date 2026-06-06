@@ -165,14 +165,25 @@ export default function Header({ user, onLogout }) {
                 </div>
               </div>
 
-              <button className="header-menu-item" onClick={() => { navigate('/billing'); setOpen(false); }}>
+              {/* <button className="header-menu-item" onClick={() => { navigate('/billing'); setOpen(false); }}>
                 <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>
                 </svg>
                 Billing
-              </button>
+              </button> */}
 
-              <button className="header-menu-item" onClick={() => { navigate('/service-requests'); setOpen(false); }}>
+              {/* <button className="header-menu-item" onClick={() => { navigate('/service-requests'); setOpen(false); }}>
+                <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+                  <rect x="9" y="3" width="6" height="4" rx="1"/>
+                </svg>
+                Service Requests
+              </button> */}
+              <button
+                className="header-menu-item"
+                disabled
+                style={{ opacity: 0.4, cursor: 'not-allowed' }}
+              >
                 <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
                   <rect x="9" y="3" width="6" height="4" rx="1"/>
