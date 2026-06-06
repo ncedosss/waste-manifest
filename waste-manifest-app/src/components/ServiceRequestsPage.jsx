@@ -840,7 +840,7 @@ export default function ServiceRequestPage() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `${API_URL_PORTAL}/service-requests/admin?search=${search}&status=${status}`,
+        `${API_URL_PORTAL}/api/service-requests/admin?search=${search}&status=${status}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const data = await response.json();
