@@ -835,6 +835,8 @@ export default function ServiceRequestPage() {
   useEffect(() => { loadRequests(); }, [search, status]);
 
   const loadRequests = async () => {
+    console.log("URL_Portal: ", API_URL_PORTAL);
+    console.log("URL: ", API_URL);
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
