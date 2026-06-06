@@ -808,7 +808,7 @@ function getMsdsUrl(doc) {
 
 export default function ServiceRequestPage() {
   const API_URL = `${process.env.REACT_APP_API_URL}/api`;
-  const API_URL_PORTAL = process.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL_PORTAL = process.env.REACT_APP_PORTAL_URL || "http://localhost:5000";
   const [page, setPage]                     = useState(0);
   const [requests, setRequests]             = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
