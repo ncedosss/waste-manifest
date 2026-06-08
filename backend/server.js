@@ -2627,7 +2627,6 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
     const decoded   = jwt.verify(token, JWT_SECRET);
     const username  = decoded.username;
     const requestId = req.params.id;
-    console.log('Decoded',decoded);
 
     const {
       vehicleReported,
