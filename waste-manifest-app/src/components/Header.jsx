@@ -181,7 +181,7 @@ export default function Header({ user, onLogout }) {
               </button> */}
               <button
                 className="header-menu-item"
-                disabled
+                // disabled
                 style={{ opacity: 0.4, cursor: 'not-allowed' }}
               >
                 <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
