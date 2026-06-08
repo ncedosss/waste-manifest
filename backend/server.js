@@ -2646,9 +2646,10 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
 
     // ── 1. Confirm request exists ─────────────────────────────────────────
     const check = await pool.query(
-      `SELECT id FROM service_requests WHERE id = $1`,
-      [requestId]
-    );
+      `SELECT id 
+         FROM service_requests 
+        WHERE id = $1`,
+              [requestId]);
 
     if (check.rows.length === 0) {
       return res.status(404).json({ error: 'Service Request not found' });
@@ -2741,6 +2742,39 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
           ]
         )
     );
+
+    //Now create manifest receipt if decision is accepted
+		const refResult = await pool.query(`
+		  SELECT COALESCE(MAX(manifest_no::int), 0) + 1 AS next_manifest FROM manifests
+		`);
+		const nextManifestNo = refResult.rows[0].next_manifest;
+		const time = verification_date.split(" ")[1].split(".")[0];
+
+    if(decision === 'Accept'){
+      await pool.query(
+        `
+        INSERT INTO manifests (manifest_no, date, time, username, generator,transporter,waste_type,waste_form,is_saved_for_later)
+	      SELECT $1,
+               $2,
+               $3,
+               $4,
+               customer_name,
+               driver_name,
+               waste_type,
+               waste_form,
+               true
+          FROM service_requests
+	       WHERE id = $5
+        `,
+        [
+          nextManifestNo,
+          verificationDate,
+          time,
+          username,
+          requestId,
+        ]
+      );
+    }
 
     await Promise.all(checklistPromises);
 
