@@ -2647,7 +2647,8 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
     // ── 1. Confirm request exists ─────────────────────────────────────────
     const check = await pool.query(
       `SELECT id,
-              verified_date 
+              verified_date,
+              customer_id 
          FROM service_requests 
         WHERE id = $1`,
               [requestId]);
@@ -2754,7 +2755,7 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
     if(decision === 'Accepted'){
       await pool.query(
         `
-        INSERT INTO manifests (manifest_no, date, time, username, generator,transporter,waste_type,waste_form,is_saved_for_later)
+        INSERT INTO manifests (manifest_no, date, time, username, generator,transporter,waste_type,waste_form,is_saved_for_later,customer_id)
 	      SELECT $1,
                $2,
                $3,
@@ -2763,15 +2764,17 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
                driver_name,
                waste_type,
                waste_form,
-               true
+               true,
+               $5
           FROM service_requests
-	       WHERE id = $5
+	       WHERE id = $6
         `,
         [
           nextManifestNo,
           verificationDate,
           time,
           username,
+          check.rows[0].customer_id,
           requestId,
         ]
       );
