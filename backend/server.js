@@ -2646,7 +2646,8 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
 
     // ── 1. Confirm request exists ─────────────────────────────────────────
     const check = await pool.query(
-      `SELECT id 
+      `SELECT id,
+              verified_date 
          FROM service_requests 
         WHERE id = $1`,
               [requestId]);
@@ -2748,7 +2749,7 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
 		  SELECT COALESCE(MAX(manifest_no::int), 0) + 1 AS next_manifest FROM manifests
 		`);
 		const nextManifestNo = refResult.rows[0].next_manifest;
-		const time = verificationDate.split(" ")[1].split(".")[0];
+		const time = check.rows[0].verified_date.split(" ")[1].split(".")[0];
 
     if(decision === 'Accept'){
       await pool.query(
