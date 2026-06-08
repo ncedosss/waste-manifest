@@ -2751,7 +2751,7 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
 		const nextManifestNo = refResult.rows[0].next_manifest;
 		const time = check.rows[0].verified_date.toTimeString().split(' ')[0];
 
-    if(decision === 'Accept'){
+    if(decision === 'Accepted'){
       await pool.query(
         `
         INSERT INTO manifests (manifest_no, date, time, username, generator,transporter,waste_type,waste_form,is_saved_for_later)
