@@ -198,13 +198,11 @@ export default function Header({ user, onLogout }) {
   const fetchPendingCount = async () => {
     try {
       const token = localStorage.getItem('token');
-      console.log('Fetching pending count with token:', token);
       if (!token) return;
       const res = await fetch(
         `${API_URL_PORTAL}/api/service-requests/admin?search=&status=Pending`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log('Fetch pending count response', res);
       if (!res.ok) {
         const errBody = await res.json();
         console.log('Error body:', errBody);  

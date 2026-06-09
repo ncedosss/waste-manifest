@@ -2750,36 +2750,34 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
 		  SELECT COALESCE(MAX(manifest_no::int), 0) + 1 AS next_manifest FROM manifests
 		`);
 		const nextManifestNo = refResult.rows[0].next_manifest;
-		const time = check.rows[0].verified_date.toTimeString().split(' ')[0];
+    const now = new Date();
+    const time = now.toLocaleTimeString('en-GB', {
+      timeZone: 'Africa/Johannesburg',
+      hour12: false
+    });
 
-    if(decision === 'Accepted'){
-      await pool.query(
-        `
-        INSERT INTO manifests (manifest_no, date, time, username, generator,transporter,waste_type,waste_form,is_saved_for_later,customer_id)
-	      SELECT $1,
-               $2,
-               $3,
-               $4,
-               customer_name,
-               driver_name,
-               waste_type,
-               waste_form,
-               true,
-               $5
-          FROM service_requests
-	       WHERE id = $6
-        `,
-        [
-          nextManifestNo,
-          verificationDate,
-          time,
-          username,
-          check.rows[0].customer_id,
-          requestId,
-        ]
+    if (decision === 'Accepted') {
+      // Check if a manifest was already created for this service request
+      const existing = await pool.query(
+        `SELECT id FROM manifests WHERE service_request_id = $1`,
+        [requestId]
       );
-    }
 
+      if (existing.rows.length === 0) {
+        await pool.query(
+          `
+          INSERT INTO manifests (manifest_no, date, time, username, generator, transporter,
+                                waste_type, waste_form, is_saved_for_later, customer_id, service_request_id)
+          SELECT $1, $2, $3, $4,
+                customer_name, driver_name, waste_type, waste_form,
+                true, $5, $6
+            FROM service_requests
+          WHERE id = $6
+          `,
+          [nextManifestNo, verificationDate, time, username, check.rows[0].customer_id, requestId]
+        );
+      }
+    }
     await Promise.all(checklistPromises);
 
     res.json({
