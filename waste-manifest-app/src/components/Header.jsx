@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { injectSharedStyles } from './sharedStyles';
 
-const API_URL = `${process.env.REACT_APP_PORTAL_URL}/api`;
+const API_URL_PORTAL = process.env.REACT_APP_PORTAL_URL || "http://localhost:5000";
 
 const css = `
   .app-header {
@@ -201,7 +201,7 @@ export default function Header({ user, onLogout }) {
       console.log('Fetching pending count with token:', token);
       if (!token) return;
       const res = await fetch(
-        `${API_URL}/service-requests/admin?search=&status=Pending`,
+        `${API_URL_PORTAL}/api/service-requests/admin?search=&status=Pending`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log('Fetch pending count response', res);
