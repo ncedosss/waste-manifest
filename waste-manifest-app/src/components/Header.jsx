@@ -205,7 +205,11 @@ export default function Header({ user, onLogout }) {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log('Fetch pending count response', res);
-      if (!res.ok) return;
+      if (!res.ok) {
+        const errBody = await res.json();
+        console.log('Error body:', errBody);  
+        return;
+      }
       const data = await res.json();
       setPendingCount(Array.isArray(data) ? data.length : 0);
     } catch (error) {
