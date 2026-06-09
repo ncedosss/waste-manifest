@@ -788,10 +788,10 @@ const CHECKLIST_ITEMS = [
 ];
 
 const STAFF_MAP = {
-  Mfiki:   "Site Manager",
-  Unathi:  "Finance Admin",
-  Hoyi:    "Chemical Engineer",
-  Ntobeko: "CEO",
+  Mfiki:   "Operations Supervisor",
+  Unathi:  "Office Manager",
+  Hoyi:    "Process Chemistry",
+  Ntobeko: "Chief Operating Officer",
 };
 
 const ROWS_PER_PAGE = 5;
