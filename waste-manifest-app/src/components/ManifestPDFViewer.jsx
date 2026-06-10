@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { injectSharedStyles } from './sharedStyles';
 
 const API_URL = `${process.env.REACT_APP_API_URL}/api`;
 
 export default function ManifestPDFViewer() {
   injectSharedStyles();
-  const { id } = useParams();
+  const { id }   = useParams();
+  const location = useLocation();
   const [pdfUrl, setPdfUrl] = useState(null);
   const [error, setError]   = useState(null);
+
+  // Detect whether this is a receipt or a manifest from the URL path
+  // /manifest-receipt/:id/view  → receipt
+  // /manifest/:id/view          → manifest
+  const isReceipt = location.pathname.includes('manifest-receipt');
+  const pdfEndpoint = isReceipt
+    ? `${API_URL}/manifest-receipts/${id}/pdf`
+    : `${API_URL}/manifests/${id}/pdf`;
 
   useEffect(() => {
     const fetchPDF = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await fetch(`${API_URL}/manifests/${id}/pdf`, {
+        const res = await fetch(pdfEndpoint, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error('Failed to fetch PDF');
@@ -28,7 +37,7 @@ export default function ManifestPDFViewer() {
     fetchPDF();
     return () => { if (pdfUrl) URL.revokeObjectURL(pdfUrl); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, pdfEndpoint]);
 
   if (error) {
     return (

@@ -63,7 +63,9 @@ function CanvasSignature({ onSave, onCancel }) {
 export default function CreatePage({ user, onLogout, onHome }) {
   injectSharedStyles();
   const navigate     = useNavigate();
-  const { id: manifestId } = useParams();
+  const { id: manifestId, receiptId } = useParams();
+  // receiptId is set when editing a draft receipt (/manifest-receipt/:receiptId/edit)
+  // In that case we load from manifest_receipts and on submit create the full manifest
 
   const [successMessage, setSuccessMessage] = useState('');
   const [warningMessage, setWarningMessage] = useState('');
@@ -115,6 +117,12 @@ export default function CreatePage({ user, onLogout, onHome }) {
   const isActivityValid      = () => Object.values(activities).some(Boolean);
   const isDisposalValid      = () => Boolean(disposal.facility && disposal.contact_no && disposal.date);
 
+  const validSectionsDraft = {
+    transporter: isTransporterValid(), generator: isGeneratorValid(),
+    declaration: isDeclarationValid(), activity: isActivityValid(),
+    disposal: isDisposalValid(), referenceNo: isRefenceNoValid()
+  };
+
   const validSections = {
     transporter: isTransporterValid(), generator: isGeneratorValid(),
     waste: isWasteValid(), wasteForm: isWasteFormValid(),
@@ -122,11 +130,6 @@ export default function CreatePage({ user, onLogout, onHome }) {
     disposal: isDisposalValid(), referenceNo: isRefenceNoValid()
   };
 
-  const validSectionsExceptDescription = {
-    transporter: isTransporterValid(), generator: isGeneratorValid(),
-    declaration: isDeclarationValid(), activity: isActivityValid(),
-    disposal: isDisposalValid(), signed: signed, referenceNo: isRefenceNoValid()
-  };
 
   useEffect(() => {
     if (isTouchDevice() && isMobileOrTablet()) setUseCanvasSignature(true);
@@ -159,6 +162,86 @@ export default function CreatePage({ user, onLogout, onHome }) {
     finally { setLoading(false); }
   };
 
+  // Load draft receipt for completing into a manifest
+  useEffect(() => {
+    if (!receiptId) return;
+    const load = async () => {
+      setLoading(true);
+      const token = localStorage.getItem('token');
+      try {
+        const res = await fetch(`${API_URL}/manifest-receipts/${receiptId}`, { headers: { Authorization: `Bearer ${token}` } });
+        if (res.status === 401) { onLogout(); return; }
+        if (!res.ok) throw new Error();
+        const rows = await res.json();
+        // Response is an array (same as manifests/:id), take first row
+        const data = Array.isArray(rows) ? rows[0] : rows;
+        if (!data) throw new Error('No data returned');
+
+        // Pre-populate form from the receipt
+        setReferenceNo({ reference_no: data.reference_no || '' });
+        if (data.reference_no) setReferenceNoError(false);
+
+        // Look up full entity details from the already-loaded entities list
+        // so Address, Contact No etc auto-populate just like manifest edit does
+        const noErr = { name: false, address: false, contact_person: false, contact_no: false, email: false, ipwis_no: false };
+        const partErr = { name: false, address: true, contact_person: true, contact_no: true, email: true, ipwis_no: false };
+
+        const genEntity = entities.find(e => e.type === 'generator' && e.name === data.generator);
+        if (genEntity) {
+          setGenerator({ name: genEntity.name, address: genEntity.address, contact_person: genEntity.contact_person, contact_no: genEntity.contact_no, email: genEntity.email, ipwis_no: genEntity.ipwis_no });
+          setGeneratorErrors(noErr);
+        } else {
+          setGenerator({ name: data.generator || '', address: '', contact_person: '', contact_no: '', email: '', ipwis_no: '' });
+          setGeneratorErrors(data.generator ? partErr : noErr);
+        }
+
+        const transEntity = entities.find(e => e.type === 'transporter' && e.name === data.transporter);
+        if (transEntity) {
+          setTransporter({ name: transEntity.name, address: transEntity.address, contact_person: transEntity.contact_person, contact_no: transEntity.contact_no, email: transEntity.email, ipwis_no: transEntity.ipwis_no });
+          setTransporterErrors(noErr);
+        } else {
+          setTransporter({ name: data.transporter || '', address: '', contact_person: '', contact_no: '', email: '', ipwis_no: '' });
+          setTransporterErrors(data.transporter ? partErr : noErr);
+        }
+        setWasteTypes({
+          hazardous:    (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('hazardous'),
+          nonHazardous: (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('nonhazardous'),
+          recyclable:   (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('recyclable'),
+        });
+        setWasteForms({
+          solid:  (data.waste_form || '').toLowerCase().includes('solid'),
+          sludge: (data.waste_form || '').toLowerCase().includes('sludge'),
+          liquid: (data.waste_form || '').toLowerCase().includes('liquid'),
+        });
+        setActivities(prev => ({
+          ...prev,
+          donation:  (data.process || '').toLowerCase().includes('donation'),
+          reuse:     (data.process || '').toLowerCase().includes('reuse'),
+          sorting:   (data.process || '').toLowerCase().includes('sorting'),
+          recycling: (data.process || '').toLowerCase().includes('recycling'),
+          treatment: (data.process || '').toLowerCase().includes('treatment'),
+          storage:   (data.process || '').toLowerCase().includes('storage'),
+          landfill:  (data.process || '').toLowerCase().includes('landfill'),
+          additionalComment: data.comments || '',
+        }));
+        setDisposal({
+          facility:   data.final_disposal || '',
+          contact_no: data.disposal_contact_no || '',
+          email:      data.disposal_email || '',
+          date:       data.actual_disposal_date ? formatDate(data.actual_disposal_date) : '',
+        });
+        setDeclaration({
+          type: data.type || '',
+          name: data.declaration_name || '',
+          date: data.declaration_date ? formatDate(data.declaration_date) : '',
+        });
+        if (data.signature) { setSignature(data.signature); setSigned(true); }
+      } catch (err) { console.error(err); }
+      finally { setLoading(false); }
+    };
+    load();
+  }, [receiptId, entities]); // re-run when entities loads so entity lookup finds the match
+
   // Load existing manifest for editing
   useEffect(() => {
     if (!manifestId) return;
@@ -173,12 +256,31 @@ export default function CreatePage({ user, onLogout, onHome }) {
         const m = data[0];
         setReferenceNo({ reference_no: m.reference_no });
         if (m.reference_no) setReferenceNoError(false);
-        setGenerator({ name: m.generator });
-        setTransporter({ name: m.transporter });
+
+        const noErr   = { name: false, address: false, contact_person: false, contact_no: false, email: false, ipwis_no: false };
+        const partErr = { name: false, address: true,  contact_person: true,  contact_no: true,  email: true,  ipwis_no: false };
+
+        const genEntity = entities.find(e => e.type === 'generator' && e.name === m.generator);
+        if (genEntity) {
+          setGenerator({ name: genEntity.name, address: genEntity.address, contact_person: genEntity.contact_person, contact_no: genEntity.contact_no, email: genEntity.email, ipwis_no: genEntity.ipwis_no });
+          setGeneratorErrors(noErr);
+        } else {
+          setGenerator({ name: m.generator || '', address: '', contact_person: '', contact_no: '', email: '', ipwis_no: '' });
+          setGeneratorErrors(m.generator ? partErr : noErr);
+        }
+
+        const transEntity = entities.find(e => e.type === 'transporter' && e.name === m.transporter);
+        if (transEntity) {
+          setTransporter({ name: transEntity.name, address: transEntity.address, contact_person: transEntity.contact_person, contact_no: transEntity.contact_no, email: transEntity.email, ipwis_no: transEntity.ipwis_no });
+          setTransporterErrors(noErr);
+        } else {
+          setTransporter({ name: m.transporter || '', address: '', contact_person: '', contact_no: '', email: '', ipwis_no: '' });
+          setTransporterErrors(m.transporter ? partErr : noErr);
+        }
         setWasteTypes({
-          hazardous:    m.waste_type?.toLowerCase()?.includes('hazardous'),
-          nonHazardous: m.waste_type?.toLowerCase()?.includes('nonhazardous'),
-          recyclable:   m.waste_type?.toLowerCase()?.includes('recyclable'),
+          hazardous:    (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('hazardous'),
+          nonHazardous: (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('nonhazardous'),
+          recyclable:   (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('recyclable'),
         });
         setWasteForms({
           solid:  m.waste_form?.toLowerCase()?.includes('solid'),
@@ -199,7 +301,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
       finally { setLoading(false); }
     };
     load();
-  }, [manifestId]);
+  }, [manifestId, entities]); // re-run when entities loads so entity lookup finds the match
 
   const formatDate = (d) => {
     if (!d) return '';
@@ -290,9 +392,10 @@ export default function CreatePage({ user, onLogout, onHome }) {
       disposal_email: disposal.email, signature, saveForLater,
     };
     try {
-      const url = manifestId ? `${API_URL}/manifests/${manifestId}` : `${API_URL}/manifest`;
+      // When completing a receipt draft, always POST (creates new manifest)
+      const url = (manifestId && !receiptId) ? `${API_URL}/manifests/${manifestId}` : `${API_URL}/manifest`;
       const res = await fetch(url, {
-        method: manifestId ? 'PUT' : 'POST',
+        method: (manifestId && !receiptId) ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify(payload),
       });
@@ -323,20 +426,26 @@ export default function CreatePage({ user, onLogout, onHome }) {
       const result = await saveManifest();
       await sendManifestEmail(result.manifest.id, token);
       if (result) {
-        manifestId ? navigate('/manifestsedit') : navigate('/manifests', { state: { successMessage: `Manifest ${result.manifest.manifest_no} created successfully and email has been sent.` } });
+        if (receiptId || !manifestId) {
+          navigate('/manifests', { state: { successMessage: `Manifest ${result.manifest.manifest_no} created successfully. A receipt has also been generated.` } });
+        } else {
+          navigate('/manifestsedit');
+        }
       }
     } catch (err) { console.error(err); }
   };
 
-  const saveForLater = async () => {
+
+  const saveDraft = async () => {
     const token = localStorage.getItem('token');
     try {
       await saveEntityIfNew('generator', generator);
       await saveEntityIfNew('transporter', transporter);
       const result = await saveManifest(true);
-      await sendManifestEmail(result.manifest.id, token);
       if (result) {
-        manifestId ? navigate('/manifestsedit') : navigate('/manifests', { state: { successMessage: `Manifest ${result.manifest.manifest_no} created successfully.` } });
+        manifestId
+          ? navigate('/manifestsedit')
+          : navigate('/manifests', { state: { successMessage: `Draft receipt saved. You can complete the manifest later.` } });
       }
     } catch (err) { console.error(err); }
   };
@@ -396,9 +505,15 @@ export default function CreatePage({ user, onLogout, onHome }) {
       <Header user={user} onLogout={onLogout} onHome={onHome} />
 
       <div className="page-hero">
-        <div className="page-hero-eyebrow">{manifestId ? 'Edit Manifest' : 'New Manifest'}</div>
+        <div className="page-hero-eyebrow">{receiptId ? 'Complete Draft' : manifestId ? 'Edit Manifest' : 'New Manifest'}</div>
         <h1 className="page-hero-title">Waste Manifest</h1>
-        <p className="page-hero-sub">{manifestId ? 'Update the details of this manifest.' : 'Complete all sections to create a new waste manifest.'}</p>
+        <p className="page-hero-sub">
+          {receiptId
+            ? 'Complete the remaining sections to convert this draft receipt into a full manifest.'
+            : manifestId
+            ? 'Update the details of this manifest.'
+            : 'Complete all sections to create a new waste manifest.'}
+        </p>
       </div>
 
       <div className="app-container" style={{ maxWidth: 800 }}>
@@ -560,20 +675,24 @@ export default function CreatePage({ user, onLogout, onHome }) {
           </Accordion>
 
           {/* Action Buttons */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginTop: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: '12px', marginTop: '24px' }}>
             <button type="button" className="btn btn-outline" onClick={() => navigate(-1)}>Cancel</button>
             <button
               type="button" className="btn btn-outline"
-              disabled={!Object.values(validSectionsExceptDescription).every(Boolean)}
-              onClick={saveForLater}
+              disabled={!Object.values(validSectionsDraft).every(Boolean)}
+              onClick={saveDraft}
+              title="Save a receipt now and finish the manifest later"
             >
-              Receipt
+              <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" style={{ marginRight: 4, verticalAlign: 'middle' }}>
+                <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/>
+              </svg>
+              Save as Receipt
             </button>
             <button
               type="submit" className="btn btn-primary"
               disabled={!Object.values(validSections).every(Boolean)}
             >
-              {manifestId ? 'Update Manifest' : 'Create Manifest'}
+              {receiptId ? 'Create Manifest from Draft' : manifestId ? 'Update Manifest' : 'Create Manifest'}
             </button>
           </div>
 
