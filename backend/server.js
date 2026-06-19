@@ -1179,7 +1179,7 @@ app.get('/api/manifest-receipts/:id/pdf', async (req, res) => {
     }
     const manifestTransporter = result.rows[0];
 
-    const wasteItemsResults = await pool.query('SELECT * FROM waste_streams WHERE manifest_id = $1', [manifestId]);
+    const wasteItemsResults = await pool.query('SELECT * FROM waste_streams WHERE receipt_id = $1', [manifestId]);
 
     const wasteItems = wasteItemsResults.rows;
 
