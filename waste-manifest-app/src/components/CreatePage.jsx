@@ -204,15 +204,16 @@ export default function CreatePage({ user, onLogout, onHome }) {
           setTransporterErrors(data.transporter ? partErr : noErr);
         }
         setWasteTypes({
-          hazardous:    (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('hazardous'),
-          nonHazardous: (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('nonhazardous'),
-          recyclable:   (data.waste_type || '').toLowerCase().split(',').map(s => s.trim()).includes('recyclable'),
+          hazardous:    parseWasteArray(data.waste_type).includes('hazardous'),
+          nonHazardous: parseWasteArray(data.waste_type).includes('nonhazardous'),
+          recyclable:   parseWasteArray(data.waste_type).includes('recyclable'),
         });
         setWasteForms({
           solid:  (data.waste_form || '').toLowerCase().includes('solid'),
           sludge: (data.waste_form || '').toLowerCase().includes('sludge'),
           liquid: (data.waste_form || '').toLowerCase().includes('liquid'),
         });
+        setWasteItems(data.map(item => ({ description: item.description, packaging: item.packaging, volume: item.volume_l, weight: item.weight_kg })));
         setActivities(prev => ({
           ...prev,
           donation:  (data.process || '').toLowerCase().includes('donation'),
@@ -241,6 +242,16 @@ export default function CreatePage({ user, onLogout, onHome }) {
     };
     load();
   }, [receiptId, entities]); // re-run when entities loads so entity lookup finds the match
+
+  const parseWasteArray = (val) => {
+    if (!val) return [];
+    // Strip PostgreSQL array notation: {"NonHazardous"} → NonHazardous
+    return val
+      .replace(/^\{/, '')   // remove leading {
+      .replace(/\}$/, '')   // remove trailing }
+      .split(',')
+      .map(s => s.replace(/"/g, '').trim().toLowerCase());
+  };
 
   // Load existing manifest for editing
   useEffect(() => {
