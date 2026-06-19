@@ -3547,7 +3547,7 @@ app.get('/api/manifest-receipts/:id', async (req, res) => {
              wi.weight_kg
         FROM manifest_receipts mr
    LEFT JOIN entities e  ON e.name = mr.transporter OR e.name = mr.generator
-   LEFT JOIN waste_streams wi ON wi.manifest_id = mr.manifest_id
+   LEFT JOIN waste_streams wi ON wi.receipt_id = mr.id
        WHERE mr.id = $1
     GROUP BY mr.id,
              wi.manifest_id,
