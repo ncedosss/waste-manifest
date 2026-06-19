@@ -213,7 +213,7 @@ export default function CreatePage({ user, onLogout, onHome }) {
           sludge: (data.waste_form || '').toLowerCase().includes('sludge'),
           liquid: (data.waste_form || '').toLowerCase().includes('liquid'),
         });
-        setWasteItems(data.map(item => ({ description: item.description, packaging: item.packaging, volume: item.volume_l, weight: item.weight_kg })));
+        setWasteItems(rows.map(item => ({ description: item.description, packaging: item.packaging, volume: item.volume_l, weight: item.weight_kg })));
         setActivities(prev => ({
           ...prev,
           donation:  (data.process || '').toLowerCase().includes('donation'),
