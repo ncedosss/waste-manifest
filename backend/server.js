@@ -2205,15 +2205,40 @@ app.post('/api/manifest', async (req, res) => {
 
     // ── Check duplicate reference_no ─────────────────────────────────────────
     if (saveForLater) {
-      // For drafts: reject if a receipt already exists for this reference_no
       const existingDraft = await pool.query(
         `SELECT id FROM manifest_receipts WHERE reference_no = $1 LIMIT 1`,
         [reference_no]
       );
+
       if (existingDraft.rows.length > 0) {
-        return res.status(409).json({
-          error: 'A draft receipt with this reference number already exists.',
-          manifest: { id: existingDraft.rows[0].id }
+        // Update existing draft receipt
+        const updatedReceipt = await pool.query(
+          `UPDATE manifest_receipts SET
+            date = $1, time = $2, username = $3,
+            generator = $4, transporter = $5, waste_type = $6,
+            waste_form = $7, process = $8, declaration_name = $9,
+            declaration_date = $10, final_disposal = $11,
+            disposal_contact_no = $12, actual_disposal_date = $13,
+            comments = $14, is_stamped = $15, signature = $16,
+            disposal_email = $17, type = $18
+          WHERE reference_no = $19
+          RETURNING *`,
+          [
+            insertDate, insertTime, username,
+            generator, transporter, wasteTypeString,
+            wasteFormString, processString, declaration_name,
+            declaration_date, final_disposal,
+            contact_no, date,
+            comments, isStamped, signature,
+            disposal_email, type, reference_no
+          ]
+        );
+
+        return res.status(200).json({
+          success: true,
+          manifest: null,
+          receipt: updatedReceipt.rows[0],
+          message: 'Receipt successfully updated.',
         });
       }
     } else {
