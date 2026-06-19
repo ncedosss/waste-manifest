@@ -133,7 +133,9 @@ function App() {
         <Route path="/service-requests" element={<ServiceRequestsPage user={user} onLogout={logout} onHome={home} />} />
         <Route path="/manifestsedit" element={<ManifestsEditPage user={user} onLogout={logout} onHome={home} />} />
         <Route path="/manifest/:id/edit" element={<CreatePage user={user} onLogout={logout} onHome={home} />} />
+        <Route path="/manifest_receipt/:receiptId/edit" element={<CreatePage user={user} onLogout={logout} onHome={home} />} />
         <Route path="/manifest/:id/view" element={<ManifestPDFViewer />} />
+        <Route path="/manifest_receipt/:id/view" element={<ManifestPDFViewer />} />
         <Route path="/create" element={<CreatePage user={user} onLogout={logout} onHome={home} />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/verify-email" element={<VerifyEmail />} />

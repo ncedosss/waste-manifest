@@ -269,7 +269,7 @@ export default function ManifestsPage({ user, onLogout, onHome }) {
                       <td style={{ fontWeight: 600, color: 'var(--text)' }}>{r.manifest_no}</td>
                       <td>
                         <button className="btn btn-outline" style={{ padding: '5px 12px', fontSize: '12px' }}
-                          onClick={() => navigate(`/manifest-receipt/${r.id}/view`)}>
+                          onClick={() => navigate(`/manifest_receipt/${r.id}/view`)}>
                           View PDF
                         </button>
                       </td>

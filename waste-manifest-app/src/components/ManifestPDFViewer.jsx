@@ -14,7 +14,7 @@ export default function ManifestPDFViewer() {
   // Detect whether this is a receipt or a manifest from the URL path
   // /manifest-receipt/:id/view  → receipt
   // /manifest/:id/view          → manifest
-  const isReceipt = location.pathname.includes('manifest-receipt');
+  const isReceipt = location.pathname.includes('manifest_receipt');
   const pdfEndpoint = isReceipt
     ? `${API_URL}/manifest-receipts/${id}/pdf`
     : `${API_URL}/manifests/${id}/pdf`;

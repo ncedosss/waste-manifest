@@ -275,7 +275,7 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
                             <button
                               className="btn-icon"
                               title="Complete manifest"
-                              onClick={() => navigate(`/manifest-receipt/${r.id}/edit`)}
+                              onClick={() => navigate(`/manifest_receipt/${r.id}/edit`)}
                             >
                               <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
