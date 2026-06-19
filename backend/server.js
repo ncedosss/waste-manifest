@@ -2225,8 +2225,8 @@ app.post('/api/manifest', async (req, res) => {
           RETURNING *`,
           [
             insertDate, insertTime, username,
-            generator, transporter, wasteTypeString,
-            wasteFormString, processString, declaration_name,
+            generator, transporter, waste_type,
+            waste_form, process, declaration_name,
             declaration_date, final_disposal,
             contact_no, date,
             comments, isStamped, signature,
