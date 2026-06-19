@@ -2234,6 +2234,20 @@ app.post('/api/manifest', async (req, res) => {
           ]
         );
 
+        const receiptId = existingDraft.rows[0].id;
+
+        // Delete old waste streams and reinsert
+        await pool.query(`DELETE FROM waste_streams WHERE receipt_id = $1`, [receiptId]);
+        if (Array.isArray(wasteItems) && wasteItems.length > 0) {
+          for (const item of wasteItems) {
+            await pool.query(
+              `INSERT INTO waste_streams (receipt_id, description, packaging, volume_l, weight_kg)
+              VALUES ($1,$2,$3,$4,$5)`,
+              [receiptId, item.description, item.packaging, item.volume, item.weight]
+            );
+          }
+        }
+
         return res.status(200).json({
           success: true,
           manifest: null,
@@ -2297,6 +2311,19 @@ app.post('/api/manifest', async (req, res) => {
         manifestFields
       );
       receipt = receiptResult.rows[0];
+
+  receipt = receiptResult.rows[0];
+
+    // Insert waste streams for new receipt
+    if (Array.isArray(wasteItems) && wasteItems.length > 0) {
+      for (const item of wasteItems) {
+        await pool.query(
+          `INSERT INTO waste_streams (receipt_id, description, packaging, volume_l, weight_kg)
+          VALUES ($1,$2,$3,$4,$5)`,
+          [receipt.id, item.description, item.packaging, item.volume, item.weight]
+        );
+      }
+    }
 
     } else {
       // ── Case B: Manifest + Receipt ────────────────────────────────────────
