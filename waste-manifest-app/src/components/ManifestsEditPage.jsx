@@ -70,7 +70,7 @@ export default function ManifestsEditPage({ user, onLogout, onHome }) {
       if (res.status === 401) { onLogout(); return; }
       if (!res.ok) throw new Error();
       setReceipts(prev => prev.filter(r => r.id !== receiptToDelete.id));
-      setSuccessMessage(`Receipt ${receiptToDelete.manifest_no} deleted successfully.`);
+      setSuccessMessage(`Receipt ${receiptToDelete.id} deleted successfully.`);
     } catch (err) { console.error(err); }
     finally { setConfirmReceiptOpen(false); setReceiptToDelete(null); setLoading(false); }
   };

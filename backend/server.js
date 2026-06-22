@@ -3447,6 +3447,36 @@ app.delete('/api/manifests/:id', async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
+app.delete('/api/manifest-receipts/:id', async (req, res) => {
+  const authHeader = req.headers['authorization'];
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Missing or invalid token' });
+  }
+
+  const token = authHeader.split(' ')[1];
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    // Optional: Validate user exists
+    const userResult = await pool.query('SELECT * FROM users WHERE username = $1', [decoded.username]);
+    if (userResult.rowCount === 0) {
+      return res.status(403).json({ error: 'User not found' });
+    }
+
+    // Delete manifest receipt
+    const result = await pool.query('DELETE FROM manifest_receipts WHERE id = $1 RETURNING *', [req.params.id]);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: 'Manifest receipt not found' });
+    }
+
+    res.json({ message: 'Manifest receipt deleted successfully' });
+  } catch (err) {
+    console.error('Delete error:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 app.get('/api/manifests/:id', async (req, res) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ error: 'No token provided' });
