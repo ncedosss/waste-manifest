@@ -213,7 +213,15 @@ export default function CreatePage({ user, onLogout, onHome }) {
           sludge: (data.waste_form || '').toLowerCase().includes('sludge'),
           liquid: (data.waste_form || '').toLowerCase().includes('liquid'),
         });
-        setWasteItems(rows.map(item => ({ description: item.description, packaging: item.packaging, volume: item.volume_l, weight: item.weight_kg })));
+        setWasteItems(rows
+          .filter(item => item.description || item.packaging || item.volume_l || item.weight_kg)
+          .map(item => ({
+            description: item.description || '',
+            packaging:   item.packaging   || '',
+            volume:      item.volume_l    || '',
+            weight:      item.weight_kg   || '',
+          }))
+        );
         setActivities(prev => ({
           ...prev,
           donation:  (data.process || '').toLowerCase().includes('donation'),
