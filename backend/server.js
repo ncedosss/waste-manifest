@@ -250,7 +250,34 @@ app.get('/api/manifests', async (req, res) => {
   const token = authHeader.split(' ')[1];
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    const result = await pool.query('SELECT * FROM manifests ORDER BY id DESC');
+    const result = await pool.query(`SELECT id,
+                                            manifest_no,
+                                            date,time,
+                                            transporter,
+                                            generator,
+                                            reference_no,
+                                            waste_type,
+                                            waste_form,
+                                            process,
+                                            final_disposal,
+                                            planned_disposal_date,
+                                            actual_disposal_date,
+                                            disposal_ref_no,
+                                            quote_no,
+                                            po_no,
+                                            comments,
+                                            username,
+                                            created_at,
+                                            disposal_contact_no,
+                                            is_stamped,
+                                            declaration_name, 
+                                            declaration_date,
+                                            disposal_email,
+                                            is_saved_for_later,
+                                            type,
+                                            customer_id,
+                                            service_request_id 
+                                       FROM manifests ORDER BY id DESC`);
     res.json(result.rows);
   } catch (error) {
     res.status(401).json({ error: 'Invalid token' });
@@ -260,12 +287,35 @@ app.get('/api/manifests', async (req, res) => {
 app.get('/api/manifest-receipts', async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT
-        mr.*,
-        m.id AS linked_manifest_id
-      FROM manifest_receipts mr
-      LEFT JOIN manifests m ON m.id = mr.manifest_id
-      ORDER BY mr.created_at DESC
+      SELECT mr.id,
+             mr.manifest_id,
+             mr.manifest_no,
+             mr.reference_no,
+             mr.date,
+             mr.time,
+             mr.username,
+             mr.generator,
+             mr.transporter,
+             mr.waste_type,
+             mr.waste_form,
+             mr.process,
+             mr.declaration_name,
+             mr.declaration_date,
+             mr.final_disposal,
+             mr.disposal_contact_no,
+             mr.actual_disposal_date,
+             mr.comments,
+             mr.is_stamped,
+             mr.disposal_email,
+             mr.customer_id,
+             mr.service_request_id,
+             mr.is_receipt,
+             mr.created_at,
+             mr.type,
+             m.id AS linked_manifest_id
+        FROM manifest_receipts mr
+   LEFT JOIN manifests m ON m.id = mr.manifest_id
+    ORDER BY mr.created_at DESC
     `);
     res.json(result.rows);
   } catch (error) {
