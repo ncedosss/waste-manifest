@@ -10,6 +10,7 @@ import ManifestPDFViewer from './components/ManifestPDFViewer';
 import ManifestsEditPage from './components/ManifestsEditPage';
 import VerifyEmail from './components/authentication/VerifyEmail';
 import ServiceRequestsPage from './components/ServiceRequestsPage';
+import VerificationFormPage from './components/VerificationFormPage';
 import { useState, useEffect, useCallback } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import InvoicesPage from './components/InvoicesPage';
@@ -65,6 +66,8 @@ function App() {
         <Route path="/create" element={<CreatePage user={user} onLogout={logout} onHome={home} />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/service-requests/:id/form" element={<VerificationFormPage user={user} />} />
+        <Route path="/service-requests/:id/form" element={<VerificationFormPage user={user} onLogout={logout} onHome={home} />}/>
       </Routes>
       <ToastContainer
         position="top-right"

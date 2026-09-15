@@ -1,10 +1,19 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import WasteVerificationForm, { EMPTY_FORM } from "./WasteVerificationForm";
+import {
+  toFormData,
+  toVerifyPayload,
+  officeMissing,
+} from "../helpers/serviceRequestForm";
 
 /* ─────────────────────────────────────────────
    STYLES
 ───────────────────────────────────────────── */
 const css = `
+  .drawer-body-form { padding: 0 !important; }
+  .drawer-body-form .wvf { padding: 12px; max-width: none; }
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -778,20 +787,11 @@ function statusClass(status) {
   return "default";
 }
 
-const CHECKLIST_ITEMS = [
-  { key: "vehicleReported",    label: "Vehicle reported to receiving point" },
-  { key: "wasteDescription",   label: "Waste description matches approval" },
-  { key: "packagingSafety",    label: "Packaging and safety compliant" },
-  { key: "visualInspection",   label: "Visual inspection completed" },
-  { key: "photosTaken",        label: "Photos taken" },
-  { key: "wasteAcceptedCheck", label: "Waste accepted or rejected" },
-];
-
 const STAFF_MAP = {
   Mfiki:   "Operations Supervisor",
   Unathi:  "Office Manager",
   Hoyi:    "Process Chemistry",
-  Ntobeko: "Chief Operating Officer",
+  Ntobeko: "Chief Executive Officer",
 };
 
 const ROWS_PER_PAGE = 5;
@@ -800,10 +800,13 @@ const ROWS_PER_PAGE = 5;
    COMPONENT
 ───────────────────────────────────────────── */
 function getMsdsUrl(doc) {
-  if (!doc) return '#';
-  if (doc.startsWith('http')) return doc; // ✅ Cloudinary URLs hit this branch
-  if (doc.includes('/')) return `${process.env.VITE_API_URL}/${doc}`;
-  return `${process.env.VITE_API_URL}/uploads/msds/${doc}`;
+  if (!doc) return null;
+  if (doc.startsWith('http')) return doc; // Cloudinary URLs hit this branch
+  // Multer wrote the file on the portal server, so resolve against that host.
+  // Note: REACT_APP_, not VITE_ — this is a Create React App build.
+  const base = process.env.REACT_APP_PORTAL_URL || 'http://localhost:5000';
+  if (doc.includes('/')) return `${base}/${doc}`;
+  return `${base}/uploads/msds/${doc}`;
 }
 
 export default function ServiceRequestPage() {
@@ -815,22 +818,13 @@ export default function ServiceRequestPage() {
   const [search, setSearch]                 = useState("");
   const [status, setStatus]                 = useState("");
   const [saving, setSaving]                 = useState(false);
-  const dateRef = useRef(null);
+  const navigate = useNavigate();
 
-  const today = new Date().toISOString().split("T")[0];
+  // Single source of truth for the whole form — Section A (read-only here)
+  // and Section B (editable) live in one object, shaped by the mapper.
+  const [form, setForm] = useState({ ...EMPTY_FORM });
 
-  const [verificationForm, setVerificationForm] = useState({
-    vehicleReported: "", wasteDescription: "", packagingSafety: "",
-    visualInspection: "", photosTaken: "", wasteAcceptedCheck: "",
-    decision: "", reason: "", completedBy: "", designation: "",
-    signature: "", verificationDate: today
-  });
-
-  // Separate state for checklist "No" comments — maps to its own table
-  const [checklistComments, setChecklistComments] = useState({
-    vehicleReported: "", wasteDescription: "", packagingSafety: "",
-    visualInspection: "", photosTaken: "", wasteAcceptedCheck: "",
-  });
+  const patchForm = (patch) => setForm(prev => ({ ...prev, ...patch }));
 
   useEffect(() => { loadRequests(); }, [search, status]);
 
@@ -851,52 +845,46 @@ export default function ServiceRequestPage() {
 
   const saveVerification = async () => {
     setSaving(true);
-    const token = localStorage.getItem("token");
-    const response = await fetch(
-      `${API_URL}/service-requests/${selectedRequest.id}/verify`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ ...verificationForm, checklistComments })
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `${API_URL}/service-requests/${selectedRequest.id}/verify`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(toVerifyPayload(form)),
+        }
+      );
+
+      if (!response.ok) {
+        toast.error(
+          response.status === 401
+            ? "Your session has expired. Sign in again to save."
+            : "The verification could not be saved. Try again."
+        );
+        return;
       }
-    );
-    setSaving(false);
-    if (!response.ok) {
-      console.log("Test");
-      toast.error("Failed to save verification");
-      return;
+
+      toast.success(
+        form.decision === "Accepted"
+          ? "Verification saved. A draft manifest is ready."
+          : "Verification saved."
+      );
+      loadRequests();
+      setSelectedRequest(null);
+    } catch {
+      toast.error("The verification could not be saved. Check your connection.");
+    } finally {
+      setSaving(false);
     }
-    toast.success("Verification saved");
-    loadRequests();
-    setSelectedRequest(null);
   };
 
-  const vf = (key) => (e) => setVerificationForm({ ...verificationForm, [key]: e.target.value });
-
-  // All fields that must be filled before saving
-  const checklistKeys = ["vehicleReported", "wasteDescription", "packagingSafety", "visualInspection", "photosTaken", "wasteAcceptedCheck"];
-
-  const isFormValid = (() => {
-    const f = verificationForm;
-
-    // Every checklist item must have a value
-    const allChecklistAnswered = checklistKeys.every(k => f[k] !== "");
-
-    // Every "No" answer must have a non-empty comment
-    const allNoCommentsFilled = checklistKeys
-      .filter(k => f[k] === "No")
-      .every(k => (checklistComments[k] || "").trim() !== "");
-
-    // Core sign-off fields
-    const coreValid =
-      f.decision.trim()         !== "" &&
-      f.reason.trim()           !== "" &&
-      f.completedBy.trim()      !== "" &&
-      f.signature.trim()        !== "" &&
-      f.verificationDate.trim() !== "";
-
-    return allChecklistAnswered && allNoCommentsFilled && coreValid;
-  })();
+  // Section B validation lives in the mapper, shared with the print page
+  const missing = officeMissing(form);
+  const isFormValid = missing.length === 0;
 
   const paged = requests.slice(page * ROWS_PER_PAGE, page * ROWS_PER_PAGE + ROWS_PER_PAGE);
   const totalPages = Math.ceil(requests.length / ROWS_PER_PAGE);
@@ -912,55 +900,9 @@ export default function ServiceRequestPage() {
 
   const openReview = (request) => {
     setSelectedRequest(request);
-    setVerificationForm({
-      vehicleReported:    request.vehicle_reported_status   || "",
-      wasteDescription:   request.waste_description_status  || "",
-      packagingSafety:    request.packaging_status          || "",
-      visualInspection:   request.visual_inspection_status  || "",
-      photosTaken:        request.photos_taken_status       || "",
-      wasteAcceptedCheck: request.acceptance_check_status   || "",
-      decision:           request.decision                  || "",
-      reason:             request.decision_reason           || "",
-      completedBy:        request.completed_by              || "",
-      designation:        request.designation               || "",
-      signature:          request.verifier_signature        || "",
-      verificationDate:   request.verification_date
-                            ? request.verification_date.split("T")[0]
-                            : new Date().toISOString().split("T")[0],
-    });
-
-    // Maps the db item_key values (from the joined checklist table)
-    // back to the frontend camelCase keys used in checklistComments state.
-    const DB_KEY_MAP = {
-      vehicle_reported:     "vehicleReported",
-      waste_description:    "wasteDescription",
-      packaging_safety:     "packagingSafety",
-      visual_inspection:    "visualInspection",
-      photos_taken:         "photosTaken",
-      waste_accepted_check: "wasteAcceptedCheck",
-    };
-
-    // checklist_items is the array returned by the JOIN, e.g.:
-    // [{ item_key: "vehicle_reported", result: "No", comment: "Truck arrived late" }, ...]
-    const items = request.checklist_items || [];
-
-    const comments = {
-      vehicleReported:    "",
-      wasteDescription:   "",
-      packagingSafety:    "",
-      visualInspection:   "",
-      photosTaken:        "",
-      wasteAcceptedCheck: "",
-    };
-
-    items.forEach(({ item_key, comment }) => {
-      const frontendKey = DB_KEY_MAP[item_key];
-      if (frontendKey && comment) {
-        comments[frontendKey] = comment;
-      }
-    });
-
-    setChecklistComments(comments);
+    // One mapper builds Section A and Section B, so the drawer and the
+    // printable copy can never show different values for the same request.
+    setForm(toFormData(request));
   };
   return (
     <>
@@ -1123,213 +1065,35 @@ export default function ServiceRequestPage() {
               </button>
             </div>
 
-            {/* Scrollable body */}
-            <div className="drawer-body">
-
-              {/* Request Details */}
-              <div className="dsec">
-                <div className="dsec-title">Request Details</div>
-                <div className="info-grid">
-                  {[
-                    ["Customer Name",    selectedRequest.customer_name],
-                    ["Contact Number",   selectedRequest.contact_number],
-                    ["WIR Number",       selectedRequest.wir_number],
-                    ["Waste Type",       selectedRequest.waste_type],
-                    ["Waste Form",       selectedRequest.waste_form],
-                    ["Vehicle Reg",      selectedRequest.vehicle_registration],
-                    ["Driver Name",      selectedRequest.driver_name],
-                    ["ETA",              selectedRequest.eta],
-                  ].map(([label, value]) => (
-                    <div key={label} className="info-field">
-                      <div className="info-field-label">{label}</div>
-                      <div className="info-field-value">{value || "—"}</div>
-                    </div>
-                  ))}
-                  {selectedRequest.disposal_reason && (
-                    <div className="info-field full">
-                      <div className="info-field-label">Disposal Reason</div>
-                      <div className="info-field-value">{selectedRequest.disposal_reason}</div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* MSDS */}
-              {selectedRequest.msds_document && (
-                <div className="dsec">
-                  <div className="dsec-title">Supporting Documents</div>
-                  <a
-                    href={getMsdsUrl(selectedRequest.msds_document)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="msds-btn"
-                  >
-                    <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                      <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                    View MSDS Document
-                  </a>
-                </div>
-              )}
-
-              {/* Verification Checklist */}
-              <div className="dsec">
-                <div className="dsec-title">Verification Checklist</div>
-                <div className="office-banner">
-                  <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
-                  For office use only — complete all items before issuing a decision.
-                </div>
-                <div className="checklist">
-                  {CHECKLIST_ITEMS.map(({ key, label }) => {
-                    const isNo = verificationForm[key] === "No";
-                    return (
-                      <div key={key} className="checklist-item-wrap">
-                        <div className={`checklist-row${isNo ? " is-no" : ""}`}>
-                          <span className="checklist-label">{label}</span>
-                          {isNo && <span className="no-badge">⚠ No</span>}
-                          <select
-                            className="check-select"
-                            value={verificationForm[key]}
-                            onChange={vf(key)}
-                            style={isNo ? { borderColor: "#FECACA", color: "#DC2626" } : {}}
-                          >
-                            <option value="">—</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                            <option value="N/A">N/A</option>
-                          </select>
-                        </div>
-                        {isNo && (
-                          <textarea
-                            className="checklist-comment"
-                            rows={2}
-                            placeholder="Required: describe the issue observed…"
-                            value={checklistComments[key]}
-                            onChange={(e) => setChecklistComments(prev => ({ ...prev, [key]: e.target.value }))}
-                          />
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Decision */}
-              <div className="dsec">
-                <div className="dsec-title">Decision</div>
-                <div className="form-row">
-                  <label className="form-label">Decision</label>
-                  <select className="form-select" value={verificationForm.decision} onChange={vf("decision")}>
-                    <option value="">Select decision</option>
-                    <option value="Accepted">Accepted</option>
-                    <option value="Rejected">Rejected</option>
-                    <option value="Hold For Review">Hold For Review</option>
-                  </select>
-                </div>
-                <div className="form-row">
-                  <label className="form-label">Reason / Reference</label>
-                  <textarea
-                    className="form-textarea"
-                    placeholder="Provide a reason or reference for this decision…"
-                    value={verificationForm.reason}
-                    onChange={vf("reason")}
-                    rows={4}
-                  />
-                </div>
-              </div>
-
-              {/* Sign Off */}
-              <div className="dsec">
-                <div className="dsec-title">Sign-Off</div>
-                <div className="form-grid-2">
-                  <div className="form-row">
-                    <label className="form-label">Completed By</label>
-                    <select
-                      className="form-select"
-                      value={verificationForm.completedBy}
-                      onChange={(e) => {
-                        const name = e.target.value;
-                        setVerificationForm(prev => ({
-                          ...prev,
-                          completedBy: name,
-                          designation: STAFF_MAP[name] || "",
-                        }));
-                      }}
-                    >
-                      <option value="">Select staff member</option>
-                      {Object.keys(STAFF_MAP).map(name => (
-                        <option key={name} value={name}>{name}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="form-row">
-                    <label className="form-label">Designation</label>
-                    <input
-                      className="form-input"
-                      readOnly
-                      value={verificationForm.designation}
-                      style={{ background: "#F5F4F0", color: "#6B7280", cursor: "default" }}
-                    />
-                  </div>
-                  <div className="form-row">
-                    <label className="form-label">Electronic Signature</label>
-                    <input
-                      className="form-input sig-input"
-                      placeholder="Type full name to sign"
-                      value={verificationForm.signature}
-                      onChange={vf("signature")}
-                    />
-                  </div>
-                  <div className="form-row" onClick={() => dateRef.current?.showPicker()} style={{ cursor: "pointer" }}>
-                    <label className="form-label" style={{ cursor: "pointer" }}>Verification Date</label>
-                    <input
-                      ref={dateRef}
-                      type="date"
-                      className="form-input"
-                      style={{ cursor: "pointer" }}
-                      value={verificationForm.verificationDate}
-                      onChange={vf("verificationDate")}
-                    />
-                  </div>
-                </div>
-              </div>
-
+            {/* Scrollable body — the form itself, exactly as the paper document */}
+            <div className="drawer-body drawer-body-form">
+              <WasteVerificationForm
+                mode="office"
+                data={form}
+                onChange={patchForm}
+                staffMap={STAFF_MAP}
+                msdsUrl={getMsdsUrl(selectedRequest.msds_document)}
+              />
             </div>
 
             {/* Footer */}
             <div className="drawer-footer">
 
-              {/* Progress indicator */}
-              {(() => {
-                const f = verificationForm;
-                const total = 9; // checklist(6) + decision + completedBy + signature
-                let done = 0;
-                ["vehicleReported","wasteDescription","packagingSafety","visualInspection","photosTaken","wasteAcceptedCheck"]
-                  .forEach(k => { if (f[k] !== "") done++; });
-                if (f.decision.trim()    !== "") done++;
-                if (f.completedBy.trim() !== "") done++;
-                if (f.signature.trim()   !== "") done++;
-                const pct = Math.round((done / total) * 100);
-                return (
-                  <div className="form-progress-wrap">
-                    <div className="form-progress-label">
-                      {isFormValid
-                        ? <span>Ready to save</span>
-                        : <>{done} of {total} fields complete</>
-                      }
-                    </div>
-                    <div className="form-progress-track">
-                      <div
-                        className={`form-progress-fill ${isFormValid ? "complete" : "partial"}`}
-                        style={{ width: `${pct}%` }}
-                      />
-                    </div>
-                  </div>
-                );
-              })()}
+              {/* What is still outstanding, named plainly */}
+              <div className="form-progress-wrap">
+                <div className={`form-progress-label ${isFormValid ? "ready" : ""}`}>
+                  {isFormValid
+                    ? "Ready to save"
+                    : `Still needed: ${missing.join(", ")}`}
+                </div>
+              </div>
+
+              <button
+                className="drawer-cancel"
+                onClick={() => navigate(`/service-requests/${selectedRequest.id}/form`)}
+              >
+                Open printable form
+              </button>
 
               <button className="drawer-cancel" onClick={() => setSelectedRequest(null)}>Cancel</button>
 

@@ -1736,9 +1736,10 @@ app.get('/api/manifest-receipts/:id/pdf', async (req, res) => {
     const rightColX = margin + col1Width;
     const sideLabelWidth = 70;
     const sideValueWidth = col2Width - sideLabelWidth;
-    const declarationDate = new Date(manifestTransporter.declaration_date)
-    .toISOString()
-    .split('T')[0];
+    const declarationDate = manifestTransporter.declaration_date
+      ? new Date(manifestTransporter.declaration_date)
+          .toLocaleDateString('en-ZA', { timeZone: 'Africa/Johannesburg' })
+      : '';
     const values = [manifestTransporter.declaration_name, manifestTransporter.signature, declarationDate];
     const labels = ['Name', 'Signature', 'Date'];
 
@@ -3929,24 +3930,46 @@ app.put('/api/service-requests/:id/verify', async (req, res) => {
     });
 
     if (decision === 'Accepted') {
-      // Check if a manifest was already created for this service request
       const existing = await pool.query(
-        `SELECT id FROM manifests WHERE service_request_id = $1`,
+        `SELECT id FROM manifest_receipts WHERE service_request_id = $1`,
         [requestId]
       );
 
       if (existing.rows.length === 0) {
+        const created = await pool.query(
+          `INSERT INTO manifest_receipts
+              (reference_no, manifest_no, date, time, username,
+              generator, transporter, waste_type, waste_form,
+              declaration_name, declaration_date, comments,
+              is_receipt, is_stamped, type, manifest_id,
+              customer_id, service_request_id)
+            SELECT COALESCE(NULLIF(po_reference_number, ''), request_number),
+                  $1, $2, $3, $4,
+                  COALESCE(NULLIF(generator_name, ''), customer_name),
+                  driver_name,
+                  waste_type, waste_form,
+                  customer_name,
+                  COALESCE(declaration_date, request_date, CURRENT_DATE),
+                  verification_comments,
+                  true, false, 'receipt', null,
+                  $5, $6
+              FROM service_requests
+            WHERE id = $6
+            RETURNING id`,
+          [nextManifestNo, verificationDate, time, username,
+            check.rows[0].customer_id, requestId]
+        );
+
         await pool.query(
-          `
-          INSERT INTO manifests (manifest_no, date, time, username, generator, transporter,
-                                waste_type, waste_form, is_saved_for_later, customer_id, service_request_id)
-          SELECT $1, $2, $3, $4,
-                customer_name, driver_name, waste_type, waste_form,
-                true, $5, $6
-            FROM service_requests
-          WHERE id = $6
-          `,
-          [nextManifestNo, verificationDate, time, username, check.rows[0].customer_id, requestId]
+          `INSERT INTO waste_streams (receipt_id, description, volume_l)
+            SELECT $1,
+                  description,
+                  NULLIF(REGEXP_REPLACE(COALESCE(volume,''), '[^0-9.]', '', 'g'), '')::numeric
+              FROM service_request_waste_streams
+            WHERE service_request_id = $2
+              AND (COALESCE(description,'') <> '' OR COALESCE(volume,'') <> '')
+            ORDER BY line_no`,
+          [created.rows[0].id, requestId]
         );
       }
     }
