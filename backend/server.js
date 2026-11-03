@@ -2409,7 +2409,7 @@ app.post('/api/manifest', async (req, res) => {
       await pool.query(
         `INSERT INTO facility (name, contact_no, email)
          VALUES ($1, $2, $3)
-         ON CONFLICT (LOWER(name), contact_no)
+         ON CONFLICT (LOWER(name))
          DO UPDATE SET contact_no = EXCLUDED.contact_no, email = EXCLUDED.email`,
         [final_disposal, contact_no, disposal_email]
       );
@@ -3452,7 +3452,7 @@ app.put('/api/manifests/:id', async (req, res) => {
     const facilityResults = await pool.query(
     `INSERT INTO facility (name, contact_no, email)
       VALUES ($1, $2, $3)
-      ON CONFLICT (LOWER(name), contact_no)
+      ON CONFLICT (LOWER(name))
       DO UPDATE SET
         contact_no = EXCLUDED.contact_no,
         email = EXCLUDED.email
