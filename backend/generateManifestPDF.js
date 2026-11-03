@@ -493,7 +493,7 @@ export default async function generateManifestPDF(manifest) {
   // --- Management Activity Section ---
   margin = 40;
     sectionWidth = doc.page.width - 50 * 2;
-    const checkboxOptions = ['Donation', 'Reuse', 'Sorting', 'Recycling', 'Treatment', 'Storage'];
+    const checkboxOptions = ['Donation', 'Reuse', 'Sorting', 'Recycling', 'Treatment', 'Storage', 'Lanfill'];
     checkboxSize = 8;
     rowHeight = 16;
     const colCount = 6;
