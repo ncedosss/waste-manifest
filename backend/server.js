@@ -933,7 +933,7 @@ if(manifestType !== 'Receipt No'){
     const checkboxOptions = ['Donation', 'Reuse', 'Sorting', 'Recycling', 'Treatment', 'Storage','Landfill'];
     checkboxSize = 8;
     rowHeight = 16;
-    const colCount = 6;
+    const colCount = checkboxOptions.length;
     const colWidth = sectionWidth / colCount;
     startY = doc.y;
 
@@ -1811,7 +1811,7 @@ if(manifestType !== 'Receipt No'){
     const checkboxOptions = ['Donation', 'Reuse', 'Sorting', 'Recycling', 'Treatment', 'Storage','Landfill'];
     checkboxSize = 8;
     rowHeight = 16;
-    const colCount = 6;
+    const colCount = checkboxOptions.length;
     const colWidth = sectionWidth / colCount;
     startY = doc.y;
 
@@ -3049,7 +3049,7 @@ if(manifestType !== 'Receipt No'){
     const checkboxOptions = ['Donation', 'Reuse', 'Sorting', 'Recycling', 'Treatment', 'Storage','Landfill'];
     checkboxSize = 8;
     rowHeight = 16;
-    const colCount = 6;
+    const colCount = checkboxOptions.length;
     const colWidth = sectionWidth / colCount;
     startY = doc.y;
 
